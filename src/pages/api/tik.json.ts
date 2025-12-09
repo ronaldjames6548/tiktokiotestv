@@ -31,7 +31,6 @@ function extractStats(result: any) {
   console.log("=== EXTRACTING STATS ===");
   console.log("Full result object keys:", Object.keys(result));
   
-  // Log all possible stat locations
   const possiblePaths = {
     'result.statistics': result.statistics,
     'result.stats': result.stats,
@@ -46,7 +45,6 @@ function extractStats(result: any) {
   
   console.log("Possible stat paths:", JSON.stringify(possiblePaths, null, 2));
   
-  // Try to extract from various locations with comprehensive fallbacks
   const stats = {
     likes: result.statistics?.diggCount 
       || result.stats?.diggCount 
@@ -92,7 +90,6 @@ function transformLibraryResponse(libraryData: any) {
   console.log(JSON.stringify(libraryData, null, 2));
   console.log("============================");
 
-  // Extract thumbnail
   const thumbnail = result.cover?.[0] 
     || result.originCover?.[0] 
     || result.video?.cover?.[0] 
@@ -101,8 +98,14 @@ function transformLibraryResponse(libraryData: any) {
     || result.video?.dynamicCover?.[0]
     || null;
 
-  // Extract stats using helper function
   const stats = extractStats(result);
+
+  // 🔥 NEW: Reject response if views are invalid
+  if (stats.views === 0 || stats.views < 1000) {
+    console.log("⚠️ Library returned suspiciously low views. Throwing to trigger fallback.");
+    // Will be caught in tryLibraryDownloader
+    throw new Error("Invalid views count from library");
+  }
 
   return {
     status: "success",
@@ -130,7 +133,7 @@ function transformLibraryResponse(libraryData: any) {
 }
 
 async function tryLibraryDownloader(url: string) {
-  const versions = ["v3", "v2", "v1"]; // Try v3 first as it's most updated
+  const versions = ["v3", "v2", "v1"];
   let lastError = null;
 
   for (const version of versions) {
@@ -152,29 +155,29 @@ async function tryLibraryDownloader(url: string) {
         }
       }
       
-      throw new Error(result.message || `Library version ${version} returned no data`);
+      throw new Error(result.message || `Library version ${version} returned no valid data`);
       
     } catch (error) {
-      console.log(`❌ Library version ${version} failed:`, error.message);
+      console.log(`❌ Library version ${version} failed or returned invalid stats:`, error.message);
       lastError = error;
       await new Promise(resolve => setTimeout(resolve, 500));
     }
   }
 
-  throw lastError || new Error("All library downloader versions failed");
+  throw lastError || new Error("All library downloader versions failed or returned invalid stats");
 }
 
 async function fallbackToExternalServices(url: string) {
   const services = [
     {
       name: 'TikWM',
-      url: `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`,
+      // 🔥 FIX: Remove extra spaces in URL
+      url: `https://www.tikwm.com/api/?url=${encodeURIComponent(url.trim())}`,
       transform: (data: any) => {
         console.log("=== TIKWM FULL RESPONSE ===");
         console.log(JSON.stringify(data, null, 2));
         console.log("=========================");
         
-        // TikWM stats are directly under data with snake_case
         const likes = data.data?.digg_count || 0;
         const views = data.data?.play_count || 0;
         const comments = data.data?.comment_count || 0;
@@ -182,6 +185,7 @@ async function fallbackToExternalServices(url: string) {
         
         console.log("TikWM extracted stats:", { likes, views, comments, shares });
         
+        // 🔥 Even TikWM can return 0 views — but it's rarer. We accept it.
         return {
           status: "success",
           result: {
@@ -248,9 +252,6 @@ export const GET: APIRoute = async (context) => {
     
     const url = context.url.searchParams.get("url");
     
-    console.log("Requested URL:", url);
-    console.log("Timestamp:", new Date().toISOString());
-    
     if (!url) {
       return new Response(JSON.stringify({
         error: "URL parameter is required",
@@ -271,26 +272,28 @@ export const GET: APIRoute = async (context) => {
       });
     }
     
-    // Resolve short URLs
     let processedUrl = url;
     if (url.includes('/t/') || url.includes('vm.tiktok.com')) {
       processedUrl = await resolveShortUrl(url);
     }
     
     console.log("Processing URL:", processedUrl);
-    
+
+    // 🔥 STRATEGY CHANGE: Try fallback FIRST for better stats (optional)
+    // But to minimize change, we keep current order and rely on validation
+
     let data;
     try {
       data = await tryLibraryDownloader(processedUrl);
     } catch (libraryError) {
-      console.log("\n⚠️  Library failed, trying fallback services...");
+      console.log("\n⚠️ Library failed or gave bad stats, trying fallback services...");
       console.log("Library error:", libraryError.message);
       
       try {
         data = await fallbackToExternalServices(processedUrl);
       } catch (fallbackError) {
         console.log("❌ All services failed");
-        throw libraryError;
+        throw new Error("Both library and fallback services failed to return valid data");
       }
     }
     
@@ -336,24 +339,21 @@ export const GET: APIRoute = async (context) => {
   } catch (error) {
     console.error("\n" + "=".repeat(50));
     console.error("=== FINAL ERROR ===");
-    console.error("Error:", error);
+    console.error("Error:", error.message || error);
     console.error("=".repeat(50) + "\n");
     
-    let errorMessage = "Unable to process TikTok video.";
+    let errorMessage = "Unable to fetch TikTok video data.";
     let statusCode = 500;
     
     if (error.message.includes("403")) {
-      errorMessage = "TikTok is currently blocking requests. Please try again later.";
+      errorMessage = "TikTok is blocking requests. Try again later.";
       statusCode = 403;
-    } else if (error.message.includes("404")) {
-      errorMessage = "Video not found. It may be private, deleted, or the URL is incorrect.";
+    } else if (error.message.includes("404") || error.message.includes("private") || error.message.includes("deleted")) {
+      errorMessage = "Video not found or is private.";
       statusCode = 404;
     } else if (error.message.includes("timeout")) {
-      errorMessage = "Request timed out. The service may be temporarily unavailable.";
+      errorMessage = "Request timed out. Service may be busy.";
       statusCode = 408;
-    } else if (error.message.includes("private") || error.message.includes("deleted")) {
-      errorMessage = "This video is private or has been deleted.";
-      statusCode = 404;
     }
     
     return new Response(JSON.stringify({
