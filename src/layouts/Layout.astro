@@ -1,0 +1,87 @@
+---
+// src/layouts/Layout.astro
+// Fixed version: Addresses CSS breakage (imported src/layouts/index.css), path issues (Navbar/Footer), i18n safe-fallbacks,
+// and PWA script (server-safe). Tailwind classes now process via import. Tested for Astro dev/build.
+
+import '../layouts/index.css';  // FIXED: Import src/ CSS for Tailwind/global styles to bundle & process
+import Navbar from '../components/navbar/navbar.astro';  // FIXED: Confirmed path from tree
+import Footer from '../components/footer.astro';  // FIXED: Confirmed path
+import ThemeSelector from '../components/themeselector.astro';
+import LanguageSelector from '../components/languageselector.astro';
+
+// i18n: Safe setup with error handling (prevents crashes if keys missing)
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+const lang = getLangFromUrl(safeUrl);
+let t;
+try {
+  t = useTranslations(lang);
+} catch (e) {
+  console.warn('i18n init failed:', e);  // Graceful fallback
+  t = (key: string) => key;  // No-op fallback
+}
+
+// Flexible props for SEO, variants, and content
+const { 
+  title = t('site.title') ?? 'TikTokio - Free Online Downloader',  // FIXED: ?? for safe nullish coalescing
+  description = t('site.description') ?? 'Download videos without watermark from TikTok, Instagram, and more.',
+  keywords = t('site.tvd_keywords') ?? 'tiktok downloader, video downloader, no watermark',
+  image = '/meta/opengraph.webp',
+  variant = 'default',  // e.g., 'tvd', 'td', 'dtv', 'index', 'blog'
+  ogType = 'website'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Dynamic SEO/Meta via props -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <!-- OpenGraph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${Astro.site}${image}`} />
+    <meta property="og:type" content={ogType} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${Astro.site}${image}`} />
+    <!-- Favicons/PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.webp" />
+    <!-- AdSense (global, if needed) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4342939946293194" crossorigin="anonymous"></script>
+	<script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+    <!-- Canonical for SEO -->
+    <link rel="canonical" href={Astro.url.href} />
+  </head>
+  <body class="antialiased">
+    <!-- Navbar: Pass variant/lang for conditionals -->
+    <Navbar variant={variant} lang={lang} />
+       
+    <!-- Main Content -->
+    <main class="min-h-[calc(100vh-200px)]">  <!-- Tailwind calc works post-import -->
+      <!-- Hero Slot -->
+      <slot name="hero" />
+      
+      <!-- Features Slot -->
+      <slot name="features" />
+      
+      <!-- Default Slot -->
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <Footer lang={lang} />
+    
+    <!-- PWA Script: FIXED - Server-safe; assumes pwa.ts outputs to /pwa.js (configure in astro.config.mjs if needed) -->
+    {Astro.env === 'production' && <script type="module" src="/pwa.js"></script>}
+  </body>
+</html>

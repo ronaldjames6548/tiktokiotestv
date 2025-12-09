@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+
+.custom-gradient {
+  background: linear-gradient(195deg, rgba(0, 0, 0, .06) 55%, transparent 0), 
+              linear-gradient(315deg, transparent 75%, rgba(0, 0, 0, .06) 0), 
+              linear-gradient(163deg, #315e95, #228ba2, #1f98b9);
+}
+
+.splash {
+    background: linear-gradient(89.86deg, #5940f1 8.6%, #ce00ff 99.86%);
+}
+
+.is-paste {
+    position: absolute;
+    right: 5px;
+    border-left: none;
+    width: auto;
+    cursor: pointer;
+    padding: 10px;
+    justify-content: center;
+    border-radius: 5px;
+    background: #fff;
+}
+.img-paste {
+    background: url(/images/paste.png) no-repeat;
+}
+.lt-icon {
+    display: table-cell;
+    height: 24px;
+    width: 24px;
+}
+
+.welcome {
+    background-color: #ff0f50;
+    background-image: url(/images/cover.png);
+}
