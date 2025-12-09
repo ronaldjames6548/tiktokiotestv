@@ -2,10 +2,8 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-// Import the TikTok API library using ES modules syntax
 import TikTok from "@tobyg74/tiktok-api-dl";
 
-// Function to resolve short URLs
 async function resolveShortUrl(url: string): Promise<string> {
   try {
     console.log("Resolving short URL:", url);
@@ -24,25 +22,77 @@ async function resolveShortUrl(url: string): Promise<string> {
     return resolvedUrl;
   } catch (error) {
     console.log("URL resolution failed:", error.message);
-    return url; // Return original if resolution fails
+    return url;
   }
 }
 
-// Transform the library response to match your existing frontend format
+// Helper function to safely extract stats from multiple possible paths
+function extractStats(result: any) {
+  console.log("=== EXTRACTING STATS ===");
+  console.log("Full result object keys:", Object.keys(result));
+  
+  // Log all possible stat locations
+  const possiblePaths = {
+    'result.statistics': result.statistics,
+    'result.stats': result.stats,
+    'result direct': {
+      diggCount: result.diggCount,
+      playCount: result.playCount,
+      commentCount: result.commentCount,
+      shareCount: result.shareCount,
+      collectCount: result.collectCount
+    }
+  };
+  
+  console.log("Possible stat paths:", JSON.stringify(possiblePaths, null, 2));
+  
+  // Try to extract from various locations with comprehensive fallbacks
+  const stats = {
+    likes: result.statistics?.diggCount 
+      || result.stats?.diggCount 
+      || result.diggCount
+      || result.statistics?.likeCount 
+      || result.stats?.likeCount
+      || 0,
+      
+    views: result.statistics?.playCount 
+      || result.stats?.playCount 
+      || result.playCount
+      || result.statistics?.viewCount
+      || result.stats?.viewCount
+      || 0,
+      
+    comments: result.statistics?.commentCount 
+      || result.stats?.commentCount 
+      || result.commentCount
+      || 0,
+      
+    shares: result.statistics?.shareCount 
+      || result.stats?.shareCount 
+      || result.shareCount
+      || 0,
+      
+    collects: result.statistics?.collectCount
+      || result.stats?.collectCount
+      || result.collectCount
+      || 0
+  };
+  
+  console.log("Extracted stats:", stats);
+  console.log("======================");
+  
+  return stats;
+}
+
 function transformLibraryResponse(libraryData: any) {
   const result = libraryData.result;
   if (!result) return null;
 
-  // Debug: Log all possible thumbnail sources
-  console.log("=== THUMBNAIL DEBUG ===");
-  console.log("result.cover:", result.cover);
-  console.log("result.originCover:", result.originCover);
-  console.log("result.video?.cover:", result.video?.cover);
-  console.log("result.dynamicCover:", result.dynamicCover);
-  console.log("result.video?.originCover:", result.video?.originCover);
-  console.log("result.video?.dynamicCover:", result.video?.dynamicCover);
-  
-  // Prioritize different cover sources
+  console.log("=== FULL LIBRARY RESPONSE ===");
+  console.log(JSON.stringify(libraryData, null, 2));
+  console.log("============================");
+
+  // Extract thumbnail
   const thumbnail = result.cover?.[0] 
     || result.originCover?.[0] 
     || result.video?.cover?.[0] 
@@ -50,93 +100,54 @@ function transformLibraryResponse(libraryData: any) {
     || result.dynamicCover?.[0] 
     || result.video?.dynamicCover?.[0]
     || null;
-    
-  console.log("Selected thumbnail:", thumbnail);
-  
-  // Debug stats
-  console.log("=== STATS DEBUG ===");
-  console.log("result.statistics:", result.statistics);
-  console.log("result.stats:", result.stats);
-  console.log("Direct result properties:", {
-    diggCount: result.diggCount,
-    playCount: result.playCount,
-    commentCount: result.commentCount,
-    shareCount: result.shareCount
-  });
-  console.log("======================");
 
-  // Extract stats with multiple fallback paths
-  const likes = result.statistics?.diggCount 
-    || result.stats?.diggCount 
-    || result.diggCount
-    || result.statistics?.likeCount 
-    || result.stats?.likeCount
-    || 0;
-    
-  const views = result.statistics?.playCount 
-    || result.stats?.playCount 
-    || result.playCount
-    || result.statistics?.viewCount
-    || result.stats?.viewCount
-    || 0;
-    
-  const comments = result.statistics?.commentCount 
-    || result.stats?.commentCount 
-    || result.commentCount
-    || 0;
-    
-  const shares = result.statistics?.shareCount 
-    || result.stats?.shareCount 
-    || result.shareCount
-    || 0;
-
-  console.log("Extracted stats:", { likes, views, comments, shares });
+  // Extract stats using helper function
+  const stats = extractStats(result);
 
   return {
     status: "success",
     result: {
       type: result.type || (result.images ? "image" : "video"),
       author: {
-        avatar: result.author?.avatarThumb?.[0] || result.author?.avatarLarger || null,
-        nickname: result.author?.nickname || result.author?.username || "Unknown Author"
+        avatar: result.author?.avatarThumb?.[0] || result.author?.avatarLarger || result.author?.avatar || null,
+        nickname: result.author?.nickname || result.author?.username || result.author?.uniqueId || "Unknown Author"
       },
-      desc: result.desc || "No description available",
+      desc: result.desc || result.title || "No description available",
       videoSD: result.video?.downloadAddr?.[0] || result.video?.playAddr?.[0] || null,
       videoHD: result.video?.downloadAddr?.[1] || result.video?.downloadAddr?.[0] || result.video?.playAddr?.[1] || result.video?.playAddr?.[0] || null,
       video_hd: result.video?.downloadAddr?.[0] || result.video?.playAddr?.[0] || null,
-      videoWatermark: result.video?.playAddr?.[0] || null,
-      music: result.music?.playUrl?.[0] || null,
+      videoWatermark: result.video?.playAddr?.[0] || result.video?.wmplay || null,
+      music: result.music?.playUrl?.[0] || result.music?.play || null,
       uploadDate: result.createTime ? new Date(result.createTime * 1000).toISOString() : null,
       images: result.images || null,
       thumbnail: thumbnail,
-      likes: likes,
-      views: views,
-      comments: comments,
-      shares: shares
+      likes: stats.likes,
+      views: stats.views,
+      comments: stats.comments,
+      shares: stats.shares
     }
   };
 }
 
-// Try multiple versions of the downloader API
 async function tryLibraryDownloader(url: string) {
-  const versions = ["v1", "v2", "v3"];
+  const versions = ["v3", "v2", "v1"]; // Try v3 first as it's most updated
   let lastError = null;
 
   for (const version of versions) {
     try {
-      console.log(`Trying TikTok library downloader version ${version}...`);
+      console.log(`\n=== Trying TikTok library version ${version} ===`);
       
       const result = await TikTok.Downloader(url, {
         version: version,
         showOriginalResponse: false
       });
 
-      console.log(`Library ${version} full response:`, JSON.stringify(result, null, 2));
-
+      console.log(`Raw ${version} response status:`, result.status);
+      
       if (result.status === "success" && result.result) {
         const transformedData = transformLibraryResponse(result);
         if (transformedData && transformedData.result) {
-          console.log(`Success with library version ${version}`);
+          console.log(`✅ Success with library version ${version}`);
           return transformedData;
         }
       }
@@ -144,10 +155,8 @@ async function tryLibraryDownloader(url: string) {
       throw new Error(result.message || `Library version ${version} returned no data`);
       
     } catch (error) {
-      console.log(`Library version ${version} failed:`, error.message);
+      console.log(`❌ Library version ${version} failed:`, error.message);
       lastError = error;
-      
-      // Add delay between attempts
       await new Promise(resolve => setTimeout(resolve, 500));
     }
   }
@@ -155,7 +164,6 @@ async function tryLibraryDownloader(url: string) {
   throw lastError || new Error("All library downloader versions failed");
 }
 
-// Fallback to external services if library fails
 async function fallbackToExternalServices(url: string) {
   const services = [
     {
@@ -166,7 +174,7 @@ async function fallbackToExternalServices(url: string) {
         console.log(JSON.stringify(data, null, 2));
         console.log("=========================");
         
-        // TikWM uses snake_case for stats
+        // TikWM stats are directly under data with snake_case
         const likes = data.data?.digg_count || 0;
         const views = data.data?.play_count || 0;
         const comments = data.data?.comment_count || 0;
@@ -203,7 +211,7 @@ async function fallbackToExternalServices(url: string) {
 
   for (const service of services) {
     try {
-      console.log(`Trying fallback service: ${service.name}`);
+      console.log(`\n=== Trying fallback service: ${service.name} ===`);
       
       const response = await fetch(service.url, {
         method: 'GET',
@@ -220,11 +228,12 @@ async function fallbackToExternalServices(url: string) {
       const data = await response.json();
       
       if (service.name === 'TikWM' && data.code === 0 && data.data) {
+        console.log(`✅ ${service.name} succeeded`);
         return service.transform(data);
       }
       
     } catch (error) {
-      console.log(`${service.name} fallback failed:`, error.message);
+      console.log(`❌ ${service.name} fallback failed:`, error.message);
     }
   }
 
@@ -233,13 +242,15 @@ async function fallbackToExternalServices(url: string) {
 
 export const GET: APIRoute = async (context) => {
   try {
-    console.log("=== TikTok API Request (Library Version) ===");
+    console.log("\n" + "=".repeat(50));
+    console.log("=== NEW TIKTOK API REQUEST ===");
+    console.log("=".repeat(50));
     
     const url = context.url.searchParams.get("url");
     
     console.log("Requested URL:", url);
+    console.log("Timestamp:", new Date().toISOString());
     
-    // Handle download request
     if (!url) {
       return new Response(JSON.stringify({
         error: "URL parameter is required",
@@ -250,7 +261,6 @@ export const GET: APIRoute = async (context) => {
       });
     }
     
-    // Validate TikTok URL
     if (!url.includes("tiktok.com") && !url.includes("douyin")) {
       return new Response(JSON.stringify({
         error: "Invalid URL. Please provide a valid TikTok URL.",
@@ -261,38 +271,33 @@ export const GET: APIRoute = async (context) => {
       });
     }
     
-    // First resolve short URLs
+    // Resolve short URLs
     let processedUrl = url;
     if (url.includes('/t/') || url.includes('vm.tiktok.com')) {
       processedUrl = await resolveShortUrl(url);
     }
     
-    console.log("Starting download with library...");
+    console.log("Processing URL:", processedUrl);
     
     let data;
     try {
-      // First try the official library
       data = await tryLibraryDownloader(processedUrl);
     } catch (libraryError) {
-      console.log("Library failed, trying fallback services...");
+      console.log("\n⚠️  Library failed, trying fallback services...");
       console.log("Library error:", libraryError.message);
       
       try {
-        // Fallback to external services if library completely fails
         data = await fallbackToExternalServices(processedUrl);
-        console.log("Fallback service succeeded");
       } catch (fallbackError) {
-        console.log("All services failed");
-        throw libraryError; // Throw original library error
+        console.log("❌ All services failed");
+        throw libraryError;
       }
     }
     
-    // Validate result
     if (!data || !data.result) {
       throw new Error("No data returned from any service");
     }
     
-    // Check for downloadable content
     const hasVideo = data.result.videoSD || data.result.videoHD || data.result.video_hd || data.result.videoWatermark;
     const hasAudio = data.result.music;
     const hasImages = data.result.images;
@@ -307,9 +312,15 @@ export const GET: APIRoute = async (context) => {
       });
     }
     
-    console.log("=== FINAL DATA BEING RETURNED ===");
-    console.log(JSON.stringify(data, null, 2));
-    console.log("================================");
+    console.log("\n" + "=".repeat(50));
+    console.log("=== FINAL RESPONSE DATA ===");
+    console.log("Stats being returned:", {
+      likes: data.result.likes,
+      views: data.result.views,
+      comments: data.result.comments,
+      shares: data.result.shares
+    });
+    console.log("=".repeat(50) + "\n");
     
     return new Response(JSON.stringify(data), {
       status: 200,
@@ -323,7 +334,10 @@ export const GET: APIRoute = async (context) => {
     });
     
   } catch (error) {
-    console.error("=== Final Error ===", error);
+    console.error("\n" + "=".repeat(50));
+    console.error("=== FINAL ERROR ===");
+    console.error("Error:", error);
+    console.error("=".repeat(50) + "\n");
     
     let errorMessage = "Unable to process TikTok video.";
     let statusCode = 500;
