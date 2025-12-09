@@ -52,7 +52,45 @@ function transformLibraryResponse(libraryData: any) {
     || null;
     
   console.log("Selected thumbnail:", thumbnail);
+  
+  // Debug stats
+  console.log("=== STATS DEBUG ===");
+  console.log("result.statistics:", result.statistics);
+  console.log("result.stats:", result.stats);
+  console.log("Direct result properties:", {
+    diggCount: result.diggCount,
+    playCount: result.playCount,
+    commentCount: result.commentCount,
+    shareCount: result.shareCount
+  });
   console.log("======================");
+
+  // Extract stats with multiple fallback paths
+  const likes = result.statistics?.diggCount 
+    || result.stats?.diggCount 
+    || result.diggCount
+    || result.statistics?.likeCount 
+    || result.stats?.likeCount
+    || 0;
+    
+  const views = result.statistics?.playCount 
+    || result.stats?.playCount 
+    || result.playCount
+    || result.statistics?.viewCount
+    || result.stats?.viewCount
+    || 0;
+    
+  const comments = result.statistics?.commentCount 
+    || result.stats?.commentCount 
+    || result.commentCount
+    || 0;
+    
+  const shares = result.statistics?.shareCount 
+    || result.stats?.shareCount 
+    || result.shareCount
+    || 0;
+
+  console.log("Extracted stats:", { likes, views, comments, shares });
 
   return {
     status: "success",
@@ -70,21 +108,18 @@ function transformLibraryResponse(libraryData: any) {
       music: result.music?.playUrl?.[0] || null,
       uploadDate: result.createTime ? new Date(result.createTime * 1000).toISOString() : null,
       images: result.images || null,
-      // Enhanced: Try multiple thumbnail sources
       thumbnail: thumbnail,
-      // Fixed: Use likeCount (not diggCount); check statistics or stats
-      likes: result.statistics?.likeCount || result.stats?.likeCount || 0,
-      // Added: Views (playCount)
-      views: result.statistics?.playCount || result.stats?.playCount || 0,
-      comments: result.statistics?.commentCount || result.stats?.commentCount || 0,
-      shares: result.statistics?.shareCount || result.stats?.shareCount || 0
+      likes: likes,
+      views: views,
+      comments: comments,
+      shares: shares
     }
   };
 }
 
 // Try multiple versions of the downloader API
 async function tryLibraryDownloader(url: string) {
-  const versions = ["v1", "v2", "v3"]; // v3 is now fixed in 1.3.5
+  const versions = ["v1", "v2", "v3"];
   let lastError = null;
 
   for (const version of versions) {
@@ -96,7 +131,7 @@ async function tryLibraryDownloader(url: string) {
         showOriginalResponse: false
       });
 
-      console.log(`Library ${version} response:`, result);
+      console.log(`Library ${version} full response:`, JSON.stringify(result, null, 2));
 
       if (result.status === "success" && result.result) {
         const transformedData = transformLibraryResponse(result);
@@ -127,12 +162,17 @@ async function fallbackToExternalServices(url: string) {
       name: 'TikWM',
       url: `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`,
       transform: (data: any) => {
-        // Debug thumbnail from TikWM
-        console.log("=== TIKWM THUMBNAIL DEBUG ===");
-        console.log("data.data?.cover:", data.data?.cover);
-        console.log("data.data?.origin_cover:", data.data?.origin_cover);
-        console.log("data.data?.dynamic_cover:", data.data?.dynamic_cover);
-        console.log("============================");
+        console.log("=== TIKWM FULL RESPONSE ===");
+        console.log(JSON.stringify(data, null, 2));
+        console.log("=========================");
+        
+        // TikWM uses snake_case for stats
+        const likes = data.data?.digg_count || 0;
+        const views = data.data?.play_count || 0;
+        const comments = data.data?.comment_count || 0;
+        const shares = data.data?.share_count || 0;
+        
+        console.log("TikWM extracted stats:", { likes, views, comments, shares });
         
         return {
           status: "success",
@@ -150,14 +190,11 @@ async function fallbackToExternalServices(url: string) {
             music: data.data?.music || null,
             uploadDate: data.data?.create_time ? new Date(data.data.create_time * 1000).toISOString() : null,
             images: data.data?.images || null,
-            // Enhanced: Try multiple thumbnail sources from TikWM
             thumbnail: data.data?.cover || data.data?.origin_cover || data.data?.dynamic_cover || null,
-            // Fixed: Direct under data (not stats); snake_case
-            likes: data.data?.digg_count || 0,
-            // Added: Views (play_count)
-            views: data.data?.play_count || 0,
-            comments: data.data?.comment_count || 0,
-            shares: data.data?.share_count || 0
+            likes: likes,
+            views: views,
+            comments: comments,
+            shares: shares
           }
         };
       }
@@ -270,8 +307,9 @@ export const GET: APIRoute = async (context) => {
       });
     }
     
-    console.log("Success! Returning data...");
-    console.log("Final thumbnail URL being sent:", data.result.thumbnail);
+    console.log("=== FINAL DATA BEING RETURNED ===");
+    console.log(JSON.stringify(data, null, 2));
+    console.log("================================");
     
     return new Response(JSON.stringify(data), {
       status: 200,
