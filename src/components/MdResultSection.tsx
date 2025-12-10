@@ -56,7 +56,7 @@ function ResultSection(props: ResultSectionProps) {
             
             {/* White Overlay to ensure text readability */}
             <div 
-              class="absolute top-0 left-0 w-full h-full bg-rose-950"
+              class="absolute top-0 left-0 w-full h-full bg-rose-950" style="opacity: 0.5;"
               style={{ 
                 zIndex: 1,
                 pointerEvents: 'none'
@@ -231,5 +231,6 @@ function ResultSection(props: ResultSectionProps) {
     </div>
   );
 }
+
 
 export default ResultSection;
