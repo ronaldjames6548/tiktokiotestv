@@ -1,0 +1,32 @@
+---
+import Container from "../components/container.astro";
+import Layout from "../layouts/Layout.astro";  // Single import
+import Hero from "../components/snaptik-hero.astro";
+import Features from "../components/features.astro";
+import Newsletter from "../components/newsletter.astro";
+import Logos from "../components/logos.astro";
+import Faq from "../components/faq.astro";
+
+// Homepage SEO/props
+const title = 'TikTokio - Best Free Online Video Downloader for TikTok & More';
+const description = 'Discover the easiest way to download TikTok videos, Instagram Reels, and YouTube clips without watermarks.';
+const keywords = 'online video downloader, tiktokio, free downloader, social media saver';
+const image = '/images/tiktokio-logo.webp';
+const variant = 'index';  // Special for homepage (e.g., full-width hero)
+---
+
+<Layout>
+  <!-- Hero in slot (full homepage hero) -->
+  <Fragment slot="hero">
+    <Hero />
+  </Fragment>
+  
+  <Container>
+    <!-- Features in default slot for index -->
+    <Features />
+
+    <Logos />
+    <Newsletter />
+    <Faq />
+  </Container>
+</Layout>
