@@ -25,8 +25,8 @@ export const ui = {
   en: {
   
   // Main Site metadata
-	'site.title': 'Tiktokio - Free TikTok Video Downloader Online No Watermark',
-    'site.description': 'Tiktokio – #1 Free TikTok Video Downloader Online No Watermark. Download TikTok videos in HD instantly 100% free, no app, no registration!',
+	'site.title': 'TikTokio - Free TikTok Video Downloader Online No Watermark',
+    'site.description': 'TikTokio – #1 Free TikTok Video Downloader Online No Watermark. Download TikTok videos in HD instantly 100% free, no app, no registration!',
 	
 	// TikTok Video Downloader Page metadata
     'tvd.title': 'Tiktokio – TikTok Video Downloader No Watermark Free HD',
@@ -2940,6 +2940,7 @@ ar: {
   
 
 } as const;
+
 
 
 
