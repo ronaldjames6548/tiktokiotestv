@@ -56,7 +56,7 @@ function ResultSection(props: ResultSectionProps) {
             
             {/* White Overlay to ensure text readability */}
             <div 
-              class="absolute top-0 left-0 w-full h-full bg-rose-950"
+              class="absolute top-0 left-0 w-full h-full bg-white/40"
               style={{ 
                 zIndex: 1,
                 pointerEvents: 'none'
@@ -88,7 +88,7 @@ function ResultSection(props: ResultSectionProps) {
             </h3>
             
             {/* Author Meta Data */}
-            <p class="text-sm text-white font-medium mb-2">
+            <p class="text-sm text-gray-600 font-medium mb-2">
               Author: {props.getAuthorInfo().nickname}
             </p>
 
@@ -108,7 +108,7 @@ function ResultSection(props: ResultSectionProps) {
 
             {/* Stats Section */}
             {(props.data.result.views > 0 || props.data.result.likes > 0 || props.data.result.comments > 0 || props.data.result.shares > 0) && (
-              <div class="flex flex-wrap items-center gap-4 mt-auto text-sm text-gray-700 bg-white p-2 rounded backdrop-blur-sm">
+              <div class="flex flex-wrap items-center gap-4 mt-auto text-sm text-gray-700 bg-white/50 p-2 rounded-lg backdrop-blur-sm">
                 {/* Views */}
                 <div class="flex items-center gap-1" title="Views">
                   <svg aria-label="Views" class="w-5 h-5" fill="gray" viewBox="0 0 24 24">
@@ -151,7 +151,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 1: MP4 [1] (Usually No Watermark/SD) */}
             {props.data.result.videoSD && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#84CC16] hover:bg-lime-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.videoSD)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'video')
@@ -167,7 +167,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 2: MP4 [2] (Usually Watermark or Alternative) */}
             {props.data.result.videoWatermark && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#84CC16] hover:bg-lime-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.videoWatermark)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'watermark')
@@ -183,7 +183,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 3: MP4 HD */}
             {(props.data.result.videoHD || props.data.result.video_hd) && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#84CC16] hover:bg-lime-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent((props.data.result.videoHD || props.data.result.video_hd)!)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'video')
@@ -199,7 +199,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 4: MP3 */}
             {props.data.result.music && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#84CC16] hover:bg-lime-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.music)}&type=.mp3&title=${props.getSafeFilename()}_audio`,
                   generateFilename(props.getSafeFilename(), 'audio')
@@ -211,23 +211,19 @@ function ResultSection(props: ResultSectionProps) {
                 Download MP3
               </button>
             )}
-			<div class="mt-4">
-  <a href="/" class="block w-full bg-[#000000] text-white text-center py-3 rounded-none md:rounded text-sm font-normal no-underline transition-colors flex items-center justify-center gap-3">
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
-      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-      <g id="SVGRepo_iconCarrier">
-        <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </g>
-    </svg>
-    <span class="tracking-wider">DOWNLOAD ANOTHER VIDEO</span>
-  </a>
-</div>
           </div>
         </div>
       </div>
 
-      
+      {/* Dark "Download more videos" Bar */}
+      <div class="mt-4">
+        <a 
+          href="/" 
+          class="block w-full bg-[#4C760D] hover:bg-lime-900 text-white text-center py-3 rounded-none md:rounded text-sm font-normal no-underline transition-colors"
+        >
+          Download more videos
+        </a>
+      </div>
     </div>
   );
 }

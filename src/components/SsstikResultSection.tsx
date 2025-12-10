@@ -56,7 +56,7 @@ function ResultSection(props: ResultSectionProps) {
             
             {/* White Overlay to ensure text readability */}
             <div 
-              class="absolute top-0 left-0 w-full h-full bg-rose-950"
+              class="absolute top-0 left-0 w-full h-full bg-white/40"
               style={{ 
                 zIndex: 1,
                 pointerEvents: 'none'
@@ -88,27 +88,44 @@ function ResultSection(props: ResultSectionProps) {
             </h3>
             
             {/* Author Meta Data */}
-            <p class="text-sm text-white font-medium mb-2">
+            <p class="text-sm text-gray-600 font-medium mb-2">
               Author: {props.getAuthorInfo().nickname}
             </p>
 
-            {/* Avatar Image */}
+            {/* Avatar Image with Download Button */}
             {props.getAuthorInfo().avatar && (
               <div class="mb-4 flex justify-center">
-                <img
-                  src={props.getAuthorInfo().avatar}
-                  alt={props.getAuthorInfo().nickname}
-                  class="rounded-full w-24 h-24 border border-gray-300 shadow-sm"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = 'none';
-                  }}
-                />
+                <div class="relative group">
+                  <img
+                    src={props.getAuthorInfo().avatar}
+                    alt={props.getAuthorInfo().nickname}
+                    class="rounded-full w-24 h-24 border border-gray-300 shadow-sm"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                  {/* Download Button Overlay */}
+                  <button
+                    class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => props.onDownloadClick(
+                      `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.getAuthorInfo().avatar)}&type=.jpg&title=${props.getAuthorInfo().nickname}_avatar`,
+                      `${props.getAuthorInfo().nickname}_avatar`
+                    )}
+                    title="Download Avatar"
+                  >
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.75003 2.83333C8.75003 2.3731 9.12313 2 9.58336 2H15.4167C15.8769 2 16.25 2.3731 16.25 2.83333V9.5H20.4167C20.7579 9.5 21.0646 9.70794 21.1908 10.0249C21.3171 10.3418 21.2375 10.7037 20.9898 10.9383L13.0732 18.4383C12.7517 18.7428 12.2483 18.7428 11.9269 18.4383L4.01024 10.9383C3.76258 10.7037 3.68294 10.3418 3.80923 10.0249C3.93551 9.70794 4.24221 9.5 4.58336 9.5H8.75003V2.83333ZM10.4167 3.66667V10.3333C10.4167 10.7936 10.0436 11.1667 9.58336 11.1667H6.67468L12.5 16.6854L18.3254 11.1667H15.4167C14.9565 11.1667 14.5834 10.7936 14.5834 10.3333V3.66667H10.4167Z" fill="white"/>
+                      <path d="M10.4167 10.3333V3.66667H14.5834V10.3333C14.5834 10.7936 14.9565 11.1667 15.4167 11.1667H18.3254L12.5 16.6854L6.67468 11.1667H9.58336C10.0436 11.1667 10.4167 10.7936 10.4167 10.3333Z" fill="white"/>
+                      <rect x="3.5" y="21.3335" width="18" height="2" fill="white"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             )}
 
             {/* Stats Section */}
             {(props.data.result.views > 0 || props.data.result.likes > 0 || props.data.result.comments > 0 || props.data.result.shares > 0) && (
-              <div class="flex flex-wrap items-center gap-4 mt-auto text-sm text-gray-700 bg-white p-2 rounded backdrop-blur-sm">
+              <div class="flex flex-wrap items-center gap-4 mt-auto text-sm text-gray-700 bg-white/50 p-2 rounded-lg backdrop-blur-sm">
                 {/* Views */}
                 <div class="flex items-center gap-1" title="Views">
                   <svg aria-label="Views" class="w-5 h-5" fill="gray" viewBox="0 0 24 24">
@@ -151,15 +168,17 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 1: MP4 [1] (Usually No Watermark/SD) */}
             {props.data.result.videoSD && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#0063F9] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.videoSD)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'video')
                 )}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
+				<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.75003 2.83333C8.75003 2.3731 9.12313 2 9.58336 2H15.4167C15.8769 2 16.25 2.3731 16.25 2.83333V9.5H20.4167C20.7579 9.5 21.0646 9.70794 21.1908 10.0249C21.3171 10.3418 21.2375 10.7037 20.9898 10.9383L13.0732 18.4383C12.7517 18.7428 12.2483 18.7428 11.9269 18.4383L4.01024 10.9383C3.76258 10.7037 3.68294 10.3418 3.80923 10.0249C3.93551 9.70794 4.24221 9.5 4.58336 9.5H8.75003V2.83333ZM10.4167 3.66667V10.3333C10.4167 10.7936 10.0436 11.1667 9.58336 11.1667H6.67468L12.5 16.6854L18.3254 11.1667H15.4167C14.9565 11.1667 14.5834 10.7936 14.5834 10.3333V3.66667H10.4167Z" fill="white"/>
+					<path d="M10.4167 10.3333V3.66667H14.5834V10.3333C14.5834 10.7936 14.9565 11.1667 15.4167 11.1667H18.3254L12.5 16.6854L6.67468 11.1667H9.58336C10.0436 11.1667 10.4167 10.7936 10.4167 10.3333Z" fill="white"/>
+					<rect x="3.5" y="21.3335" width="18" height="2" fill="white"/>
+				</svg>
                 Download MP4 [1]
               </button>
             )}
@@ -167,15 +186,17 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 2: MP4 [2] (Usually Watermark or Alternative) */}
             {props.data.result.videoWatermark && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#0063F9] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.videoWatermark)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'watermark')
                 )}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.75003 2.83333C8.75003 2.3731 9.12313 2 9.58336 2H15.4167C15.8769 2 16.25 2.3731 16.25 2.83333V9.5H20.4167C20.7579 9.5 21.0646 9.70794 21.1908 10.0249C21.3171 10.3418 21.2375 10.7037 20.9898 10.9383L13.0732 18.4383C12.7517 18.7428 12.2483 18.7428 11.9269 18.4383L4.01024 10.9383C3.76258 10.7037 3.68294 10.3418 3.80923 10.0249C3.93551 9.70794 4.24221 9.5 4.58336 9.5H8.75003V2.83333ZM10.4167 3.66667V10.3333C10.4167 10.7936 10.0436 11.1667 9.58336 11.1667H6.67468L12.5 16.6854L18.3254 11.1667H15.4167C14.9565 11.1667 14.5834 10.7936 14.5834 10.3333V3.66667H10.4167Z" fill="white"/>
+					<path d="M10.4167 10.3333V3.66667H14.5834V10.3333C14.5834 10.7936 14.9565 11.1667 15.4167 11.1667H18.3254L12.5 16.6854L6.67468 11.1667H9.58336C10.0436 11.1667 10.4167 10.7936 10.4167 10.3333Z" fill="white"/>
+					<rect x="3.5" y="21.3335" width="18" height="2" fill="white"/>
+				</svg>
                 Download MP4 [2]
               </button>
             )}
@@ -183,15 +204,17 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 3: MP4 HD */}
             {(props.data.result.videoHD || props.data.result.video_hd) && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#0063F9] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent((props.data.result.videoHD || props.data.result.video_hd)!)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'video')
                 )}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.75003 2.83333C8.75003 2.3731 9.12313 2 9.58336 2H15.4167C15.8769 2 16.25 2.3731 16.25 2.83333V9.5H20.4167C20.7579 9.5 21.0646 9.70794 21.1908 10.0249C21.3171 10.3418 21.2375 10.7037 20.9898 10.9383L13.0732 18.4383C12.7517 18.7428 12.2483 18.7428 11.9269 18.4383L4.01024 10.9383C3.76258 10.7037 3.68294 10.3418 3.80923 10.0249C3.93551 9.70794 4.24221 9.5 4.58336 9.5H8.75003V2.83333ZM10.4167 3.66667V10.3333C10.4167 10.7936 10.0436 11.1667 9.58336 11.1667H6.67468L12.5 16.6854L18.3254 11.1667H15.4167C14.9565 11.1667 14.5834 10.7936 14.5834 10.3333V3.66667H10.4167Z" fill="white"/>
+					<path d="M10.4167 10.3333V3.66667H14.5834V10.3333C14.5834 10.7936 14.9565 11.1667 15.4167 11.1667H18.3254L12.5 16.6854L6.67468 11.1667H9.58336C10.0436 11.1667 10.4167 10.7936 10.4167 10.3333Z" fill="white"/>
+					<rect x="3.5" y="21.3335" width="18" height="2" fill="white"/>
+				</svg>
                 Download MP4 HD
               </button>
             )}
@@ -199,35 +222,31 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 4: MP3 */}
             {props.data.result.music && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#0063F9] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.music)}&type=.mp3&title=${props.getSafeFilename()}_audio`,
                   generateFilename(props.getSafeFilename(), 'audio')
                 )}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+				<path fill="#fff" d="M28 9h-6v2h6v4h-4v2h4v4h-6v2h6a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2M14 23h-2V9h6a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4zm0-7h4v-5h-4zM8 9l-1.51 5L6 15.98L5.54 14L4 9H2v14h2v-8l-.16-2l.58 2L6 19.63L7.58 15l.58-2L8 15v8h2V9z"/>
+				</svg>
                 Download MP3
               </button>
             )}
-			<div class="mt-4">
-  <a href="/" class="block w-full bg-[#000000] text-white text-center py-3 rounded-none md:rounded text-sm font-normal no-underline transition-colors flex items-center justify-center gap-3">
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
-      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-      <g id="SVGRepo_iconCarrier">
-        <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </g>
-    </svg>
-    <span class="tracking-wider">DOWNLOAD ANOTHER VIDEO</span>
-  </a>
-</div>
           </div>
         </div>
       </div>
 
-      
+      {/* Dark "Download more videos" Bar */}
+      <div class="mt-4">
+        <a 
+          href="/" 
+          class="block w-full bg-[#6B98FA] hover:bg-blue-600 text-white text-center py-3 rounded-none md:rounded text-sm font-normal no-underline transition-colors"
+        >
+          Download more videos
+        </a>
+      </div>
     </div>
   );
 }

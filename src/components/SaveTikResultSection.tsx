@@ -24,12 +24,7 @@ function ResultSection(props: ResultSectionProps) {
   };
 
   const thumbnail = props.data.result.thumbnail;
-  
-  // Determine the source for the preview video
-  // Priority: HD (No Watermark) -> SD (No Watermark) -> Default Fallback
-  const videoPreviewSrc = props.data.result.videoHD || props.data.result.videoSD || props.getVideoUrl();
-
-  // Use description or fallback to "Video TikTok"
+  // Use description or fallback to "Video TikTok" to match the image
   const displayTitle = props.data.result.desc 
     ? (props.data.result.desc.length > 50 ? props.data.result.desc.substring(0, 50) + '...' : props.data.result.desc)
     : "Video TikTok";
@@ -56,7 +51,7 @@ function ResultSection(props: ResultSectionProps) {
             
             {/* White Overlay to ensure text readability */}
             <div 
-              class="absolute top-0 left-0 w-full h-full bg-rose-950"
+              class="absolute top-0 left-0 w-full h-full bg-white/60"
               style={{ 
                 zIndex: 1,
                 pointerEvents: 'none'
@@ -68,33 +63,39 @@ function ResultSection(props: ResultSectionProps) {
         {/* --- Content Layer (z-index 10 to sit above background) --- */}
         <div class="relative z-10 flex flex-col md:flex-row gap-4">
           
-          {/* Left Side: Video Player (No Watermark) */}
+          {/* Left Side: Thumbnail with Play Overlay */}
           <div class="relative w-full md:w-48 flex-shrink-0 aspect-[9/16] md:aspect-auto md:h-64 bg-black rounded-lg overflow-hidden group shadow-md">
-            <video
-              controls
-              poster={thumbnail}
-              src={videoPreviewSrc}
-              class="w-full h-full object-cover"
-              referrerpolicy="no-referrer"
-            >
-              Your browser does not support the video tag.
-            </video>
+            {thumbnail && (
+              <img 
+                src={thumbnail} 
+                alt="Video thumbnail" 
+                class="w-full h-full object-cover opacity-90"
+              />
+            )}
+            {/* Play Button Overlay */}
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center pl-1 shadow-lg cursor-pointer hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-black">
+                  <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </div>
           </div>
 
           {/* Center: Title info & Stats */}
           <div class="flex-1 pt-2 flex flex-col">
-            <h3 class="text-lg font-bold text-white mb-1">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">
               {displayTitle}
             </h3>
             
             {/* Author Meta Data */}
-            <p class="text-sm text-white font-medium mb-2">
+            <p class="text-sm text-gray-600 font-medium mb-2">
               Author: {props.getAuthorInfo().nickname}
             </p>
 
-            {/* Avatar Image */}
+            {/* Avatar Image (Placed after Author Meta Data) */}
             {props.getAuthorInfo().avatar && (
-              <div class="mb-4 flex justify-center">
+              <div class="flex justify-center mb-4">
                 <img
                   src={props.getAuthorInfo().avatar}
                   alt={props.getAuthorInfo().nickname}
@@ -108,11 +109,11 @@ function ResultSection(props: ResultSectionProps) {
 
             {/* Stats Section */}
             {(props.data.result.views > 0 || props.data.result.likes > 0 || props.data.result.comments > 0 || props.data.result.shares > 0) && (
-              <div class="flex flex-wrap items-center gap-4 mt-auto text-sm text-gray-700 bg-white p-2 rounded backdrop-blur-sm">
+              <div class="flex flex-wrap items-center gap-4 mt-auto text-sm text-gray-700 bg-white/50 p-2 rounded-lg backdrop-blur-sm">
                 {/* Views */}
                 <div class="flex items-center gap-1" title="Views">
                   <svg aria-label="Views" class="w-5 h-5" fill="gray" viewBox="0 0 24 24">
-                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-1.34-3-3-3z"></path>
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
                   </svg>
                   <span class="font-semibold">{props.data.result.views.toLocaleString()}</span>
                 </div>
@@ -151,7 +152,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 1: MP4 [1] (Usually No Watermark/SD) */}
             {props.data.result.videoSD && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#22C55E] hover:bg-green-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.videoSD)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'video')
@@ -167,7 +168,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 2: MP4 [2] (Usually Watermark or Alternative) */}
             {props.data.result.videoWatermark && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#22C55E] hover:bg-green-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.videoWatermark)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'watermark')
@@ -183,7 +184,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 3: MP4 HD */}
             {(props.data.result.videoHD || props.data.result.video_hd) && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#22C55E] hover:bg-green-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent((props.data.result.videoHD || props.data.result.video_hd)!)}&type=.mp4&title=${props.getSafeFilename()}`,
                   generateFilename(props.getSafeFilename(), 'video')
@@ -199,7 +200,7 @@ function ResultSection(props: ResultSectionProps) {
             {/* Button 4: MP3 */}
             {props.data.result.music && (
               <button
-                class="w-full bg-[#FF9800] hover:bg-amber-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
+                class="w-full bg-[#22C55E] hover:bg-green-600 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors shadow-sm"
                 onClick={() => props.onDownloadClick(
                   `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(props.data.result.music)}&type=.mp3&title=${props.getSafeFilename()}_audio`,
                   generateFilename(props.getSafeFilename(), 'audio')
@@ -211,23 +212,19 @@ function ResultSection(props: ResultSectionProps) {
                 Download MP3
               </button>
             )}
-			<div class="mt-4">
-  <a href="/" class="block w-full bg-[#000000] text-white text-center py-3 rounded-none md:rounded text-sm font-normal no-underline transition-colors flex items-center justify-center gap-3">
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
-      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-      <g id="SVGRepo_iconCarrier">
-        <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </g>
-    </svg>
-    <span class="tracking-wider">DOWNLOAD ANOTHER VIDEO</span>
-  </a>
-</div>
           </div>
         </div>
       </div>
 
-      
+      {/* Dark "Download more videos" Bar */}
+      <div class="mt-4">
+        <a 
+          href="/" 
+          class="block w-full bg-[#1CA24D] hover:bg-green-500 text-white text-center py-3 rounded-none md:rounded text-sm font-normal no-underline transition-colors"
+        >
+          Download more videos
+        </a>
+      </div>
     </div>
   );
 }
