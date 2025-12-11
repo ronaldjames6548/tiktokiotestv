@@ -27,7 +27,8 @@ export const ui = {
   // Main Site metadata
 	'site.title': 'TikTokio - Free TikTok Video Downloader Online No Watermark',
     'site.description': 'TikTokio – #1 Free TikTok Video Downloader Online No Watermark. Download TikTok videos in HD instantly 100% free, no app, no registration!',
-	
+	'site.keywords': 'TikTokio, TikTok video downloader online, download TikTok video, free TikTok downloader, save TikTok videos, TikTok downloader online',
+
 	// TikTok Video Downloader Page metadata
     'tvd.title': 'Tiktokio – TikTok Video Downloader No Watermark Free HD',
     'tvd.description': 'Download TikTok videos without watermark with Online Tiktok Video Downloader in full HD via Tiktokio. Fastest online TikTok downloader in seconds',
@@ -2940,6 +2941,7 @@ ar: {
   
 
 } as const;
+
 
 
 
