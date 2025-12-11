@@ -136,14 +136,19 @@ console.log(`Found ${localizedPosts.length} English posts`);
 
 const { page = { data: [], url: { prev: undefined, next: undefined } } } = Astro.props;
 
+
+const title = 'Blog Posts for Tiktokio - Tiktok Downloader Without Watermark';
+const description = 'Find the latest blogs posts for Tiktokio Tiktok Video Downlaoder, Tech News, Social media updates and more';
+
+
 // Get current language and create translation function - with safe URL handling
 const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
 const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
 ---
+<Layout title={title} description={description}>
 
-<Layout title="Blog">
-  <Container>
+ <Container>
     <Sectionhead>
       <Fragment slot="title">Our Blog</Fragment>
       <Fragment slot="desc">Discover Industry Insights, Company News, and Expert Opinions.</Fragment>
