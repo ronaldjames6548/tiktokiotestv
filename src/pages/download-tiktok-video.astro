@@ -1,0 +1,32 @@
+---
+// src/pages/tiktok-video-downloader.astro
+// Updated: i18n restored. SEO/props aligned with ui.ts keys (e.g., 'site.tvd_title').
+// Pass lang to Layout. Fallbacks for missing keys.
+
+import Container from "../components/container.astro";
+import Faq from "../components/faq.astro";
+import Features from "../components/tvdfeatures.astro";
+import Hero from "../components/tvd-hero.astro";
+import Layout from "../layouts/Layout.astro";
+
+// i18n: Per-page setup
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+const lang = getLangFromUrl(safeUrl);
+const t = useTranslations(lang);
+
+// SEO/props: Matched to ui.ts structure (flat keys under language)
+const title = t('dtv.title') ?? 'TikTok Video Downloader - Free HD Downloads Without Watermark | TikTokio';
+const description = t('dtv.description') ?? 'Download TikTok videos in HD quality, no watermark, for free. Supports MP4 and audio export.';
+const keywords = t('dtv.keywords') ?? 'tiktok video downloader, download tiktok videos, tiktok hd downloader, no watermark tiktok, tiktokiocam';
+const image = 'images/tiktok-downloader.webp';  // Static; add to ui.ts if i18n needed (e.g., t('site.tvd_image'))
+const variant = 'dtv';
+---
+
+<Layout title={title} description={description} keywords={keywords} image={image} variant={variant} lang={lang}>
+   <Hero />
+  <Container>
+    <Features />
+    <Faq />
+  </Container>
+</Layout>
