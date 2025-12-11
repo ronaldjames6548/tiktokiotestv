@@ -93,6 +93,6 @@ const ogImageUrl = `${siteUrl}/${image.replace(/^\/+/, '')}`; // removes leading
     <Footer lang={lang} />
 
     <!-- PWA service worker only in production -->
-    {import.meta.env.PROD && <script type="module" src="src/pwa.js"></script>}
+    {import.meta.env.PROD && <script type="module" src="/src/pwa.js"></script>}
   </body>
 </html>
