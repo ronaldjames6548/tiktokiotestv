@@ -1,0 +1,42 @@
+---
+import Container from "@components/container.astro";
+import Layout from "@layouts/Layout.astro";
+
+import Hero from "@components/hero.astro";
+import Features from "@components/features.astro";
+import Newsletter from "@components/newsletter.astro";
+import Logos from "@components/logos.astro";
+import Faq from "@components/faq.astro";
+
+
+// Add new built-in i18n imports
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+// Get current language and create translation function
+const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+const lang = getLangFromUrl(safeUrl);
+const t = useTranslations(lang);
+
+
+// Homepage SEO/props
+const title = 'Tiktokio - Download TikTok Videos - Tiktok Downloader Online';
+const description = 'Tiktokio download TikTok video Free online with best tiktok downloader videos without watermarks. Save Tiktok Videsos fast, perfect for quick TikTok clips!';
+const keywords = 'Tiktokio, Tiktokio downloader, download from tiktok, online video downloader, tiktokio, free downloader';
+const image = 'meta/tiktokio-logo.webp';
+const variant = 'index';  // Special for homepage (e.g., full-width hero)
+---
+
+<Layout title={title} description={description} keywords={keywords} image={image} variant={variant}>
+  <!-- Hero in slot (full homepage hero) -->
+  <Fragment slot="hero">
+    <Hero />
+  </Fragment>
+  
+  <Container>
+    <!-- Features in default slot for index -->
+    <Features />
+    <Logos />
+    <Newsletter />
+    <Faq />
+  </Container>
+</Layout>
