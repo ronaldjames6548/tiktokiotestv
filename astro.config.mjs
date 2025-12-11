@@ -12,7 +12,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   output: "server", 
-  site: "https://tiktokio.cam",
+  site: "https://tiktokiotestv.vercel.app",
   adapter: vercel(),
   // Add Astro's built-in i18n configuration
   i18n: {
@@ -38,7 +38,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter(page) {
-        const url = new URL(page, 'https://tiktokio.cam');
+        const url = new URL(page, 'https://tiktokiotestv.vercel.app');
         const nonEnglishLangs = ['ar', 'vi', 'it', 'de', 'es', 'fr', 'hi', 'id', 'ko', 'ms', 'nl', 'pt', 'ru', 'tl', 'tr'];
         const shouldExclude =
           nonEnglishLangs.some(lang =>
