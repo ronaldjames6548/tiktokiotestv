@@ -16,9 +16,9 @@ const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
 
 // SEO/props: Matched to ui.ts structure (flat keys under language)
-const title = t('site.tvd_title') ?? 'TikTok Video Downloader - Free HD Downloads Without Watermark | TikTokio';
-const description = t('site.tvd_description') ?? 'Download TikTok videos in HD quality, no watermark, for free. Supports MP4 and audio export.';
-const keywords = t('site.tvd_keywords') ?? 'tiktok video downloader, download tiktok videos, tiktok hd downloader, no watermark tiktok, tiktokiocam';
+const title = t('tvd_title') ?? 'TikTok Video Downloader - Free HD Downloads Without Watermark | TikTokio';
+const description = t('tvd.description') ?? 'Download TikTok videos in HD quality, no watermark, for free. Supports MP4 and audio export.';
+const keywords = t('tvd_keywords') ?? 'tiktok video downloader, download tiktok videos, tiktok hd downloader, no watermark tiktok, tiktokiocam';
 const image = '/images/tiktok-downloader.webp';  // Static; add to ui.ts if i18n needed (e.g., t('site.tvd_image'))
 const variant = 'tvd';
 ---
