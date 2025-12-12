@@ -152,7 +152,13 @@ export const ui = {
 	'ttdownloader.hero.title': 'TTDownloader - TikTok Video Download Without Watermark',
     'ttdownloader.hero.subtitle': 'Download TikTok video without watermarks — HD quality, MP4 format',
 
+	
+	// Musically Down Feature section
+	'md.h2': 'Musically Down', 
+	'md.h2_1': ' - Best TikTok Video Downloader Online',
+    'md.text1': 'MusicallyDown is a free, online tool for downloading TikTok videos without watermarks. Whether you"re searching for "musically down" "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">musicallydown com</a>" or simply "musically" this powerful Tiktok Downloader has become the go-to solution who want to save their favorite TikTok content in high quality.',
 
+	  
 	// How it Works
 	'how.works_h2': 'How to Download TikTok Video:',
 	'how.works': 'Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
@@ -2970,6 +2976,7 @@ ar: {
   
 
 } as const;
+
 
 
 
