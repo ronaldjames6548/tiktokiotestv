@@ -1,4 +1,6 @@
 ---
+// src/pages/musically-down.astro
+
 import Container from "../components/container.astro";
 import Layout from "../layouts/Layout.astro";  // Single import
 import Hero from "../components/md-hero.astro";
@@ -7,26 +9,26 @@ import Newsletter from "../components/newsletter.astro";
 import Logos from "../components/logos.astro";
 import Faq from "../components/faq.astro";
 
-// Homepage SEO/props
-const title = 'TikTokio - Best Free Online Video Downloader for TikTok & More';
-const description = 'Discover the easiest way to download TikTok videos, Instagram Reels, and YouTube clips without watermarks.';
-const keywords = 'online video downloader, tiktokio, free downloader, social media saver';
-const image = '/images/tiktokio-logo.webp';
-const variant = 'index';  // Special for homepage (e.g., full-width hero)
+// i18n: Per-page setup
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+const lang = getLangFromUrl(safeUrl);
+const t = useTranslations(lang);
+
+// SEO/props: Matched to ui.ts structure (flat keys under language)
+const title = t('md.title') ?? 'TikTok Video Downloader - Free HD Downloads Without Watermark | TikTokio';
+const description = t('md.description') ?? 'Download TikTok videos in HD quality, no watermark, for free. Supports MP4 and audio export.';
+const keywords = t('md.keywords') ?? 'tiktok video downloader, download tiktok videos, tiktok hd downloader, no watermark tiktok, tiktokiocam';
+const image = 'meta/md-tiktok-downloader.webp';  // Static; add to ui.ts if i18n needed (e.g., t('site.tvd_image'))
+const variant = 'md';
 ---
 
-<Layout>
-  <!-- Hero in slot (full homepage hero) -->
-  <Fragment slot="hero">
-    <Hero />
-  </Fragment>
-  
+<Layout title={title} description={description} keywords={keywords} image={image} variant={variant} lang={lang}>
+   <Hero />
   <Container>
-    <!-- Features in default slot for index -->
     <Features />
-
-    <Logos />
-    <Newsletter />
     <Faq />
   </Container>
 </Layout>
+
+
