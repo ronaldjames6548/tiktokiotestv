@@ -91,7 +91,7 @@ function InputSection(props: InputSectionProps) {
           <form class="flex flex-col md:flex-row items-stretch md:items-center gap-2"
             onSubmit={props.onSubmit}
           >
-            <div class="relative flex-grow bg-rose-500 rounded shadow">
+            <div class="relative flex-grow bg-white rounded shadow">
               <input type="text"
                 value={props.url}
                 onInput={handleInputChange}
@@ -188,5 +188,6 @@ function InputSection(props: InputSectionProps) {
     </div>
   );
 }
+
 
 export default InputSection;
