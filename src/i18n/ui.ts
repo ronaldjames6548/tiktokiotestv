@@ -110,19 +110,48 @@ export const ui = {
     'ttdownloader.keywords': 'TikTokio, download TikTok video without watermark, TikTok video downloader online, free TikTok downloader, download TikTok videos online, save TikTok videos without watermark',
  
     // Hero section
-    'hero.title': 'TikTokio - TikTok Viddeo Downloader Online',
-    'hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
-    'hero.tiktok_downloader_title': 'TikTokio - TikTok Downloader Online',
-    'hero.tiktok_downloader_subtitle': 'Download and Save TikTok Videos Without Watermark.',
-    'hero.download_tiktok_video_title': 'TikTokio - Download TikTok Video Without Watermark',
-    'hero.download_tiktok_video_subtitle': 'Download TikTok Video Without Watermark - TikTok Video Downloader',
-    'hero.tiktok_video_downloader_title': 'TikTokio - Free TikTok Video Downloader',
-    'hero.tiktok_video_downloader_subtitle': 'Download TikTok videos free online - Free TikTok download',
-    'hero.secondary_button_text': 'Go to animated version',
-    'hero.blog_link': 'How to save a TikTok video?',
-    'hero.nav_1': 'TikTok Downloader',
-    'hero.nav_2': 'Download TikTok Video',
-    'hero.nav_3': 'TikTok Video Downloader',
+    'main.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'main.hero.subtitle': 'Download your favorite TikTok videos, images and audio with free online Tiktok Downloader tool',
+
+	'tvd.hero.title': 'TikTokio - Fastest TikTok video downloader',
+    'tvd.hero.subtitle': 'Download Video TikTok without watermark - Free and Easily',
+
+	'td.hero.title': 'TikTokio - TikTok Downloader',
+    'td.hero.subtitle': 'Online TikTok Downloader to Download TikTok videos quickly and hassle-free',
+
+	'dtv.hero.title': 'TikTokio - Download TikTok Video Without Watermark',
+    'dtv.hero.subtitle': 'Download TikTok videos instantly with fast and easy TikTok Downloader',
+
+	'dft.hero.title': 'TikTokio - Download TikTok Thumbnail Online',
+    'dft.hero.subtitle': 'Download Tiktok Thumbnail and Cover Photo - TikTok Thumbnail Downloader',
+
+	'md.hero.title': 'Musically Down – Download TikTok Without Watermark',
+    'md.hero.subtitle': 'Download your favorite TikTok videos with musically down Tiktok Downloader tool',
+
+	'savef.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'savef.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
+	'savetik.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'savetik.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
+	'ssstiktok.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'ssstiktok.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
+	'tikmate.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'tikmate.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
+	'tiksave.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'tiksave.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
+	'tiktoksss.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'tiktoksss.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
+	'tmate.hero.title': 'TikTokio - TikTok Video Downloader Online',
+    'tmate.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
+	'ttdownloader.hero.title': 'TikTokio - TikTok Viddeo Downloader Online',
+    'ttdownloader.hero.subtitle': 'Download your favorite TikTok videos, images and audio with fast and free online Tiktok Downloader tool',
+
 
 	// How it Works
 	'how.works_h2': 'How to Download TikTok Video:',
@@ -2941,6 +2970,7 @@ ar: {
   
 
 } as const;
+
 
 
 
