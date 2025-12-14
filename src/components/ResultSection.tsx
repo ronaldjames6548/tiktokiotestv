@@ -59,15 +59,54 @@ function ResultSection(props: ResultSectionProps) {
     return filename;
   };
 
-  // Function to download avatar
-  const downloadAvatar = () => {
+  // Function to download avatar directly without modal
+  const downloadAvatar = async (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     const avatarUrl = props.getAuthorInfo().avatar;
-    if (avatarUrl) {
-      console.log("Downloading avatar from:", avatarUrl);
-      props.onDownloadClick(
-        avatarUrl,
-        generateFilename(props.getSafeFilename(), 'avatar')
-      );
+    if (!avatarUrl) {
+      console.error("No avatar URL available");
+      return;
+    }
+
+    console.log("Downloading avatar from:", avatarUrl);
+    
+    try {
+      // Fetch the image as blob to avoid browser opening it
+      const response = await fetch(avatarUrl, {
+        mode: 'cors',
+        referrerPolicy: 'no-referrer'
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch avatar');
+      }
+      
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      
+      // Create download link
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = generateFilename(props.getSafeFilename(), 'avatar') + '.jpg';
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      
+      // Trigger download
+      link.click();
+      
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+      }, 100);
+      
+      console.log("✅ Avatar download started");
+    } catch (error) {
+      console.error("❌ Avatar download failed:", error);
+      // Fallback: open in new tab if fetch fails
+      window.open(avatarUrl, '_blank');
     }
   };
   
