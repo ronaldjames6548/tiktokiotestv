@@ -165,7 +165,7 @@ export const ui = {
 	'md.find': 'Find a TikTok Video',
 	'md.paste': 'Paste TikTok Video URL',
 	'md.download': 'Download TikTok Video',
-	'mdhow.step1': 'Find the TikTok video you need to save by opening the TikTok app or website.  To copy the Video URL, click the <strong>"Share"</strong> icon in the lower right corner and then click <strong>"Copy Link."</strong>',
+	'mdhow.step1': 'Find the TikTok video you need to save by opening the TikTok app or website.  To copy the Video URL, click the <strong class="text-pink-600 hover:text-pink-800 underline">"Share"</strong> icon in the lower right corner and then click <strong>"Copy Link."</strong>',
 	'mdhow.step2': 'Visit the "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown TikTok video downloader</a>" that doesnt leave a watermark.  Paste the link of the TikTok video you copied into the box and click <strong>"Download."</strong>',
 	'mdhow.step3': 'Choose the quality you want.  After that, you can pick to download TikTok Video with or without a watermark to save the file to your device. Click the <strong>"Download"</strong> button',
 	
@@ -2990,6 +2990,7 @@ ar: {
   
 
 } as const;
+
 
 
 
