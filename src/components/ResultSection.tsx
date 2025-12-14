@@ -59,8 +59,8 @@ function ResultSection(props: ResultSectionProps) {
     return filename;
   };
 
-  // Function to download avatar directly without modal
-  const downloadAvatar = async (e: Event) => {
+  // Function to download avatar directly without modal using proxy
+  const downloadAvatar = (e: Event) => {
     e.preventDefault();
     e.stopPropagation();
     
@@ -72,42 +72,25 @@ function ResultSection(props: ResultSectionProps) {
 
     console.log("Downloading avatar from:", avatarUrl);
     
-    try {
-      // Fetch the image as blob to avoid browser opening it
-      const response = await fetch(avatarUrl, {
-        mode: 'cors',
-        referrerPolicy: 'no-referrer'
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch avatar');
-      }
-      
-      const blob = await response.blob();
-      const blobUrl = window.URL.createObjectURL(blob);
-      
-      // Create download link
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = generateFilename(props.getSafeFilename(), 'avatar') + '.jpg';
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      
-      // Trigger download
-      link.click();
-      
-      // Cleanup
-      setTimeout(() => {
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(blobUrl);
-      }, 100);
-      
-      console.log("✅ Avatar download started");
-    } catch (error) {
-      console.error("❌ Avatar download failed:", error);
-      // Fallback: open in new tab if fetch fails
-      window.open(avatarUrl, '_blank');
-    }
+    // Use the same download proxy as video downloads to bypass CORS
+    const proxyUrl = `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(avatarUrl)}&type=.jpg&title=${generateFilename(props.getSafeFilename(), 'avatar')}`;
+    
+    // Create download link
+    const link = document.createElement('a');
+    link.href = proxyUrl;
+    link.download = generateFilename(props.getSafeFilename(), 'avatar') + '.jpg';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    
+    // Trigger download
+    link.click();
+    
+    // Cleanup
+    setTimeout(() => {
+      document.body.removeChild(link);
+    }, 100);
+    
+    console.log("✅ Avatar download started via proxy");
   };
   
   // Get stats with defaults
@@ -255,7 +238,7 @@ function ResultSection(props: ResultSectionProps) {
                         {/* Download button overlay */}
                         <button
                           onClick={downloadAvatar}
-                          class="absolute inset-0 flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer"
+                          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-60 rounded-full transition-all duration-200 cursor-pointer"
                           title="Download profile picture"
                         >
                           <svg 
@@ -387,4 +370,3 @@ function ResultSection(props: ResultSectionProps) {
 }
 
 export default ResultSection;
-
