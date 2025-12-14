@@ -35,7 +35,8 @@ function ResultSection(props: ResultSectionProps) {
     views: props.data?.result?.views,
     likes: props.data?.result?.likes,
     comments: props.data?.result?.comments,
-    shares: props.data?.result?.shares
+    shares: props.data?.result?.shares,
+    avatar: props.data?.result?.author?.avatar
   });
   
   if (!props.data || !props.data.result) {
@@ -46,14 +47,28 @@ function ResultSection(props: ResultSectionProps) {
   const result = props.data.result;
   
   // Helper to generate filename based on type
-  const generateFilename = (baseName: string, type: 'video' | 'audio' | 'watermark') => {
+  const generateFilename = (baseName: string, type: 'video' | 'audio' | 'watermark' | 'avatar') => {
     let filename = baseName;
     if (type === 'audio') {
       filename += '_audio';
     } else if (type === 'watermark') {
       filename += '_watermark';
+    } else if (type === 'avatar') {
+      filename += '_avatar';
     }
     return filename;
+  };
+
+  // Function to download avatar
+  const downloadAvatar = () => {
+    const avatarUrl = props.getAuthorInfo().avatar;
+    if (avatarUrl) {
+      console.log("Downloading avatar from:", avatarUrl);
+      props.onDownloadClick(
+        avatarUrl,
+        generateFilename(props.getSafeFilename(), 'avatar')
+      );
+    }
   };
   
   // Get stats with defaults
@@ -65,8 +80,12 @@ function ResultSection(props: ResultSectionProps) {
   // Thumbnail for background
   const thumbnail = result.thumbnail;
   
+  // Get author info
+  const authorInfo = props.getAuthorInfo();
+  const avatarUrl = authorInfo.avatar;
+  
   console.log("🖼️ Thumbnail URL:", thumbnail);
-  console.log("👤 Avatar URL:", props.getAuthorInfo().avatar);
+  console.log("👤 Avatar URL:", avatarUrl);
   
   return (
     <div class="mt-6">
@@ -125,49 +144,49 @@ function ResultSection(props: ResultSectionProps) {
                 
                 {/* Stats Section */}
                 {(views > 0 || likes > 0 || comments > 0 || shares > 0) && (
-                  <div class="flex items-center gap-6 mt-3 text-sm text-gray-600 dark:text-gray-400 flex-wrap">
+                  <div class="flex items-center gap-4 mt-3 text-sm text-gray-600 dark:text-gray-400 flex-wrap">
                     {/* Views */}
                     {views > 0 && (
                       <div class="flex items-center gap-1">
-                        <svg aria-label="Views" class="x1lliihq x1n2onr6 xyb1xck" fill="gray" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <svg aria-label="Views" class="flex-shrink-0" fill="gray" height="20" role="img" viewBox="0 0 24 24" width="20">
                           <title>Views</title>
                           <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
                         </svg>
-                        <span class="font-semibold">{views.toLocaleString()}</span>
+                        <span class="font-semibold text-xs">{views.toLocaleString()}</span>
                       </div>
                     )}
                     
                     {/* Likes */}
                     {likes > 0 && (
                       <div class="flex items-center gap-1">
-                        <svg aria-label="Like" class="x1lliihq x1n2onr6 xyb1xck" fill="red" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <svg aria-label="Like" class="flex-shrink-0" fill="red" height="20" role="img" viewBox="0 0 24 24" width="20">
                           <title>Like</title>
                           <path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path>
                         </svg>
-                        <span class="font-semibold">{likes.toLocaleString()}</span>
+                        <span class="font-semibold text-xs">{likes.toLocaleString()}</span>
                       </div>
                     )}
                     
                     {/* Comments */}
                     {comments > 0 && (
                       <div class="flex items-center gap-1">
-                        <svg aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" style="color: green;" fill="none" height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <svg aria-label="Comment" class="flex-shrink-0" style="color: green;" fill="none" height="20" role="img" viewBox="0 0 24 24" width="20">
                           <title>Comment</title>
                           <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
                         </svg>
-                        <span class="font-semibold">{comments.toLocaleString()}</span>
+                        <span class="font-semibold text-xs">{comments.toLocaleString()}</span>
                       </div>
                     )}
                     
                     {/* Shares */}
                     {shares > 0 && (
                       <div class="flex items-center gap-1">
-                        <svg aria-label="Share" class="x1lliihq x1n2onr6 xyb1xck" fill="none" height="24" role="img" viewBox="0 0 24 24" width="24" style="color: blue;">
+                        <svg aria-label="Share" class="flex-shrink-0" fill="none" height="20" role="img" viewBox="0 0 24 24" width="20" style="color: blue;">
                           <title>Share</title>
                           <path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
                           <line stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line>
                         </svg>
-                        <span class="font-semibold">{shares.toLocaleString()}</span>
+                        <span class="font-semibold text-xs">{shares.toLocaleString()}</span>
                       </div>
                     )}
                   </div>
@@ -177,23 +196,63 @@ function ResultSection(props: ResultSectionProps) {
               {/* Right Column - Author Info & Download Buttons */}
               <div class="md:w-2/3 flex flex-col justify-between">
                 <div class="mb-3">
-                  {/* Author Info */}
+                  {/* Author Info with Avatar Download */}
                   <div class="flex items-center gap-3 mb-4">
-                    {props.getAuthorInfo().avatar && (
-                      <img
-                        src={props.getAuthorInfo().avatar}
-                        alt={props.getAuthorInfo().nickname}
-                        class="rounded-full w-16 h-16 object-cover border-2 border-gray-300"
-                        onLoad={() => console.log("✅ Avatar loaded")}
-                        onError={(e) => {
-                          console.error("❌ Avatar failed to load");
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
+                    {avatarUrl ? (
+                      <div class="relative group">
+                        <img
+                          src={avatarUrl}
+                          alt={authorInfo.nickname}
+                          class="rounded-full w-20 h-20 object-cover border-2 border-gray-300 shadow-md"
+                          referrerpolicy="no-referrer"
+                          crossorigin="anonymous"
+                          onLoad={() => console.log("✅ Avatar loaded successfully")}
+                          onError={(e) => {
+                            console.error("❌ Avatar failed to load:", avatarUrl);
+                            // Try to load without referrer policy
+                            e.currentTarget.removeAttribute('referrerpolicy');
+                          }}
+                        />
+                        {/* Download button overlay */}
+                        <button
+                          onClick={downloadAvatar}
+                          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-60 rounded-full transition-all duration-200 cursor-pointer"
+                          title="Download profile picture"
+                        >
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            class="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                          </svg>
+                        </button>
+                      </div>
+                    ) : (
+                      <div class="rounded-full w-20 h-20 bg-gray-300 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
                     )}
-                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">
-                      {props.getAuthorInfo().nickname}
-                    </h2>
+                    <div>
+                      <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                        {authorInfo.nickname}
+                      </h2>
+                      {avatarUrl && (
+                        <button
+                          onClick={downloadAvatar}
+                          class="text-sm text-blue-600 hover:text-blue-800 underline mt-1 flex items-center gap-1"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                          </svg>
+                          Download Profile Picture
+                        </button>
+                      )}
+                    </div>
                   </div>
                   
                   {/* Description */}
