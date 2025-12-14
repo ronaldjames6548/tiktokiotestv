@@ -48,44 +48,44 @@ const features = [
                 {t("md.howh2")}<span class="text-pink-600"> 
                     {t("md.h2")}</span></h2>
         </div>
-		<div class="text-center py-8"><p class="text-left mt-4 mx-auto text-lg text-gray-900 dark:text-white" set:html={t('md.text1')} /></div>
+		<div class="text-center py-8"><p class="text-left mt-4 mx-auto text-lg text-gray-900" set:html={t('md.text1')} /></div>
         <div class="flex flex-wrap justify-between items-center mx-auto mx-auto 2xl:max-w-[1320px] xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] max-[320px]:px-[12px] px-6">
             <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-[30px]">
                 <div class="transition-all rounded flex justify-start items-start aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
-                    <div class="pr-6 border-r border-[#7963e0] max-[480px]:hidden">
+                    <div class="pr-6 border-r border-[#DB2777] max-[480px]:hidden">
                         <h6 class="2xl:text-[50px] lg:text-[40px] text-[35px] font-bold text-pink-600 2xl:w-[60px] xl:w-[60px] lg:w-[50px] w-[40px] opacity-50">01</h6>
                     </div>
                     <div class="pl-6 border-l">
                         <div class="flex">
-                            <img src="assets/img/service/icon-1.png" alt="service-1">
+                            <img src="images/copymd.svg" alt="service-1">
                         </div>
                         <h4 class="text-[20px] pt-6 font-bold">{t("md.find")}</h4>
-                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]">
-							{t("mdhow.step1")}</p>
+                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]" set:html={t('mdhow.step1')}  />
+							
                     </div>
                 </div>
                 <div class="transition-all rounded flex justify-start items-start aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
-                    <div class="pr-6 border-r border-[#7963e0] max-[480px]:hidden">
+                    <div class="pr-6 border-r border-[#DB2777] max-[480px]:hidden">
                         <h6 class="2xl:text-[50px] lg:text-[40px] text-[35px] font-bold text-pink-600 2xl:w-[60px] xl:w-[60px] lg:w-[50px] w-[40px] opacity-50">02</h6>
                     </div>
                     <div class="pl-6 border-l">
                         <div class="flex">
-                            <img src="assets/img/service/icon-2.png" alt="service-2">
+                            <img src="images/pastemd.svg" alt="service-2">
                         </div>
                         <h4 class="text-[20px] pt-6 font-bold">{t("md.paste")}</h4>
-                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]">{t("mdhow.step2")}</p>
+                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]">set:html={t('mdhow.step2')} />
                     </div>
                 </div>
                 <div class="transition-all rounded flex justify-start items-start aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
-                    <div class="pr-6 border-r border-[#7963e0] max-[480px]:hidden">
+                    <div class="pr-6 border-r border-[#DB2777] max-[480px]:hidden">
                         <h6 class="2xl:text-[50px] lg:text-[40px] text-[35px] font-bold text-pink-600 2xl:w-[60px] xl:w-[60px] lg:w-[50px] w-[40px] opacity-50">03</h6>
                     </div>
                     <div class="pl-6 border-l">
                         <div class="flex">
-                            <img src="assets/img/service/icon-3.png" alt="service-3">
+                            <img src="images/downloadmd.svg" alt="service-3">
                         </div>
                         <h4 class="text-[20px] pt-6 font-bold">{t("md.download")}</h4>
-                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]">{t("mdhow.step2")}</p>
+                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]">set:html={t('mdhow.step3')} />
                     </div>
                 </div>
             </div>
