@@ -74,6 +74,7 @@ function transformLibraryResponse(libraryData: any) {
   if (!result) return null;
 
   console.log("=== TRANSFORMING LIBRARY RESPONSE ===");
+  console.log("Full author object:", JSON.stringify(result.author, null, 2));
 
   const thumbnail = result.cover?.[0] 
     || result.originCover?.[0] 
@@ -91,19 +92,37 @@ function transformLibraryResponse(libraryData: any) {
     throw new Error("Invalid views count from library");
   }
 
-  // Extract avatar with multiple fallback options
-  const avatar = result.author?.avatarLarger?.[0] 
-    || result.author?.avatarLarger
-    || result.author?.avatarThumb?.[0]
-    || result.author?.avatarThumb
-    || result.author?.avatarMedium?.[0]
-    || result.author?.avatarMedium
-    || result.author?.avatar?.[0]
-    || result.author?.avatar
-    || null;
+  // Extract avatar with comprehensive fallback options
+  let avatar = null;
+  
+  // Try different avatar properties
+  if (result.author?.avatarLarger) {
+    avatar = Array.isArray(result.author.avatarLarger) 
+      ? result.author.avatarLarger[0] 
+      : result.author.avatarLarger;
+  }
+  
+  if (!avatar && result.author?.avatarMedium) {
+    avatar = Array.isArray(result.author.avatarMedium) 
+      ? result.author.avatarMedium[0] 
+      : result.author.avatarMedium;
+  }
+  
+  if (!avatar && result.author?.avatarThumb) {
+    avatar = Array.isArray(result.author.avatarThumb) 
+      ? result.author.avatarThumb[0] 
+      : result.author.avatarThumb;
+  }
+  
+  if (!avatar && result.author?.avatar) {
+    avatar = Array.isArray(result.author.avatar) 
+      ? result.author.avatar[0] 
+      : result.author.avatar;
+  }
 
-  console.log("Avatar extraction:", {
+  console.log("Avatar extraction result:", {
     avatarLarger: result.author?.avatarLarger,
+    avatarMedium: result.author?.avatarMedium,
     avatarThumb: result.author?.avatarThumb,
     avatar: result.author?.avatar,
     finalAvatar: avatar
