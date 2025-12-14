@@ -8,9 +8,8 @@ import alpinejs from '@astrojs/alpinejs';
 import solidJs from '@astrojs/solid-js';
 import AstroPWA from '@vite-pwa/astro';
 import icon from 'astro-icon';
-import vercel from "@astrojs/vercel/serverless";
+import vercel from '@astrojs/vercel'; // ← Updated: correct modern import
 import tailwindcss from '@tailwindcss/vite';
-
 
 export default defineConfig({
   output: 'server',
