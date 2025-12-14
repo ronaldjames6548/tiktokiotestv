@@ -255,7 +255,7 @@ function ResultSection(props: ResultSectionProps) {
                         {/* Download button overlay */}
                         <button
                           onClick={downloadAvatar}
-                          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-60 rounded-full transition-all duration-200 cursor-pointer"
+                          class="absolute inset-0 flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer"
                           title="Download profile picture"
                         >
                           <svg 
@@ -387,3 +387,4 @@ function ResultSection(props: ResultSectionProps) {
 }
 
 export default ResultSection;
+
