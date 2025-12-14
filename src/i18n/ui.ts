@@ -261,7 +261,7 @@ export const ui = {
     'faq.question5': 'Why does TikTokio download faster than other tools?',
     'faq.answer5': 'We use advanced servers located worldwide and direct high-speed connections to TikTok’s CDN, so you get your videos in HD or even 4K quality in seconds – no buffering, no waiting.',
     'faq.question6': 'Which devices and browsers does TikTokio support?',
-    'faq.answer6': 'TikTokio works on every device and browser – iPhone (Safari/Chrome), Android, Windows, Mac, Linux, iPad and even smart TVs. Whether you are using Chrome, Firefox, Safari, Edge, Opera or Brave, just open <a href="https://stiktokio.com" class="font-semibold text-blue-500 hover:text-blue-600 underline">TikTokio</a>, paste the link and download instantly – no compatibility issues ever!',
+    'faq.answer6': 'TikTokio works on every device and browser – iPhone (Safari/Chrome), Android, Windows, Mac, Linux, iPad and even smart TVs. Whether you are using Chrome, Firefox, Safari, Edge, Opera or Brave, just open <a href="https://stiktokio.com" class="font-semibold text-blue-800 hover:text-blue-950 underline">TikTokio</a>, paste the link and download instantly – no compatibility issues ever!',
    
 	
 	
@@ -2976,6 +2976,7 @@ ar: {
   
 
 } as const;
+
 
 
 
