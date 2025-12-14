@@ -188,7 +188,7 @@ export const ui = {
     'header.nav_3': 'TikTok Video Downloader',
 
     // Page features section
-	'tiktokio.para1': 'TikTokio is the #1 trusted online Tiktok video downloader tool for downloading TikTok videos without watermark instantly. <a href="https://stiktokio.com" class="font-semibold text-blue-500 hover:text-blue-600 underline">TikTokio</a>, reliable free tiktok video downloader no watermark, stands out by offering lightning-fast downloads, HD quality. Whether you are on mobile, PC or tablet. Tiktokio works perfectly on every device without installing any app.',
+	'tiktokio.para1': 'TikTokio is the #1 trusted online Tiktok video downloader tool for downloading TikTok videos without watermark instantly. <a href="https://stiktokio.com" class="font-semibold text-blue-800 hover:text-blue-900 underline">TikTokio</a>, reliable free tiktok video downloader no watermark, stands out by offering lightning-fast downloads, HD quality. Whether you are on mobile, PC or tablet. Tiktokio works perfectly on every device without installing any app.',
 	'infinity.download': 'Tiktok video downloader online offers unlimited video and photo downloads without restrictions.',
 	'no.watermark': 'Every Tiktok video downloaded through Tiktokio is 100% watermark-free, making it perfect for content creators.',
 	'faste.download': 'Super Fast Server – Tiktok Video Downloads start in under 2 seconds, even during peak hours.',
@@ -2976,6 +2976,7 @@ ar: {
   
 
 } as const;
+
 
 
 
