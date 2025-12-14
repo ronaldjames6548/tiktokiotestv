@@ -220,6 +220,7 @@ function InputScreen({}: Props) {
       };
 
       console.log("✅ Setting normalized data:", normalizedData);
+      console.log("🎯 Avatar URL being set:", normalizedData.result.author.avatar);
       setData(normalizedData);
       setError("");
 
