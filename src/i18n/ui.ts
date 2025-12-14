@@ -158,8 +158,20 @@ export const ui = {
 	'md.h2_1': ' - Best TikTok Video Downloader Online',
     'md.text1': 'MusicallyDown is a free, online tool for downloading TikTok videos without watermarks. Whether you"re searching for "musically down" "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">musicallydown com</a>" or simply "musically" this powerful Tiktok Downloader has become the go-to solution who want to save their favorite TikTok content in high quality.',
 
-	  
+	// How it Works Musically Down
+	
+	'md.howh2': 'How to Download TikTok Videos Without Watermark with',
+	'md.how2text': 'MusicallyDown is a Tiktok Downloader tool where you may download TikTok videos without a watermark for free.  Download a TikTok video in MP4 format in HD quality. Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
+	'md.find': 'Find a TikTok Video',
+	'md.paste': 'Paste TikTok Video URL',
+	'md.download': 'Download TikTok Video',
+	'mdhow.step1': 'Find the TikTok video you need to save by opening the TikTok app or website.  To copy the Video URL, click the <strong>"Share"</strong> icon in the lower right corner and then click <strong>"Copy Link."</strong>',
+	'mdhow.step2': 'Visit the "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown TikTok video downloader</a>" that doesnt leave a watermark.  Paste the link of the TikTok video you copied into the box and click <strong>"Download."</strong>',
+	'mdhow.step3': 'Choose the quality you want.  After that, you can pick to download TikTok Video with or without a watermark to save the file to your device. Click the <strong>"Download"</strong> button',
+	
+
 	// How it Works
+	  // Main
 	'how.works_h2': 'How to Download TikTok Video:',
 	'how.works': 'Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
 	'how.step1': 'Copy the URL of the TikTok video or image you want to download.',
@@ -167,7 +179,9 @@ export const ui = {
 	'how.step3': 'Click the <strong>"Download"</strong> button',
 	'how.step4': 'Choose the format you want to download (video, audio or thumbnail)',
 	'how.step5': 'Save the file to your device',
-	
+
+	  // Musically Down
+
   // Feature Box
 	'feature.h2': 'Tiktokio - Key Features',
 	
@@ -2976,6 +2990,7 @@ ar: {
   
 
 } as const;
+
 
 
 
