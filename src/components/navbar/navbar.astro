@@ -159,6 +159,7 @@ export const menuitems = [
 												document.addEventListener('astro:page-load', checkSubPath);
 											}`}
                       x-bind:class="{ 'dark:bg-gray-600': isActive }"
+                      aria-label={subitem.titleKey ? t(subitem.titleKey) : subitem.title}
                     >
                       {subitem.titleKey ? t(subitem.titleKey) : subitem.title}
                     </Link>
@@ -185,23 +186,21 @@ export const menuitems = [
 							}`}
               x-bind:class="{ 'dark:bg-gray-600': isActive }"
               data-path={item.path}
+              aria-label={item.titleKey ? t(item.titleKey) : item.title}
             >
               {item.titleKey ? t(item.titleKey) : item.title}
             </Link>
           )
         )
       }
-<div class="mt-4 md:mt-0 flex flex-col md:flex-row gap-4 hidden md:block">
-      <div class="flex justify-center gap-3 items-center">
-        <LanguageSelector
-        showFlag={true}
-        class="appearance-none py-1 px-2 rounded bg-slate-100 dark:bg-stone-950"
-      />
+      <div class="mt-4 md:mt-0 flex flex-col md:flex-row gap-4 hidden md:block">
+        <div class="flex justify-center gap-3 items-center">
+          <LanguageSelector
+            showFlag={true}
+            class="appearance-none py-1 px-2 rounded bg-slate-100 dark:bg-stone-950"
+          />
+        </div>
       </div>
-
-    </div>
-    
-     
     </div>
   </nav>
 </div>
