@@ -11,6 +11,7 @@ import icon from 'astro-icon';
 import vercel from '@astrojs/vercel'; // ← Updated: correct modern import
 import tailwindcss from '@tailwindcss/vite';
 
+
 export default defineConfig({
   output: 'server',
   site: 'https://tiktokiotestv.vercel.app',
