@@ -3,21 +3,21 @@ import { toast, Toaster } from "solid-toast";
 import { createSignal, onCleanup, onMount, Show } from "solid-js";
 import InputSection from "./InputSection";
 import ResultSection from "./ResultSection";
-import AdBanner from "./AdBanner"; // Adjust path if needed
+import AdBanner from "./AdBanner";
 
 type TikTokResponse = {
   type: "video" | "image";
   description: string;
   creator: string;
   thumbnail: string;
-  video?: string;        // SD or best available
-  videoHd?: string;      // HD if exists
-  videos?: string[];     // All video URLs (fallback)
+  video?: string;
+  videoHd?: string;
+  videos?: string[];
   music?: string;
   musicTitle?: string;
   musicAuthor?: string;
   musicDuration?: number;
-  images?: string[];     // For photo slideshows
+  images?: string[];
   likes: number;
   views: number;
   comments: number;
@@ -37,7 +37,6 @@ function InputScreen() {
 
   let adContainerRef: HTMLDivElement | undefined;
 
-  // Extract TikTok URL from promotional/shared text
   const extractTikTokUrl = (text: string): string => {
     const patterns = [
       /https?:\/\/(?:www\.)?tiktok\.com\/@[^\/\s]*\/video\/\d+[^\s]*/g,
@@ -85,6 +84,7 @@ function InputScreen() {
   const fetchData = async () => {
     setLoading(true);
     setError("");
+    setAutoProcessing(false);
 
     try {
       let tiktokUrl = url().trim();
@@ -100,28 +100,30 @@ function InputScreen() {
         throw new Error("Please enter a valid TikTok URL");
       }
 
-      const apiUrl = `/api/tik.json?url=${encodeURIComponent(tiktokUrl)}`;
-
-      const res = await fetch(apiUrl, { method: 'GET' });
+      // Fixed: Use POST with JSON body (matches tik.json.ts POST handler)
+      const res = await fetch('/api/tik.json', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: tiktokUrl, quality: 'hd' }), // 'hd' preferred
+      });
 
       const json = await res.json();
 
       if (!res.ok) {
         if (res.status === 400) throw new Error(json.error || "Invalid URL");
         if (res.status === 404) throw new Error("Video not found or private");
-        if (res.status === 408) throw new Error("Request timed out");
-        throw new Error(json.error || `Error ${res.status}`);
+        if (res.status === 408) throw new Error("Request timed out – try again");
+        throw new Error(json.error || `Server error (${res.status})`);
       }
 
       if (json.error) throw new Error(json.error);
 
-      // Validate downloadable content
       const hasVideo = json.video || json.videoHd || json.videos?.length;
       const hasAudio = json.music;
       const hasImages = json.type === "image" && json.images?.length;
 
       if (!hasVideo && !hasAudio && !hasImages) {
-        throw new Error("No downloadable content found (video may be restricted)");
+        throw new Error("No downloadable content (video may be restricted)");
       }
 
       setData(json);
@@ -129,13 +131,16 @@ function InputScreen() {
 
     } catch (err: any) {
       console.error("Fetch error:", err);
-      const msg = err.message || "Unknown error";
-      toast.error(msg, { duration: 5000, position: "bottom-center", style: { "white-space": "pre-line" } });
+      const msg = err.message || "Unknown error occurred";
+      toast.error(msg, {
+        duration: 5000,
+        position: "bottom-center",
+        style: { "white-space": "pre-line", "font-size": "16px" },
+      });
       setError(msg);
       setData(null);
     } finally {
       setLoading(false);
-      setAutoProcessing(false);
     }
   };
 
@@ -149,7 +154,9 @@ function InputScreen() {
 
       if (isValidTikTokUrl(cleaned)) {
         const isPromotional = text.length > cleaned.length + 15 &&
-          (text.toLowerCase().includes('tiktok lite') || text.toLowerCase().includes('shared via') || text.split(' ').length > 8);
+          (text.toLowerCase().includes('tiktok lite') ||
+           text.toLowerCase().includes('shared via') ||
+           text.split(' ').length > 8);
 
         if (isPromotional) {
           setAutoProcessing(true);
@@ -196,7 +203,7 @@ function InputScreen() {
       setTimeout(() => document.body.removeChild(a), 100);
       toast.success("Download started!", { duration: 2000 });
     } else {
-      toast.error("Download failed");
+      toast.error("Download failed – no URL");
     }
 
     setPendingDownloadUrl("");
@@ -214,7 +221,6 @@ function InputScreen() {
 
   onCleanup(() => document.body.classList.remove('mx-modal-open'));
 
-  // Updated helpers for new API structure
   const getVideoUrl = () => {
     const d = data();
     if (!d) return "";
@@ -245,7 +251,6 @@ function InputScreen() {
     <div class="max-w-6xl mx-auto mt-8 px-4">
       <Toaster />
 
-      {/* Modal Styles */}
       <style>{`
         .mx-modal-open { overflow: hidden; }
         .mx-modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,0,0,0.4); align-items: center; justify-content: center; }
@@ -290,7 +295,6 @@ function InputScreen() {
         />
       </Show>
 
-      {/* Download Modal */}
       <div class={`mx-modal ${showModal() ? 'show' : ''}`} onClick={(e) => e.target === e.currentTarget && closeModalAndDownload()}>
         <div class="mx-modal-content">
           <div class="mx-modal-body">
