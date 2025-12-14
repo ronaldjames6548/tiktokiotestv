@@ -1,32 +1,38 @@
 // src/components/InputScreen.tsx
 import { toast, Toaster } from "solid-toast";
-import { createSignal, onCleanup, onMount, Show } from "solid-js";
+import { createSignal, onCleanup, onMount, Show, createEffect } from "solid-js";
 import InputSection from "./InputSection";
 import ResultSection from "./ResultSection";
 import AdBanner from "./AdBanner";
 
-type TikTokResponse = {
-  type: "video" | "image";
-  description: string;
-  creator: string;
-  thumbnail: string;
-  video?: string;
-  videoHd?: string;
-  videos?: string[];
-  music?: string;
-  musicTitle?: string;
-  musicAuthor?: string;
-  musicDuration?: number;
-  images?: string[];
-  likes: number;
-  views: number;
-  comments: number;
-  shares: number;
-};
+interface TikTokData {
+  status: string | null;
+  result: {
+    type: string | null;
+    author: {
+      avatar: string | null;
+      nickname: string | null;
+    } | null;
+    desc: string | null;
+    videoSD: string | null;
+    videoHD: string | null;
+    video_hd: string | null;
+    videoWatermark: string | null;
+    music: string | null;
+    uploadDate?: string | null;
+    thumbnail?: string | null;
+    views?: number;
+    likes?: number;
+    comments?: number;
+    shares?: number;
+  } | null;
+}
 
-function InputScreen() {
+type Props = {};
+
+function InputScreen({}: Props) {
   const [url, setUrl] = createSignal("");
-  const [data, setData] = createSignal<TikTokResponse | null>(null);
+  const [data, setData] = createSignal<TikTokData | null>(null);
   const [loading, setLoading] = createSignal(false);
   const [error, setError] = createSignal("");
   const [autoProcessing, setAutoProcessing] = createSignal(false);
@@ -37,6 +43,23 @@ function InputScreen() {
 
   let adContainerRef: HTMLDivElement | undefined;
 
+  // Debug effect to track data changes
+  createEffect(() => {
+    const currentData = data();
+    console.log("🔄 Data signal changed:", currentData);
+    if (currentData?.result) {
+      console.log("📊 Stats:", {
+        views: currentData.result.views,
+        likes: currentData.result.likes,
+        comments: currentData.result.comments,
+        shares: currentData.result.shares,
+        thumbnail: currentData.result.thumbnail,
+        avatar: currentData.result.author?.avatar
+      });
+    }
+  });
+
+  // Function to extract TikTok URL from text
   const extractTikTokUrl = (text: string): string => {
     const patterns = [
       /https?:\/\/(?:www\.)?tiktok\.com\/@[^\/\s]*\/video\/\d+[^\s]*/g,
@@ -45,137 +68,237 @@ function InputScreen() {
       /https?:\/\/vm\.tiktok\.com\/\d+[^\s]*/g,
       /https?:\/\/vt\.tiktok\.com\/[A-Za-z0-9]+[^\s]*/g,
       /https?:\/\/m\.tiktok\.com\/v\/\d+\.html[^\s]*/g,
-      /https?:\/\/[^\/]*tiktok\.com\/[^\s]*/g,
+      /https?:\/\/[^\/]*tiktok\.com\/[^\s]*/g
     ];
 
     for (const pattern of patterns) {
       const matches = text.match(pattern);
-      if (matches?.length) {
-        let url = matches[0].replace(/[.,!?;]+$/, '');
+      if (matches && matches.length > 0) {
+        let url = matches[0];
+        url = url.replace(/[.,!?;]+$/, '');
         return url;
       }
     }
-
+    
     const cleanText = text.trim();
-    if (isValidTikTokUrl(cleanText)) return cleanText;
+    if (isValidTikTokUrl(cleanText)) {
+      return cleanText;
+    }
     return text;
   };
 
   const isValidTikTokUrl = (url: string): boolean => {
-    return /tiktok\.com|vm\.tiktok\.com|vt\.tiktok\.com|m\.tiktok\.com/.test(url);
+    const tikTokPatterns = [
+      /tiktok\.com/,
+      /douyin/,
+      /vm\.tiktok\.com/,
+      /vt\.tiktok\.com/,
+      /m\.tiktok\.com/
+    ];
+    return tikTokPatterns.some(pattern => pattern.test(url));
   };
 
   const suggestUrlFix = (url: string): string => {
-    if (url.includes('tiktok') && !url.startsWith('http')) return 'https://' + url;
+    if (url.includes('tiktok') && !url.startsWith('http')) {
+      return 'https://' + url;
+    }
     return url;
   };
 
   const cleanTikTokUrl = (url: string): string => {
-    let clean = extractTikTokUrl(url.trim());
+    let cleanUrl = url.trim();
+    cleanUrl = extractTikTokUrl(cleanUrl);
 
-    if (clean.includes('?')) clean = clean.split('?')[0];
-    if (clean.includes('#')) clean = clean.split('#')[0];
-    if (!clean.startsWith('http')) clean = 'https://' + clean;
-    clean = clean.replace(/\/+$/, '');
+    if (cleanUrl.includes('?')) {
+      cleanUrl = cleanUrl.split('?')[0];
+    }
 
-    return clean;
+    if (cleanUrl.includes('#')) {
+      cleanUrl = cleanUrl.split('#')[0];
+    }
+
+    if (!cleanUrl.startsWith('http')) {
+      cleanUrl = 'https://' + cleanUrl;
+    }
+
+    cleanUrl = cleanUrl.replace(/\/+$/, '');
+    return cleanUrl;
   };
 
   const fetchData = async () => {
     setLoading(true);
     setError("");
-    setAutoProcessing(false);
+    // Clear previous data to ensure fresh render
+    setData(null);
 
     try {
-      let tiktokUrl = url().trim();
+      const tiktokUrl = url().trim();
+      console.log("=== FETCH STARTED ===");
+      console.log("URL:", tiktokUrl);
 
-      if (!tiktokUrl) throw new Error("Please enter a TikTok URL");
-
+      if (!tiktokUrl) {
+        throw new Error("Please enter a TikTok URL");
+      }
       if (!isValidTikTokUrl(tiktokUrl)) {
-        const suggested = suggestUrlFix(tiktokUrl);
-        if (suggested !== tiktokUrl) {
-          setUrl(suggested);
-          throw new Error(`Invalid URL. Did you mean: ${suggested}`);
+        const suggestedUrl = suggestUrlFix(tiktokUrl);
+        if (suggestedUrl !== tiktokUrl) {
+          setUrl(suggestedUrl);
+          throw new Error(`Invalid TikTok URL. Try: ${suggestedUrl}`);
+        } else {
+          throw new Error("Please enter a valid TikTok URL");
         }
-        throw new Error("Please enter a valid TikTok URL");
       }
 
-      // Fixed: Use POST with JSON body (matches tik.json.ts POST handler)
-      const res = await fetch('/api/tik.json', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: tiktokUrl, quality: 'hd' }), // 'hd' preferred
+      const apiUrl = `/api/tik.json?url=${encodeURIComponent(tiktokUrl)}`;
+      console.log("API URL:", apiUrl);
+
+      let res = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
-      const json = await res.json();
+      console.log("Response status:", res.status);
+
+      let json = await res.json();
+      console.log("=== API RESPONSE ===");
+      console.log(JSON.stringify(json, null, 2));
 
       if (!res.ok) {
-        if (res.status === 400) throw new Error(json.error || "Invalid URL");
-        if (res.status === 404) throw new Error("Video not found or private");
-        if (res.status === 408) throw new Error("Request timed out – try again");
-        throw new Error(json.error || `Server error (${res.status})`);
+        if (res.status === 400) {
+          throw new Error(json.error || 'Invalid request. Please check your TikTok URL.');
+        } else if (res.status === 404) {
+          throw new Error('Video not found. The video might have been deleted or is private.');
+        } else if (res.status === 500) {
+          throw new Error('Server error. Please try again in a moment.');
+        } else {
+          throw new Error(`HTTP error! status: ${res.status} - ${json.error || 'Unknown error'}`);
+        }
       }
 
-      if (json.error) throw new Error(json.error);
-
-      const hasVideo = json.video || json.videoHd || json.videos?.length;
-      const hasAudio = json.music;
-      const hasImages = json.type === "image" && json.images?.length;
-
-      if (!hasVideo && !hasAudio && !hasImages) {
-        throw new Error("No downloadable content (video may be restricted)");
+      if (json.status === "error" || json.error) {
+        throw new Error(json.error || json.message || "Failed to fetch video data");
+      }
+      
+      if (!json.result) {
+        throw new Error("No video data found. The video might be private or restricted.");
       }
 
-      setData(json);
-      toast.success("Video loaded successfully!", { duration: 2000, position: "bottom-center" });
+      const hasVideo = json.result.videoSD || json.result.videoHD || json.result.video_hd || json.result.videoWatermark;
+      const hasAudio = json.result.music;
 
-    } catch (err: any) {
-      console.error("Fetch error:", err);
-      const msg = err.message || "Unknown error occurred";
-      toast.error(msg, {
+      if (!hasVideo && !hasAudio) {
+        throw new Error("No downloadable content found. The video might be protected or unavailable.");
+      }
+
+      // Ensure all stats fields exist with default values
+      const normalizedData = {
+        ...json,
+        result: {
+          ...json.result,
+          views: json.result.views || 0,
+          likes: json.result.likes || 0,
+          comments: json.result.comments || 0,
+          shares: json.result.shares || 0,
+          thumbnail: json.result.thumbnail || null,
+          author: {
+            avatar: json.result.author?.avatar || null,
+            nickname: json.result.author?.nickname || "Unknown Author"
+          }
+        }
+      };
+
+      console.log("✅ Setting normalized data:", normalizedData);
+      setData(normalizedData);
+      setError("");
+
+      toast.success("Video loaded successfully!", {
+        duration: 2000,
+        position: "bottom-center",
+      });
+
+    } catch (error: any) {
+      console.error("=== FETCH ERROR ===", error);
+
+      let errorMessage = error.message || "An error occurred while fetching data";
+
+      if (errorMessage.includes("Invalid TikTok URL")) {
+        errorMessage += "\n\nSupported formats:\n• https://www.tiktok.com/@username/video/123456789\n• https://vm.tiktok.com/shortcode/\n• https://m.tiktok.com/v/123456789.html";
+      }
+
+      toast.error(errorMessage, {
         duration: 5000,
         position: "bottom-center",
-        style: { "white-space": "pre-line", "font-size": "16px" },
+        style: {
+          "font-size": "16px",
+          "max-width": "400px",
+          "white-space": "pre-line",
+        },
       });
-      setError(msg);
+
       setData(null);
-    } finally {
-      setLoading(false);
+      setError(error.message);
     }
+    setLoading(false);
   };
 
   const handlePaste = async () => {
     try {
-      const text = await navigator.clipboard.readText();
-      const extracted = extractTikTokUrl(text);
-      const cleaned = cleanTikTokUrl(extracted);
+      const permission = await navigator.permissions.query({ name: 'clipboard-read' as any });
+      if (permission.state === 'granted' || permission.state === 'prompt') {
+        const text = await navigator.clipboard.readText();
+        console.log("Pasted text:", text);
 
-      setUrl(cleaned);
+        const extractedUrl = extractTikTokUrl(text);
+        const cleanedUrl = cleanTikTokUrl(extractedUrl);
 
-      if (isValidTikTokUrl(cleaned)) {
-        const isPromotional = text.length > cleaned.length + 15 &&
-          (text.toLowerCase().includes('tiktok lite') ||
-           text.toLowerCase().includes('shared via') ||
-           text.split(' ').length > 8);
+        setUrl(cleanedUrl);
 
-        if (isPromotional) {
-          setAutoProcessing(true);
-          toast.success("URL extracted! Processing automatically...", { duration: 2500 });
-          setTimeout(fetchData, 1200);
-        } else {
-          toast.success("Valid URL pasted! Click Download to continue.", { duration: 1500 });
+        if (cleanedUrl && isValidTikTokUrl(cleanedUrl)) {
+          const isPromotionalContent = (
+            text.length > cleanedUrl.length + 15 &&
+            (
+              text.toLowerCase().includes('tiktok lite') ||
+              text.toLowerCase().includes('download tiktok') ||
+              text.toLowerCase().includes('shared via') ||
+              text.toLowerCase().includes('this post is') ||
+              text.includes('://www.tiktok.com/tiktoklite') ||
+              text.split(' ').length > 8
+            )
+          );
+
+          if (isPromotionalContent) {
+            setAutoProcessing(true);
+            toast.success("TikTok URL extracted! Starting download automatically...", {
+              duration: 2500,
+              position: "bottom-center",
+            });
+
+            setTimeout(() => {
+              fetchData();
+            }, 1200);
+
+          } else {
+            toast.success("Valid TikTok URL pasted! Click Download to process.", {
+              duration: 1500,
+              position: "bottom-center",
+            });
+          }
         }
-      } else {
-        toast.error("No valid TikTok URL found in clipboard");
       }
-    } catch {
+    } catch (err) {
+      console.error("Paste error:", err);
       toast.error("Clipboard access denied");
     }
   };
 
   const cancelAutoProcessing = () => {
     setAutoProcessing(false);
-    toast.info("Auto-processing cancelled", { duration: 1000 });
+    toast.info("Auto-processing cancelled", {
+      duration: 1000,
+      position: "bottom-center",
+    });
   };
 
   const handleDownloadClick = (downloadUrl: string, filename: string) => {
@@ -194,16 +317,26 @@ function InputScreen() {
     document.body.classList.remove('mx-modal-open');
 
     if (url) {
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(() => document.body.removeChild(a), 100);
-      toast.success("Download started!", { duration: 2000 });
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      
+      setTimeout(() => {
+        document.body.removeChild(link);
+      }, 100);
+
+      toast.success("Download started!", {
+        duration: 2000,
+        position: "bottom-center",
+      });
     } else {
-      toast.error("Download failed – no URL");
+      toast.error("Download failed - no URL found", {
+        duration: 2000,
+        position: "bottom-center",
+      });
     }
 
     setPendingDownloadUrl("");
@@ -213,37 +346,62 @@ function InputScreen() {
   onMount(() => {
     if (adContainerRef) {
       const script = document.createElement('script');
+      script.setAttribute('data-cfasync', 'false');
       script.async = true;
+      script.type = 'text/javascript';
       script.src = '//qh.misweenownself.com/tCciuVIqr69/105741';
       adContainerRef.appendChild(script);
     }
   });
 
-  onCleanup(() => document.body.classList.remove('mx-modal-open'));
+  onCleanup(() => {
+    document.body.classList.remove('mx-modal-open');
+  });
 
   const getVideoUrl = () => {
-    const d = data();
-    if (!d) return "";
-    return d.videoHd || d.video || d.videos?.[0] || "";
+    const result = data()?.result;
+    return result?.videoSD || result?.videoHD || result?.video_hd || result?.videoWatermark || result?.music || "";
   };
 
   const getAuthorInfo = () => {
-    const d = data();
+    const author = data()?.result?.author;
     return {
-      avatar: d?.thumbnail || "",
-      nickname: d?.creator || "Unknown Creator"
+      avatar: author?.avatar || "",
+      nickname: author?.nickname || "Unknown Author"
     };
   };
 
   const getSafeFilename = () => {
-    const d = data();
-    const creator = (d?.creator || "tiktok").replace('@', '');
-    return creator.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50);
+    const author = getAuthorInfo().nickname;
+    return author.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50);
   };
 
   const handleSubmit = (e: Event) => {
     e.preventDefault();
-    if (autoProcessing()) return;
+
+    if (autoProcessing()) {
+      toast.info("Auto-processing in progress...", {
+        duration: 1000,
+        position: "bottom-center",
+      });
+      return;
+    }
+
+    const currentUrl = url().trim();
+
+    if (currentUrl && currentUrl.length > 100 && currentUrl.includes('tiktok')) {
+      const extractedUrl = extractTikTokUrl(currentUrl);
+      if (extractedUrl !== currentUrl) {
+        setUrl(extractedUrl);
+        toast.info("Extracted TikTok URL from shared content", {
+          duration: 1500,
+          position: "bottom-center",
+        });
+        setTimeout(() => fetchData(), 500);
+        return;
+      }
+    }
+
     fetchData();
   };
 
@@ -252,15 +410,78 @@ function InputScreen() {
       <Toaster />
 
       <style>{`
-        .mx-modal-open { overflow: hidden; }
-        .mx-modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,0,0,0.4); align-items: center; justify-content: center; }
-        .mx-modal.show { display: flex; }
-        .mx-modal-content { max-width: 1140px; width: 100%; background: white; border-radius: .5rem; animation: mx-animatetop .4s; }
-        @keyframes mx-animatetop { from { top: -300px; opacity: 0 } to { top: 0; opacity: 1 } }
-        .mx-modal-header { padding: 10px 15px; display: flex; justify-content: flex-end; }
-        .mx-modal-body { padding: 15px; min-height: 250px; display: flex; align-items: center; justify-content: center; }
-        #closeModalBtn { background: #6c757d; color: white; border: 1px solid #6c757d; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-        #closeModalBtn:hover { background: #5a6268; }
+        .mx-modal-open {
+          overflow: hidden;
+        }
+        .mx-modal {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, .4);
+          align-items: center;
+          justify-content: center;
+        }
+        .mx-modal.show {
+          display: flex;
+        }
+        .mx-modal-content {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          pointer-events: auto;
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid rgba(0, 0, 0, .175);
+          border-radius: .5rem;
+          outline: 0;
+          animation: mx-animatetop .4s;
+        }
+        @keyframes mx-animatetop {
+          from {
+            top: -300px;
+            opacity: 0;
+          }
+          to {
+            top: 0;
+            opacity: 1;
+          }
+        }
+        .mx-modal-header {
+          padding: 10px 15px;
+          display: flex;
+          justify-content: flex-end;
+        }
+        .mx-modal-body {
+          padding: 2px 15px;
+          min-height: 250px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        @media (min-width: 768px) {
+          .mx-modal-content {
+            max-width: 1140px;
+          }
+        }
+        #closeModalBtn {
+          color: #fff;
+          background-color: #6c757d;
+          border: 1px solid #6c757d;
+          display: block;
+          padding: 5px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          width: 100%;
+        }
+        #closeModalBtn:hover {
+          background-color: #5a6268;
+        }
       `}</style>
 
       <Show when={!data()}>
@@ -281,13 +502,16 @@ function InputScreen() {
 
       <Show when={!data()}>
         <div class="my-8 w-full flex justify-center">
-          <div ref={adContainerRef} class="ad-container w-full min-h-[250px]"></div>
+          <div
+            ref={(el) => adContainerRef = el}
+            class="ad-container w-full min-h-[250px]"
+          ></div>
         </div>
       </Show>
 
-      <Show when={data()}>
+      <Show when={data() && data()?.result}>
         <ResultSection
-          data={data()}
+          data={data()!}
           getVideoUrl={getVideoUrl}
           getAuthorInfo={getAuthorInfo}
           getSafeFilename={getSafeFilename}
@@ -295,15 +519,32 @@ function InputScreen() {
         />
       </Show>
 
-      <div class={`mx-modal ${showModal() ? 'show' : ''}`} onClick={(e) => e.target === e.currentTarget && closeModalAndDownload()}>
+      <div
+        id="dlModal"
+        class={`mx-modal ${showModal() ? 'show' : ''}`}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            closeModalAndDownload();
+          }
+        }}
+      >
         <div class="mx-modal-content">
-          <div class="mx-modal-body">
+          <div class="mx-modal-body" id="ad-content">
             <Show when={showModal()}>
-              <AdBanner key={modalAdKey()} class="mx-auto" width="336px" height="280px" forceReload={true} />
+              <AdBanner 
+                key={modalAdKey()}
+                class="mx-auto" 
+                width="336px" 
+                height="280px"
+                forceReload={true}
+              />
             </Show>
           </div>
           <div class="mx-modal-header">
-            <button id="closeModalBtn" onClick={closeModalAndDownload}>
+            <button
+              id="closeModalBtn"
+              onClick={closeModalAndDownload}
+            >
               Close & Download
             </button>
           </div>
