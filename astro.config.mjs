@@ -8,7 +8,7 @@ import alpinejs from '@astrojs/alpinejs';
 import solidJs from '@astrojs/solid-js';
 import AstroPWA from '@vite-pwa/astro';
 import icon from 'astro-icon';
-import vercel from '@astrojs/vercel'; // ← Updated: correct modern import
+import vercel from "@astrojs/vercel/serverless";
 import tailwindcss from '@tailwindcss/vite';
 
 
