@@ -91,12 +91,30 @@ function transformLibraryResponse(libraryData: any) {
     throw new Error("Invalid views count from library");
   }
 
+  // Extract avatar with multiple fallback options
+  const avatar = result.author?.avatarLarger?.[0] 
+    || result.author?.avatarLarger
+    || result.author?.avatarThumb?.[0]
+    || result.author?.avatarThumb
+    || result.author?.avatarMedium?.[0]
+    || result.author?.avatarMedium
+    || result.author?.avatar?.[0]
+    || result.author?.avatar
+    || null;
+
+  console.log("Avatar extraction:", {
+    avatarLarger: result.author?.avatarLarger,
+    avatarThumb: result.author?.avatarThumb,
+    avatar: result.author?.avatar,
+    finalAvatar: avatar
+  });
+
   return {
     status: "success",
     result: {
       type: result.type || (result.images ? "image" : "video"),
       author: {
-        avatar: result.author?.avatarThumb?.[0] || result.author?.avatarLarger || result.author?.avatar || null,
+        avatar: avatar,
         nickname: result.author?.nickname || result.author?.username || result.author?.uniqueId || "Unknown Author"
       },
       desc: result.desc || result.title || "No description available",
@@ -166,6 +184,20 @@ async function fallbackToExternalServices(url: string) {
         const shares = data.data?.share_count || 0;
         
         console.log("TikWM extracted stats:", { likes, views, comments, shares });
+        
+        // Extract avatar with multiple fallback options
+        const avatar = data.data?.author?.avatar_thumb?.url_list?.[0]
+          || data.data?.author?.avatar_larger?.url_list?.[0]
+          || data.data?.author?.avatar_medium?.url_list?.[0]
+          || data.data?.author?.avatar
+          || null;
+
+        console.log("TikWM avatar extraction:", {
+          raw: data.data?.author?.avatar,
+          avatar_thumb: data.data?.author?.avatar_thumb,
+          avatar_larger: data.data?.author?.avatar_larger,
+          finalAvatar: avatar
+        });
         
         return {
           status: "success",
