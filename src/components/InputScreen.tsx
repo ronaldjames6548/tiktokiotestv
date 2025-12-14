@@ -160,6 +160,16 @@ function InputScreen({}: Props) {
       });
 
       console.log("Response status:", res.status);
+      console.log("Response headers:", Object.fromEntries(res.headers.entries()));
+
+      // Check if response is actually JSON
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("Response is not JSON! Content-Type:", contentType);
+        const textResponse = await res.text();
+        console.error("Response text:", textResponse.substring(0, 500));
+        throw new Error("Server returned invalid response. Please check if the API endpoint is configured correctly.");
+      }
 
       let json = await res.json();
       console.log("=== API RESPONSE ===");
