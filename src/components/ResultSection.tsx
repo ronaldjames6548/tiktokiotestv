@@ -108,6 +108,27 @@ function ResultSection(props: ResultSectionProps) {
   
   console.log("🖼️ Thumbnail URL:", thumbnail);
   console.log("👤 Avatar URL:", avatarUrl);
+  console.log("👤 Full avatar object:", props.data.result.author);
+  
+  // Function to handle avatar image error
+  const handleAvatarError = (e: Event) => {
+    const img = e.currentTarget as HTMLImageElement;
+    console.error("❌ Avatar failed to load:", avatarUrl);
+    console.log("Trying without referrerpolicy...");
+    
+    // Try removing referrerpolicy
+    if (img.hasAttribute('referrerpolicy')) {
+      img.removeAttribute('referrerpolicy');
+      img.removeAttribute('crossorigin');
+      // Force reload
+      const src = img.src;
+      img.src = '';
+      img.src = src;
+    } else {
+      // If still fails, hide the image
+      img.style.display = 'none';
+    }
+  };
   
   return (
     <div class="mt-6">
@@ -228,12 +249,8 @@ function ResultSection(props: ResultSectionProps) {
                           class="rounded-full w-20 h-20 object-cover border-2 border-gray-300 shadow-md"
                           referrerpolicy="no-referrer"
                           crossorigin="anonymous"
-                          onLoad={() => console.log("✅ Avatar loaded successfully")}
-                          onError={(e) => {
-                            console.error("❌ Avatar failed to load:", avatarUrl);
-                            // Try to load without referrer policy
-                            e.currentTarget.removeAttribute('referrerpolicy');
-                          }}
+                          onLoad={() => console.log("✅ Avatar loaded successfully:", avatarUrl)}
+                          onError={handleAvatarError}
                         />
                         {/* Download button overlay */}
                         <button
