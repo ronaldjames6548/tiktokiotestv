@@ -1,6 +1,27 @@
 // src/components/ResultSection.tsx
 interface ResultSectionProps {
-  data: any;
+  data: {
+    status: string | null;
+    result: {
+      type: string | null;
+      author: {
+        avatar: string | null;
+        nickname: string | null;
+      } | null;
+      desc: string | null;
+      videoSD: string | null;
+      videoHD: string | null;
+      video_hd: string | null;
+      videoWatermark: string | null;
+      music: string | null;
+      uploadDate?: string | null;
+      thumbnail?: string | null;
+      views?: number;
+      likes?: number;
+      comments?: number;
+      shares?: number;
+    } | null;
+  };
   getVideoUrl: () => string;
   getAuthorInfo: () => { avatar: string; nickname: string };
   getSafeFilename: () => string;
@@ -8,189 +29,254 @@ interface ResultSectionProps {
 }
 
 function ResultSection(props: ResultSectionProps) {
-  if (!props.data) return null;
-
-  const { data } = props;
-  const isPhoto = data.type === "image";
-
-  const generateFilename = (type: 'video' | 'audio' | 'watermark') => {
-    let base = props.getSafeFilename();
-    if (type === 'audio') base += '_audio';
-    if (type === 'watermark') base += '_watermark';
-    return base;
+  console.log("🎨 ResultSection rendering");
+  console.log("📦 Props data:", props.data);
+  console.log("📊 Result stats:", {
+    views: props.data?.result?.views,
+    likes: props.data?.result?.likes,
+    comments: props.data?.result?.comments,
+    shares: props.data?.result?.shares
+  });
+  
+  if (!props.data || !props.data.result) {
+    console.log("❌ No data or result, returning null");
+    return null;
+  }
+  
+  const result = props.data.result;
+  
+  // Helper to generate filename based on type
+  const generateFilename = (baseName: string, type: 'video' | 'audio' | 'watermark') => {
+    let filename = baseName;
+    if (type === 'audio') {
+      filename += '_audio';
+    } else if (type === 'watermark') {
+      filename += '_watermark';
+    }
+    return filename;
   };
-
-  // Profile image fallback to thumbnail if needed
-  const profileImage = data.thumbnail || "";
-
+  
+  // Get stats with defaults
+  const views = result.views || 0;
+  const likes = result.likes || 0;
+  const comments = result.comments || 0;
+  const shares = result.shares || 0;
+  
+  // Thumbnail for background
+  const thumbnail = result.thumbnail;
+  
+  console.log("🖼️ Thumbnail URL:", thumbnail);
+  console.log("👤 Avatar URL:", props.getAuthorInfo().avatar);
+  
   return (
     <div class="mt-6">
       <div class="mt-4 max-w-6xl mx-auto">
-        <div class="relative rounded-lg overflow-hidden border border-white/10 p-4" style={{ minHeight: '500px' }}>
-          {/* Background thumbnail image */}
-          {data.thumbnail && (
+        <div 
+          class="relative rounded-lg overflow-hidden border border-white/10 p-4"
+          style={{ minHeight: '500px' }}
+        >
+          {/* Background Image */}
+          {thumbnail && (
             <>
-              <img
-                src={data.thumbnail}
-                alt="Background"
-                class="absolute top-0 left-0 w-full h-full object-cover blur-sm"
-                style={{ zIndex: 1, pointerEvents: 'none' }}
+              <img 
+                src={thumbnail} 
+                alt="background" 
+                class="absolute top-0 left-0 w-full h-full object-cover"
+                style={{ 
+                  zIndex: 1,
+                  pointerEvents: 'none'
+                }}
+                onLoad={() => console.log("✅ Background image loaded")}
+                onError={(e) => {
+                  console.error("❌ Background image failed to load");
+                  e.currentTarget.style.display = 'none';
+                }}
               />
-              <div
-                class="absolute top-0 left-0 w-full h-full bg-black/40"
-                style={{ zIndex: 2, pointerEvents: 'none' }}
+              
+              {/* White overlay */}
+              <div 
+                class="absolute top-0 left-0 w-full h-full bg-white"
+                style={{ 
+                  zIndex: 2,
+                  opacity: 0.5,
+                  pointerEvents: 'none'
+                }}
               />
             </>
           )}
-
+          
+          {/* Content Layer */}
           <div class="relative" style={{ zIndex: 10 }}>
-            <div class="flex flex-col md:flex-row gap-6">
-              {/* Left: Video / Photo + Stats */}
+            <div class="flex flex-col md:flex-row gap-4">
+              {/* Left Column - Video Preview */}
               <div class="md:w-1/3 flex-shrink-0">
-                <div class="relative rounded-lg overflow-hidden shadow-2xl">
-                  {isPhoto ? (
-                    <div class="grid grid-cols-2 gap-2 p-2 bg-black/30">
-                      {data.images?.slice(0, 6).map((img: string) => (
-                        <img src={img} alt="Photo" class="w-full h-48 object-cover rounded" />
-                      ))}
-                      {data.images?.length > 6 && (
-                        <div class="flex items-center justify-center bg-black/60 text-white text-xl rounded">
-                          +{data.images.length - 6} more
-                        </div>
-                      )}
-                    </div>
-                  ) : (
+                <div class="relative rounded-lg overflow-hidden max-h-[430px] bg-black">
+                  {props.getVideoUrl() && (
                     <video
                       controls
-                      preload="metadata"
                       src={props.getVideoUrl()}
-                      class="w-full aspect-[9/16] object-cover"
-                      poster={data.thumbnail}
+                      class="w-full h-full object-cover"
+                      referrerpolicy="no-referrer"
                     >
-                      Your browser does not support video.
+                      Your browser does not support the video tag.
                     </video>
                   )}
                 </div>
-
-                {/* Stats Row */}
-                <div class="flex justify-around mt-4 py-3 bg-white/10 backdrop-blur rounded-lg text-white">
-                  <div class="flex flex-col items-center">
-                    <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                    <span class="text-sm font-medium">{(data.views || 0).toLocaleString()}</span>
-                    <span class="text-xs opacity-70">Views</span>
+                
+                {/* Stats Section */}
+                {(views > 0 || likes > 0 || comments > 0 || shares > 0) && (
+                  <div class="flex items-center gap-6 mt-3 text-sm text-gray-600 dark:text-gray-400 flex-wrap">
+                    {/* Views */}
+                    {views > 0 && (
+                      <div class="flex items-center gap-1">
+                        <svg aria-label="Views" class="x1lliihq x1n2onr6 xyb1xck" fill="gray" height="24" role="img" viewBox="0 0 24 24" width="24">
+                          <title>Views</title>
+                          <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                        </svg>
+                        <span class="font-semibold">{views.toLocaleString()}</span>
+                      </div>
+                    )}
+                    
+                    {/* Likes */}
+                    {likes > 0 && (
+                      <div class="flex items-center gap-1">
+                        <svg aria-label="Like" class="x1lliihq x1n2onr6 xyb1xck" fill="red" height="24" role="img" viewBox="0 0 24 24" width="24">
+                          <title>Like</title>
+                          <path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path>
+                        </svg>
+                        <span class="font-semibold">{likes.toLocaleString()}</span>
+                      </div>
+                    )}
+                    
+                    {/* Comments */}
+                    {comments > 0 && (
+                      <div class="flex items-center gap-1">
+                        <svg aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" style="color: green;" fill="none" height="24" role="img" viewBox="0 0 24 24" width="24">
+                          <title>Comment</title>
+                          <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                        <span class="font-semibold">{comments.toLocaleString()}</span>
+                      </div>
+                    )}
+                    
+                    {/* Shares */}
+                    {shares > 0 && (
+                      <div class="flex items-center gap-1">
+                        <svg aria-label="Share" class="x1lliihq x1n2onr6 xyb1xck" fill="none" height="24" role="img" viewBox="0 0 24 24" width="24" style="color: blue;">
+                          <title>Share</title>
+                          <path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+                          <line stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line>
+                        </svg>
+                        <span class="font-semibold">{shares.toLocaleString()}</span>
+                      </div>
+                    )}
                   </div>
-                  <div class="flex flex-col items-center">
-                    <svg class="w-6 h-6 mb-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"/>
-                    </svg>
-                    <span class="text-sm font-medium">{(data.likes || 0).toLocaleString()}</span>
-                    <span class="text-xs opacity-70">Likes</span>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <svg class="w-6 h-6 mb-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                    </svg>
-                    <span class="text-sm font-medium">{(data.comments || 0).toLocaleString()}</span>
-                    <span class="text-xs opacity-70">Comments</span>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <svg class="w-6 h-6 mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m3.632 2.684C12.114 13.938 12 14.482 12 15c0 .482.114.938.316 1.342m-3.632-2.684C7.886 12.062 7.5 11.606 7.5 11c0-.606.386-1.062.684-1.466m3.632 2.684C12.114 11.938 12 11.482 12 11c0-.482-.114-.938-.316-1.342"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                    </svg>
-                    <span class="text-sm font-medium">{(data.shares || 0).toLocaleString()}</span>
-                    <span class="text-xs opacity-70">Shares</span>
-                  </div>
-                </div>
+                )}
               </div>
-
-              {/* Right: Creator Info + Description + Download Buttons */}
-              <div class="md:w-2/3 flex flex-col justify-between text-white">
-                <div>
-                  <div class="flex items-center gap-4 mb-4">
-                    {profileImage && (
+              
+              {/* Right Column - Author Info & Download Buttons */}
+              <div class="md:w-2/3 flex flex-col justify-between">
+                <div class="mb-3">
+                  {/* Author Info */}
+                  <div class="flex items-center gap-3 mb-4">
+                    {props.getAuthorInfo().avatar && (
                       <img
-                        src={profileImage}
-                        alt={data.creator}
-                        class="w-20 h-20 rounded-full border-4 border-white/30 object-cover"
+                        src={props.getAuthorInfo().avatar}
+                        alt={props.getAuthorInfo().nickname}
+                        class="rounded-full w-16 h-16 object-cover border-2 border-gray-300"
+                        onLoad={() => console.log("✅ Avatar loaded")}
+                        onError={(e) => {
+                          console.error("❌ Avatar failed to load");
+                          e.currentTarget.style.display = 'none';
+                        }}
                       />
                     )}
-                    <div>
-                      <h2 class="text-2xl font-bold">{data.creator || "Unknown Creator"}</h2>
-                      {data.musicTitle && (
-                        <p class="text-sm opacity-80 mt-1">
-                          🎵 {data.musicTitle} — {data.musicAuthor || "Original Sound"}
-                        </p>
-                      )}
-                    </div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                      {props.getAuthorInfo().nickname}
+                    </h2>
                   </div>
-
-                  <p class="text-lg leading-relaxed mb-6 bg-black/30 backdrop-blur-sm p-4 rounded-lg">
-                    {data.description || "No description available"}
-                  </p>
+                  
+                  {/* Description */}
+                  <div class="text-gray-900 dark:text-gray-100 text-base mb-4 bg-white/70 dark:bg-gray-800/70 p-3 rounded-lg">
+                    {result.desc || "No description available"}
+                  </div>
                 </div>
-
+                
                 {/* Download Buttons */}
-                <div class="grid grid-cols-1 gap-3">
-                  {/* Download HD (No Watermark) - Priority */}
-                  {data.videoHd && (
+                <div class="space-y-2">
+                  {/* Download SD */}
+                  {result.videoSD && (
                     <button
-                      class="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transform hover:scale-105 transition"
+                      class="download-button bg-amber-600 hover:bg-amber-700 w-full p-3 rounded text-white font-bold flex items-center justify-center cursor-pointer transition-colors"
                       onClick={() => props.onDownloadClick(
-                        `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data.videoHd)}&type=.mp4&title=${props.getSafeFilename()}`,
-                        generateFilename('video')
+                        `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(result.videoSD!)}&type=.mp4&title=${props.getSafeFilename()}`,
+                        generateFilename(props.getSafeFilename(), 'video')
                       )}
                     >
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                      </svg>
-                      Download HD (No Watermark)
-                    </button>
-                  )}
-
-                  {/* Download SD (No Watermark) - Fallback */}
-                  {!data.videoHd && data.video && (
-                    <button
-                      class="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transform hover:scale-105 transition"
-                      onClick={() => props.onDownloadClick(
-                        `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data.video)}&type=.mp4&title=${props.getSafeFilename()}`,
-                        generateFilename('video')
-                      )}
-                    >
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                       </svg>
                       Download SD (No Watermark)
                     </button>
                   )}
-
-                  {/* Download Audio Only */}
-                  {data.music && (
+                  
+                  {/* Download HD */}
+                  {(result.videoHD || result.video_hd) && (
                     <button
-                      class="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transform hover:scale-105 transition"
+                      class="download-button bg-amber-600 hover:bg-amber-700 w-full p-3 rounded text-white font-bold flex items-center justify-center cursor-pointer transition-colors"
                       onClick={() => props.onDownloadClick(
-                        `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data.music)}&type=.mp3&title=${props.getSafeFilename()}_audio`,
-                        generateFilename('audio')
+                        `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent((result.videoHD || result.video_hd)!)}&type=.mp4&title=${props.getSafeFilename()}`,
+                        generateFilename(props.getSafeFilename(), 'video')
                       )}
                     >
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                      </svg>
+                      Download HD (No Watermark)
+                    </button>
+                  )}
+                  
+                  {/* Download with Watermark */}
+                  {result.videoWatermark && (
+                    <button
+                      class="download-button bg-blue-600 hover:bg-blue-700 w-full p-3 rounded text-white font-bold flex items-center justify-center cursor-pointer transition-colors"
+                      onClick={() => props.onDownloadClick(
+                        `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(result.videoWatermark!)}&type=.mp4&title=${props.getSafeFilename()}`,
+                        generateFilename(props.getSafeFilename(), 'watermark')
+                      )}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                      </svg>
+                      Download (With Watermark)
+                    </button>
+                  )}
+                  
+                  {/* Download Audio */}
+                  {result.music && (
+                    <button
+                      class="download-button bg-purple-600 hover:bg-purple-700 w-full p-3 rounded text-white font-bold flex items-center justify-center cursor-pointer transition-colors"
+                      onClick={() => props.onDownloadClick(
+                        `https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(result.music!)}&type=.mp3&title=${props.getSafeFilename()}_audio`,
+                        generateFilename(props.getSafeFilename(), 'audio')
+                      )}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
                       </svg>
                       Download Audio Only
                     </button>
                   )}
-
-                  {/* Download Another Video */}
-                  <button class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transform hover:scale-105 transition">
-                    <a href="/" class="flex items-center gap-3 w-full h-full">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                      </svg>
-                      Download Another Video
-                    </a>
+                  
+                  {/* Download Another */}
+                  <button 
+                    class="download-button bg-gray-700 hover:bg-gray-800 w-full p-3 rounded text-white font-bold flex items-center justify-center cursor-pointer transition-colors"
+                    onClick={() => window.location.href = '/'}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Download Another Video
                   </button>
                 </div>
               </div>
