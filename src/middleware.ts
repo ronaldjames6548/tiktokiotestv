@@ -1,6 +1,7 @@
 // src/middleware.ts
 import { defineMiddleware } from 'astro:middleware';
 
+
 // Your supported locales (must match astro.config.mjs)
 const supportedLocales = [
   'en', 'it', 'vi', 'ar', 'fr', 'de', 'es',
@@ -150,3 +151,4 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   return next();
 });
+
