@@ -166,7 +166,6 @@ export const ui = {
 	'md.feature6': 'MusicallyDown allows users to download TikTok videos on any browser or device, including PC, Android and iOS.',
 	  
 	// How it Works Musically Down
-	
 	'md.howh2': 'How to Download TikTok Videos Without Watermark with',
 	'md.how2text': 'MusicallyDown is a Tiktok Downloader tool where you may download TikTok videos without a watermark for free.  Download a TikTok video in MP4 format in HD quality. Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
 	'md.find': 'Find a TikTok Video',
@@ -176,7 +175,21 @@ export const ui = {
 	'mdhow.step2': 'Visit the "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown TikTok video downloader</a>" that doesnt leave a watermark.  Paste the link of the TikTok video you copied into the box and click <strong class="text-pink-600 hover:text-pink-800">"Download."</strong>',
 	'mdhow.step3': 'Choose the quality you want.  After that, you can pick to download TikTok Video with or without a watermark to save the file to your device. Click the <strong class="text-pink-600 hover:text-pink-800">"Download"</strong> button',
 	
-
+	// FAQs Musically Down
+	'md.faqh': 'MusicallyDown',
+	'md.q1': 'How can I save TikTok videos without watermark?',
+	'md.ans1': 'To Download TikTok video without a watermark, first, find the video on the TikTok app or website. Next, tap the <strong class="text-pink-600 hover:text-pink-800">"Share Option"</strong> and select <strong class="text-pink-600 hover:text-pink-800">"Copy Link"</strong> to copy the video URL. Finally, open "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown</a>" and paste the copied link into the input box, and click the <strong class="text-pink-600 hover:text-pink-800">"Download"</strong> button.',
+	'md.q2': 'Is downloading TikTok videos without watermark completely free?',
+	'md.ans2': 'Yes, downloading TikTok videos without a watermark with MusicallyDown is completely free. You can save videos in MP4 or MP3 formats without any cost. The service works smoothly on all modern browsers, including Chrome, Firefox, Safari and Edge.',
+	'md.q3': 'How can I download TikTok videos as MP4 on my iPhone (iOS)?',
+	'md.ans3': 'For iOS 13 and above, you can download TikTok videos directly using Safari. If you are on iOS 12 or older, you will need to install the Documents by Readdle app to save TikTok videos as MP4 without a watermark',
+	'md.q4': 'Can I use <strong class="text-pink-600 hover:text-pink-800">Musically</strong> TikTok downloader on my Android phone?',
+	'md.ans4': 'Yes, MusicallyDown works on any device, including Android phones, PC or tablet and supports all operating systems like Android, iOS, Windows and macOS. No app installation is needed as it is a web-based tool.',
+	'md.q5': 'Does MusicallyDown store downloaded videos?',
+	'md.ans5': 'No, MusicallyDown does not store downloaded videos. All videos are hosted on TikTok servers. We also do not store user information except your download history according to your IP, making the service totally anonymous and secure.',
+	'md.q6': 'Can I download TikTok videos in HD without watermark?',
+	'md.ans6': 'Yes, "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown</a>" supports high definition downloads. If the original TikTok video is available in Full HD or higher, you can download Tiktok video in that quality without any watermark.',
+	
 
 
 	  
@@ -3000,6 +3013,7 @@ ar: {
   
 
 } as const;
+
 
 
 
