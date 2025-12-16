@@ -60,8 +60,8 @@ export const ui = {
     'savef.keywords': 'TikTokio, tiktok video download, tiktok video downloader, download tiktok video, tiktok video download without watermark, tiktok download video',
 
 	// Savetik Downloader Page metadata
-	'savetik.title': 'Savetik Tiktok Video Downloader - Download Tiktok Videos Without WaterMark!',
-    'savetik.description': 'SaveTik Downloader is Tiktok video downloader without watermark. You can download TikTok videos from any device.',
+	'savetik.title': 'Savetik Tiktok Video Downloader - Save Tiktok Videos Without WaterMark!',
+    'savetik.description': 'SaveTik Downloader is Tiktok video downloader without watermark. You can Save TikTok videos from any device.',
     'savetik.keywords': 'TikTokio, download TikTok video without watermark, TikTok video downloader online, free TikTok downloader, download TikTok videos online, save TikTok videos without watermark',
 
 	// Savett Page metadata
@@ -152,7 +152,20 @@ export const ui = {
 	'ttdownloader.hero.title': 'TTDownloader - TikTok Video Download Without Watermark',
     'ttdownloader.hero.subtitle': 'Download TikTok video without watermarks — HD quality, MP4 format',
 
-	
+
+
+
+
+	// How it Works Main
+	'how.works_h2': 'How to Download TikTok Video:',
+	'how.works': 'Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
+	'how.step1': 'Copy the URL of the TikTok video or image you want to download.',
+	'how.step2': 'Paste the URL in the input field above',
+	'how.step3': 'Click the <strong>"Download"</strong> button',
+	'how.step4': 'Choose the format you want to download (video, audio or thumbnail)',
+	'how.step5': 'Save the file to your device',
+
+	  
 	// Musically Down Feature section
 	'md.h2': 'Musically Down', 
 	'md.h2_1': ' - Best TikTok Video Downloader Online',
@@ -193,17 +206,50 @@ export const ui = {
 
 
 	  
-	// How it Works
-	  // Main
-	'how.works_h2': 'How to Download TikTok Video:',
-	'how.works': 'Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
-	'how.step1': 'Copy the URL of the TikTok video or image you want to download.',
-	'how.step2': 'Paste the URL in the input field above',
-	'how.step3': 'Click the <strong>"Download"</strong> button',
-	'how.step4': 'Choose the format you want to download (video, audio or thumbnail)',
-	'how.step5': 'Save the file to your device',
 
-	  // Musically Down
+	 // SaceTik  Feature section
+	'st.h2': 'SaveTik', 
+	'st.h2_1': ' - Save Tiktok videos without a watermark for free',
+	  
+    'st.text1': 'TikTokio - SaveTik is the finest TikTok video downloader online since it lets you download TikTok mp4 videos and mp3.  You may download any Tiktok MP4 or MP3 video for free by simply pasting the link into the input box on SaveTik.',
+	'st.text2': 'SaveTik lets you download Tiktok videos without a watermark.  Support downloading videos from Tiktok to PCs and phones (iPhone and Android) without having to install any other software.',
+	'st.text3': ' With our SaveTTiktok Downloader, you can download videos from Tiktok and Douyin without the logo and User ID above and below the video, just like you would with a regular download.  You may download Tiktok videos in .mp3 and .mp4 formats for all kinds of devices, including PCs, Macs, Androids and iPhones.',
+
+	'st.featureh': 'Features of TikTokio - MusicallyDown TikTok video Downloader:', 
+	'st.feature1': 'Download Tik Tok video without any Limit! with Musicaldown Tiktok Video downloader Without Watermark For Free. ',
+  	'st.feature2': 'Tiktokio - is Fastest TikTok Video Downloader to Download TikTok videos Easily with MusicallyDown.',
+	'st.feature3': 'Remove a TikTok watermark online While Downloading TikTok video without watermark',
+	'st.feature4': 'Download TikTok videos in MP4 and MP3 format with <a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">Musicallydown com</a>. Convert TikTok to MP4 in just a few steps.',
+	'st.feature5': 'Save TikTok videos in MP4 format with the highest quality available. Downloading TikTok videos in HD quality is free. ',
+	'st.feature6': 'MusicallyDown allows users to download TikTok videos on any browser or device, including PC, Android and iOS.',
+	  
+	// How it Works SaceTik
+	'st.howh2': 'How to Download TikTok Videos Without Watermark with',
+	'st.how2text': 'MusicallyDown is a Tiktok Downloader tool where you may download TikTok videos without a watermark for free.  Download a TikTok video in MP4 format in HD quality. Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
+	'st.find': 'Find a TikTok Video',
+	'st.paste': 'Paste TikTok Video URL',
+	'st.download': 'Download TikTok Video',
+	'sthow.step1': 'Find the TikTok video you need to save by opening the TikTok app or website.  To copy the Video URL, click the <strong class="text-pink-600 hover:text-pink-800">"Share"</strong> icon in the lower right corner and then click <strong class="text-pink-600 hover:text-pink-800">"Copy Link."</strong>',
+	'sthow.step2': 'Visit the "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown TikTok video downloader</a>" that doesnt leave a watermark.  Paste the link of the TikTok video you copied into the box and click <strong class="text-pink-600 hover:text-pink-800">"Download."</strong>',
+	'sthow.step3': 'Choose the quality you want.  After that, you can pick to download TikTok Video with or without a watermark to save the file to your device. Click the <strong class="text-pink-600 hover:text-pink-800">"Download"</strong> button',
+	
+	// FAQs SaceTik
+	'st.faqh': 'MusicallyDown',
+	'st.q1': 'How can I save TikTok videos without watermark?',
+	'st.ans1': 'To Download TikTok video without a watermark, first, find the video on the TikTok app or website. Next, tap the <strong class="text-pink-600 hover:text-pink-800">"Share Option"</strong> and select <strong class="text-pink-600 hover:text-pink-800">"Copy Link"</strong> to copy the video URL. Finally, open "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown</a>" and paste the copied link into the input box, and click the <strong class="text-pink-600 hover:text-pink-800">"Download"</strong> button.',
+	'st.q2': 'Is downloading TikTok videos without watermark completely free?',
+	'st.ans2': 'Yes, downloading TikTok videos without a watermark with MusicallyDown is completely free. You can save videos in MP4 or MP3 formats without any cost. The service works smoothly on all modern browsers, including Chrome, Firefox, Safari and Edge.',
+	'st.q3': 'How can I download TikTok videos as MP4 on my iPhone (iOS)?',
+	'st.ans3': 'For iOS 13 and above, you can download TikTok videos directly using Safari. If you are on iOS 12 or older, you will need to install the Documents by Readdle app to save TikTok videos as MP4 without a watermark',
+	'st.q4': 'Can I use Musically TikTok downloader on my Android phone?',
+	'st.ans4': 'Yes, MusicallyDown works on any device, including Android phones, PC or tablet and supports all operating systems like Android, iOS, Windows and macOS. No app installation is needed as it is a web-based tool.',
+	'st.q5': 'Does MusicallyDown store downloaded videos?',
+	'st.ans5': 'No, MusicallyDown does not store downloaded videos. All videos are hosted on TikTok servers. We also do not store user information except your download history according to your IP, making the service totally anonymous and secure.',
+	'st.q6': 'Can I download TikTok videos in HD without watermark?',
+	'st.ans6': 'Yes, "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown</a>" supports high definition downloads. If the original TikTok video is available in Full HD or higher, you can download Tiktok video in that quality without any watermark.',
+	
+
+
 
   // Feature Box
 	'feature.h2': 'Tiktokio - Key Features',
@@ -3013,6 +3059,7 @@ ar: {
   
 
 } as const;
+
 
 
 
