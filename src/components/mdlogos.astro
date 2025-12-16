@@ -34,9 +34,7 @@ const features = [
     
     <div class="max-w-7xl mx-auto bg-gray-800 rounded-2xl p-12">
         <!-- Title -->
-        <h2 class="text-3xl md:text-4xl font-semibold text-white text-center mb-12">
-            Features of SnapInsta Instagram video Downloader:
-        </h2>
+        <h2 class="text-3xl md:text-4xl font-semibold text-white text-center mb-12">{t('md.featureh')}</h2>
         
         <!-- Features Grid -->
         <div class="grid md:grid-cols-2 gap-8 md:gap-12">
@@ -48,7 +46,7 @@ const features = [
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <p class="text-gray-200 text-base md:text-lg leading-relaxed">
-                        Instagram video Download Fast, easy and safe.
+                        {t('md.feature1')}
                     </p>
                 </div>
                 
@@ -58,7 +56,7 @@ const features = [
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <p class="text-gray-200 text-base md:text-lg leading-relaxed">
-                        You can download videos and pictures of Instagram just by clicking on a button.
+                        {t('md.feature2')}
                     </p>
                 </div>
                 
@@ -68,7 +66,7 @@ const features = [
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <p class="text-gray-200 text-base md:text-lg leading-relaxed">
-                        Save and Download Instagram video from personal accounts.
+                        {t('md.feature3')}
                     </p>
                 </div>
             </div>
@@ -80,9 +78,7 @@ const features = [
                     <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <p class="text-gray-200 text-base md:text-lg leading-relaxed">
-                        No need to login to your Instagram account.
-                    </p>
+                    <p class="text-gray-200 text-base md:text-lg leading-relaxed" set:html={t('md.feature4')} />
                 </div>
                 
                 <!-- Feature 5 -->
@@ -91,8 +87,9 @@ const features = [
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <p class="text-gray-200 text-base md:text-lg leading-relaxed">
-                        Save and download videos and photos in their original resolution and quality.
+                        {t('md.feature5')}
                     </p>
+
                 </div>
                 
                 <!-- Feature 6 -->
@@ -101,7 +98,7 @@ const features = [
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <p class="text-gray-200 text-base md:text-lg leading-relaxed">
-                        High speed: SnapInsta has the fastest download speed available today
+                        {t('md.feature6')}
                     </p>
                 </div>
             </div>
