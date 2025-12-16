@@ -131,8 +131,8 @@ export const ui = {
 	'savef.hero.title': 'SaveFrom - TikTok Video Downloader',
     'savef.hero.subtitle': 'Download TikTok videos in Full HD quality with SaveFrom easy-to-use Tiktok downloader',
 
-	'savetik.hero.title': 'TikTokio - TikTok Video Downloader Online',
-    'savetik.hero.subtitle': 'SaveFrom tiktok Download Free online video downloader for Tiktok',
+	'savetik.hero.title': 'Save Tiktok - Download Tiktok videos without logo',
+    'savetik.hero.subtitle': 'Download Tiktok videos, No Watermark!.. Unlimited downloads',
 
 	'ssstiktok.hero.title': 'SSSTikTok - Online Free TikTok Video Downloader',
     'ssstiktok.hero.subtitle': 'TikTok Downloader Without watermark! Download or Save TikTok Mp4 and HD Videos Online',
@@ -3013,6 +3013,7 @@ ar: {
   
 
 } as const;
+
 
 
 
