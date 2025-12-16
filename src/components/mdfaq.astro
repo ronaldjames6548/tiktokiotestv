@@ -1,0 +1,88 @@
+---
+const { plan } = Astro.props;
+
+// Remove old astro-i18next import
+// import { t } from "i18next";
+
+// Add new built-in i18n imports
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+// Get current language and create translation function
+const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+const lang = getLangFromUrl(safeUrl);
+const t = useTranslations(lang);
+
+const createMarkup = (text: string) => ({ __html: text });
+
+
+const faqs = [
+	
+];
+---
+
+<div class="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8 lg:py-12 dark:bg-stone-950">
+	<div class="mx-auto divide-y divide-gray-900/10 dark:divide-gray-100/10">
+	<div class="text-center mb-16" >
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">{t("faq.title_sec1")} <span class="text-orange-400 dark:text-orange-400">{t("md.faqh")}</span> - {t("faq.title_sec2")}</h2>
+		      <div class="w-24 h-1 mx-auto bg-orange-400"></div>
+	</div>
+		
+		<section style="opacity: 1;">
+				<div class="grid md:grid-cols-2 gap-6">
+					<div class="rounded-lg border-color-blue shadow bg-card text-card-foreground shadow-sm">
+						<div class="flex flex-col space-y-1.5 p-6">
+							<div class="font-semibold tracking-tight text-lg">{t("md.q1")}</div>
+						</div>
+							<div class="p-6 pt-0">
+								<p class="text-muted-foreground" set:html={t('md.ans1')} />
+
+							</div>
+					</div>
+					<div class="rounded-lg border-color-blue shadow bg-card text-card-foreground shadow-sm">
+						<div class="flex flex-col space-y-1.5 p-6">
+							<div class="font-semibold tracking-tight text-lg">{t("md.q2")}</div>
+						</div>
+							<div class="p-6 pt-0">
+								<p class="text-muted-foreground" set:html={t('md.ans2')} />
+
+							</div>
+					</div>
+					<div class="rounded-lg border-color-blue shadow bg-card text-card-foreground shadow-sm">
+						<div class="flex flex-col space-y-1.5 p-6">
+							<div class="font-semibold tracking-tight text-lg">{t("md.q3")}</div>
+						</div>
+							<div class="p-6 pt-0">
+								<p class="text-muted-foreground" set:html={t('md.ans3')} />
+							</div>
+					</div>
+					<div class="rounded-lg border-color-blue shadow bg-card text-card-foreground shadow-sm">
+						<div class="flex flex-col space-y-1.5 p-6">
+							<div class="font-semibold tracking-tight text-lg">{t("md.q4")}</div>
+						</div>
+							<div class="p-6 pt-0">
+								<p class="text-muted-foreground" set:html={t('md.ans4')} />
+							</div>
+					</div>
+					<div class="rounded-lg border-color-blue shadow bg-card text-card-foreground shadow-sm">
+						<div class="flex flex-col space-y-1.5 p-6">
+							<div class="font-semibold tracking-tight text-lg">{t("md.q5")}</div>
+						</div>
+							<div class="p-6 pt-0">
+								<p class="text-muted-foreground" set:html={t('md.ans5')} />
+							</div>
+					</div>
+					<div class="rounded-lg border-color-blue shadow bg-card text-card-foreground shadow-sm">
+						<div class="flex flex-col space-y-1.5 p-6">
+							<div class="font-semibold tracking-tight text-lg">{t("md.q6")}</div>
+						</div>
+							<div class="p-6 pt-0">
+								
+								<p class="text-muted-foreground" set:html={t('md.ans6')} />
+							</div>
+					</div>
+				</div>
+		</section>
+		
+		
+	</div>
+</div>
