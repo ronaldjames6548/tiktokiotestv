@@ -157,7 +157,14 @@ export const ui = {
 	'md.h2': 'Musically Down', 
 	'md.h2_1': ' - Best TikTok Video Downloader Online',
     'md.text1': 'MusicallyDown is a free, online tool for downloading TikTok videos without watermarks. Whether you"re searching for "musically down" "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">musicallydown com</a>" or simply "musically" this powerful Tiktok Downloader has become the go-to solution who want to save their favorite TikTok content in high quality.',
-
+	'md.featureh': 'Features of TikTokio - MusicallyDown TikTok video Downloader:', 
+	'md.feature1': 'Download Tik Tok video without any Limit! with Musicaldown Tiktok Video downloader Without Watermark For Free. ',
+  	'md.feature2': 'Tiktokio - is Fastest TikTok Video Downloader to Download TikTok videos Easily with MusicallyDown.',
+	'md.feature3': 'Remove a TikTok watermark online While Downloading TikTok video without watermark',
+	'md.feature4': 'Download TikTok videos in MP4 and MP3 format with <a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">Musicallydown com</a>. Convert TikTok to MP4 in just a few steps.',
+	'md.feature5': 'Save TikTok videos in MP4 format with the highest quality available. Downloading TikTok videos in HD quality is free. ',
+	'md.feature6': 'MusicallyDown allows users to download TikTok videos on any browser or device, including PC, Android and iOS.',
+	  
 	// How it Works Musically Down
 	
 	'md.howh2': 'How to Download TikTok Videos Without Watermark with',
@@ -170,6 +177,9 @@ export const ui = {
 	'mdhow.step3': 'Choose the quality you want.  After that, you can pick to download TikTok Video with or without a watermark to save the file to your device. Click the <strong class="text-pink-600 hover:text-pink-800">"Download"</strong> button',
 	
 
+
+
+	  
 	// How it Works
 	  // Main
 	'how.works_h2': 'How to Download TikTok Video:',
@@ -2990,6 +3000,7 @@ ar: {
   
 
 } as const;
+
 
 
 
