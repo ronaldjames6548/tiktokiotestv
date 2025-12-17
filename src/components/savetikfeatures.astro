@@ -27,26 +27,27 @@ const features = [
 ];
 ---
 
-
-
-<div class="max-w-screen-xl mx-auto px-4 sm:px-6">
-
-<section id="purpose" class="relative overflow-hidden py-20 bg-linear-to-br from-gray-50 to-white"> 
-	
-		<div itemprop="itemListElement" itemscope itemtype="https://schema.org/HowToStep" class="feature-box backdrop-blur-sm">
+<div class="relative p-4">
+      <div class="max-w-screen-xl mx-auto">
+            <div class="feature-box backdrop-blur-sm">
+				<div itemprop="itemListElement" itemscope itemtype="https://schema.org/HowToStep" class="feature-box backdrop-blur-sm">
 					<div class="text-center py-8">
-						<h2 class="text-2xl md:text-3xl font-semibold text-gray-900"><span class="text-pink-600">{t('md.h2')}</span> {t('md.h2_1')}</h2>
+						<h2 class="text-2xl md:text-3xl font-semibold text-gray-900"><span class="text-pink-600">{t('st.h2')}</span> {t('st.h2_1')} </h2>
                         <meta itemprop="url" content="/" />
                         <meta itemprop="timeRequired" content="PT1M"/>
 						<div class="w-24 h-1 mx-auto bg-pink-600 rounded-full"></div>
-						<p class="text-left mt-4 mx-auto text-lg text-gray-900 dark:text-white" set:html={t('md.text1')} />
+						<p class="text-left mt-4 mx-auto text-lg text-gray-900" set:html={t('st.text1')} />
 					</div>
+
+
+
+<section id="purpose" class="relative overflow-hidden py-20 bg-linear-to-br from-gray-50 to-white"> 
+	<div class="max-w-7xl mx-auto px-4 sm:px-6"> 
+			
 			<div class="relative"> 
-					<h2 class="text-4xl font-bold mb-6 text-gray-800"> Empowering Brands Through <span class="text-green-600">Purposeful Growth</span> </h2> 
-					<p class="text-gray-600 mb-4 leading-relaxed">Our goal is to help brands unlock their full digital potential by creating impactful marketing strategies that connect, engage, and convert. 
-						We believe growth happens when creativity meets data and purpose.</p>
-					<p class="text-gray-600 mb-4 leading-relaxed">Every campaign we launch is built to deliver measurable results and long-term value — combining strategic insights, automation
-						and human creativity for real impact.</p> 
+					<h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900"> {t('st.howh2')} <span class="text-green-600">{t('st.h2')}</span> </h2> 
+					<p class="text-gray-600 mb-4 leading-relaxed" set:html={t('st.how2text')} />
+
 				<div class="space-y-3 mt-6"> 
 					<div class="flex items-start gap-3"> 
 						<div class="bg-green-100 rounded-full size-10 flex-none flex items-center justify-center mt-1"> 
@@ -83,7 +84,7 @@ const features = [
 							</svg>
 						</div> 
 					<div> <h3 class="font-semibold text-gray-800">{t("st.save")}</h3> 
-						<p class="text-sm text-gray-600" set:html={t('sthow.step')} /> 
+						<p class="text-sm text-gray-600" set:html={t('sthow.step4')} /> 
 					</div> 
 					</div> 
 			  </div> 
@@ -92,12 +93,8 @@ const features = [
 </div> 
 </section>
 
-
-
-
-
-
-
 </div>
-
+</div>
+</div>
+</div>
 <!--Sention 1 End -->
