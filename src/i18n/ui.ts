@@ -231,9 +231,9 @@ export const ui = {
 	'st.download': 'Save TikTok Video Content',
 	'st.save': 'Save & Enjoy Content', 
 
-	'sthow.step1': 'Open the TikTok app, TikTok lite or the tiktok.com site in your browser. Find the TikTok video. To copy the Video URL, click the <strong class="text-green-600 hover:text-green-800">"Share"</strong> icon in the lower right corner and then click <strong class="text-green-600 hover:text-green-800">"Copy Link."</strong>',
-	'sthow.step2': 'Visit "<a href="/musically-down" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik TikTok video downloader</a>". Paste the copied link into Save Tiktok watermark removal tool and click <strong class="text-green-600 hover:text-green-800">"Download."</strong>',
-	'sthow.step3': 'Select Server to download or Save TikTok video.  After that, you can pick to download TikTok Video with or without a watermark to save the file to your device. Click the <strong class="text-green-600 hover:text-green-800">"Download"</strong> button.',
+	'sthow.step1': 'Open the TikTok app, TikTok lite or the tiktok.com site in browser. Find the TikTok video. To copy the Video URL, click the <strong class="text-green-600 hover:text-green-800">"Share"</strong> icon in the lower right corner and click <strong class="text-green-600 hover:text-green-800">"Copy Link."</strong>',
+	'sthow.step2': 'Visit "<a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik TikTok video downloader</a>". Paste the copied link into Save Tiktok watermark removal tool and click <strong class="text-green-600 hover:text-green-800">"Download."</strong>',
+	'sthow.step3': 'Select Server to download or Save TikTok video. You can pick to download TikTok Video with or without a watermark to save the file. Click the <strong class="text-green-600 hover:text-green-800">"Download"</strong> button.',
 	'sthow.step4': 'Save TikTok watermark-free video or image to your device and Enjoy',
 	
 	// FAQs SaceTik
@@ -3062,6 +3062,7 @@ ar: {
   
 
 } as const;
+
 
 
 
