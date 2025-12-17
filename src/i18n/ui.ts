@@ -211,9 +211,9 @@ export const ui = {
 	'st.h2': 'SaveTik', 
 	'st.h2_1': ' - Save Tiktok videos without a watermark for free',
 	  
-    'st.text1': 'TikTokio - SaveTik is the finest TikTok video downloader online since it lets you download TikTok mp4 videos and mp3.  You may Save Tiktok MP4 or MP3 video for free by simply pasting the link into the input box on SaveTik.',
-	'st.text2': 'SaveTik lets you download Tiktok videos without a watermark.  Support downloading videos from Tiktok to PCs and phones (iPhone and Android) without having to install any other software.',
-	'st.text3': ' With our SaveTTiktok Downloader, you can download videos from Tiktok and Douyin without the logo and User ID above and below the video, just like you would with a regular download.  You may download Tiktok videos in .mp3 and .mp4 formats for all kinds of devices, including PCs, Macs, Androids and iPhones.',
+    'st.text1': 'TikTokio - SaveTik is the finest TikTok video downloader online since it lets you download TikTok mp4 videos and mp3. You may Save Tiktok MP4 or MP3 video for free by simply pasting the link into the input box on SaveTik.',
+	'st.text2': 'SaveTik lets you download Tiktok videos without a watermark. Support downloading videos from Tiktok to PCs and phones (iPhone and Android) without having to install any other software.',
+	'st.text3': ' With our SaveTTiktok Downloader, you can download videos from Tiktok without the logo and User ID above and below the video, just like you would with a regular download. You may download Tiktok videos in .mp3 and .mp4 formats for all kinds of devices, including PCs, Macs, Androids and iPhones.',
 
 	'st.featureh': 'Features of TikTokio - Save Tiktok video Downloader:', 
 	'st.feature1': 'Download Tik Tok video without any Limit! with Musicaldown Tiktok Video downloader Without Watermark For Free. ',
@@ -3062,6 +3062,7 @@ ar: {
   
 
 } as const;
+
 
 
 
