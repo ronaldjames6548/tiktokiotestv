@@ -32,20 +32,23 @@ const features = [
             <div class="feature-box backdrop-blur-sm">
 				<div itemprop="itemListElement" itemscope itemtype="https://schema.org/HowToStep" class="feature-box backdrop-blur-sm">
 					<div class="text-center py-8">
-						<h2 class="text-2xl md:text-3xl font-semibold text-gray-900"><span class="text-pink-600">{t('st.h2')}</span> {t('st.h2_1')} </h2>
+						<h2 class="text-2xl md:text-3xl font-semibold text-gray-900"><span class="text-green-600">{t('st.h2')}</span> {t('st.h2_1')} </h2>
                         <meta itemprop="url" content="/" />
                         <meta itemprop="timeRequired" content="PT1M"/>
-						<div class="w-24 h-1 mx-auto bg-pink-600 rounded-full"></div>
+						<div class="w-24 h-1 mx-auto bg-green-600 rounded-full"></div>
 						<p class="text-left mt-4 mx-auto text-lg text-gray-900" set:html={t('st.text1')} />
+						<p class="text-left mt-4 mx-auto text-lg text-gray-900" set:html={t('st.text2')} />
+						<p class="text-left mt-4 mx-auto text-lg text-gray-900" set:html={t('st.text3')} />
+
 					</div>
 
 
 
-<section id="purpose" class="relative overflow-hidden py-20 bg-linear-to-br from-gray-50 to-white"> 
+<section id="purpose" class="relative overflow-hidden py-4 bg-linear-to-br from-gray-50 to-white"> 
 	<div class="max-w-7xl mx-auto px-4 sm:px-6"> 
 			
 			<div class="relative"> 
-					<h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900"> {t('st.howh2')} <span class="text-green-600">{t('st.h2')}</span> </h2> 
+					<h2 class="text-center text-2xl md:text-3xl font-semibold mb-6 text-gray-900"> {t('st.howh2')} <span class="text-green-600">{t('st.h2')}</span> </h2> 
 					<p class="text-gray-600 mb-4 leading-relaxed" set:html={t('st.how2text')} />
 
 				<div class="space-y-3 mt-6"> 
