@@ -5,6 +5,7 @@ import Container from "../components/container.astro";
 import Layout from "../layouts/Layout.astro";  // Single import
 import Hero from "../components/savetik-hero.astro";
 import Features from "../components/savetikfeatures.astro";
+import Logs from "../components/savetiklogs.astro";
 import Faq from "../components/mdfaq.astro";
 
 // i18n: Per-page setup
@@ -18,13 +19,16 @@ const title = t('savetik.title') ?? 'Savetik Tiktok Video Downloader - Save Tikt
 const description = t('savetik.description') ?? 'SaveTik Downloader is Tiktok video downloader without watermark. You can Save TikTok videos from any device.';
 const keywords = t('savetik.keywords') ?? 'tiktok video downloader, download tiktok videos, tiktok hd downloader, no watermark tiktok, tiktokiocam';
 const image = 'meta/md-tiktok-downloader.webp';  // Static; add to ui.ts if i18n needed (e.g., t('site.tvd_image'))
+const favicon = 'mhttps://savetik.co/icons/favicon.ico?v=32';  // Static; add to ui.ts if i18n needed (e.g., t('site.tvd_image'))
+
 const variant = 'savetik';
 ---
 
-<Layout title={title} description={description} keywords={keywords} image={image} variant={variant} lang={lang}>
+<Layout title={title} description={description} keywords={keywords} image={image} favicon={favicon} variant={variant} lang={lang}>
    <Hero />
   <Container>
     <Features />
+    <Logs />
 
 
     <Faq />
