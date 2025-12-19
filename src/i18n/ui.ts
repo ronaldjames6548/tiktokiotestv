@@ -216,12 +216,20 @@ export const ui = {
 	'st.text3': ' With our SaveTiktok Downloader, you can download videos from Tiktok without the logo and User ID above and below the video, just like you would with a regular download. You may download Tiktok videos in .mp3 and .mp4 formats for all kinds of devices, including PCs, Macs, Androids and iPhones.',
 
 	'st.featureh': 'Features of TikTokio - Save Tiktok video Downloader:', 
+	'st.fth1': 'Unlimited Download', 
 	'st.feature1': 'Download Tik Tok video without any Limit! with Musicaldown Tiktok Video downloader Without Watermark For Free. ',
-  	'st.feature2': 'Tiktokio - is Fastest TikTok Video Downloader to Download TikTok videos Easily with MusicallyDown.',
-	'st.feature3': 'Remove a TikTok watermark online While Downloading TikTok video without watermark',
-	'st.feature4': 'Download TikTok videos in MP4 and MP3 format with <a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">Musicallydown com</a>. Convert TikTok to MP4 in just a few steps.',
+	'st.fth2': 'Free to Use', 
+  	'st.feature2': 'SaveTik - is Fastest TikTok Video Downloader to Download TikTok videos Easily with <a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">Save Tiktok</a>.',
+	'st.fth3': 'No Watermark', 
+    'st.feature3': 'Remove a TikTok watermark online While Downloading TikTok video without watermark',
+	'st.fth4': 'Fast Processing', 
+	'st.feature4': 'Download TikTok videos in MP4 and MP3 format with <a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik</a>. Convert TikTok to MP4 in just a few steps.',
+	'st.fth5': 'High Quality', 
 	'st.feature5': 'Save TikTok videos in MP4 format with the highest quality available. Downloading TikTok videos in HD quality is free. ',
-	'st.feature6': 'MusicallyDown allows users to download TikTok videos on any browser or device, including PC, Android and iOS.',
+	'st.fth6': 'All Devices', 
+	'st.feature6': 'SaTik allows users to download TikTok videos on any browser or device, including PC, Android and iOS.',
+	'st.fth7': 'Fast Processing', 
+	'st.feature7': 'Using advanced technology for instant parsing and high-speed downloads SaveTik Fast Processing for Videos to Download instantly.',
 	  
 	// How it Works SaveTik
 	'st.howh2': 'How to Save Tiktok Videos Without Watermark with',
@@ -3062,6 +3070,7 @@ ar: {
   
 
 } as const;
+
 
 
 
