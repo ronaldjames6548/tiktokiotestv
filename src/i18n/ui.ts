@@ -159,7 +159,7 @@ export const ui = {
 	// How it Works Main
 	'how.works_h2': 'How to Download TikTok Video:',
 	'how.works': 'Downloading TikTok videos without the watermark with <strong>Stiktokio</strong> is simpler than you think. Check step-by-step breakdown how it works:',
-	'how.step1': 'Copy the URL of the TikTok video or image you want to download.',
+	'how.step1': 'Copy the URL of the TikTok video you want to download.',
 	'how.step2': 'Paste the URL in the input field above',
 	'how.step3': 'Click the <strong>"Download"</strong> button',
 	'how.step4': 'Choose the format you want to download (video, audio or thumbnail)',
@@ -288,7 +288,28 @@ export const ui = {
 	'faste.download': 'Super Fast Server – Tiktok Video Downloads start in under 2 seconds, even during peak hours.',
 	'audio.download': 'Tiktokio is also a powerful tiktok audio downloader free – extract trending sounds as high-quality MP3 files in seconds.',
 	'content.types': 'Tiktok Downloader supports all content including Videos, Photos, Reels, story, Mp3, Tumbnail downlaod and Profile image.',
-	
+
+
+	'main.popular_text': 'that lets users download TikTok videos without watermark. TikTokio saves TikTok videos to MP4 in HD quality, watermark-free and without account restrictions. This is what makes Tiktokio so popular and how you can use it effortlessly.',
+    'main.popular_heading1': 'Save Tiktok Video without Watermarks',
+    'main.heading1_text': 'Tiktokio - Tiktok Video Downloader Online gives you clean Video by removing all watermarks',
+    'main.popular_heading2': 'Fast Downloads Easily',
+    'main.heading2_text': 'TikTokio helps to download TikTok videos, Slideshow and stories in seconds by following only three steps (copy, paste and download).',
+    'main.popular_heading3': 'High-quality Downloads',
+    'main.heading3_text': 'Download Tiktok Video High Quality. Enjoy the best video quality.',
+    'main.popular_heading4': 'Unlimited Downloads',
+    'main.heading4_text': 'Tiktok Video Downloader offers unlimited video and photo downloads without restrictions, registration or hidden fees',
+    'main.popular_heading5': 'Easy Download Process',
+    'main.heading5_text': 'Process to Download Tiktok Video without watermark is quiet easy. Just paste your Tiktok link and Tiktokio - Tiktok Video Downloader handles everything else.',
+    'main.popular_heading6': 'Secure',
+    'main.heading6_text': 'Tiktok Video Downloader respects User privacy with secure, anonymous downloads that don\'t store personal data or links',
+    'main.down_button': 'Try Tiktok Video Downloader Now',
+    'main.input_placeholder': 'Enter your email',
+    'main.button_text': 'Subscribe',
+    'main.privacy': 'We care about the protection of your data. Read our',
+    'main.privacy_link': 'Privacy Policy.',
+
+	  
 	'heading.paraleft1': 'Free TikTok Video Downloader ',
 	'heading.paraleft2': 'Download TikTok Videos in HD',
 
@@ -373,7 +394,7 @@ export const ui = {
     'newsletter.popular_int': 'TikTokio is a powerful',
     'newsletter.popular_int_link': 'Tiktok video downloader',
     'newsletter.popular_text': 'that lets users download TikTok videos without watermark. TikTokio saves TikTok videos to MP4 in HD quality, watermark-free and without account restrictions. This is what makes Tiktokio so popular and how you can use it effortlessly.',
-    'newsletter.popular_heading1': 'No Watermarks',
+    'newsletter.popular_heading1': 'Save Tiktok Video without Watermarks',
     'newsletter.heading1_text': 'Tiktokio - Tiktok Downloader removes all watermarks, giving you clean, original quality Tiktok videos and photos to save and share',
     'newsletter.popular_heading2': 'Lightning-Fast Downloads',
     'newsletter.heading2_text': 'Tiktok Video Downloader processes content instantly, letting you download Tiktok videos, reels and stories in seconds',
@@ -3070,6 +3091,7 @@ ar: {
   
 
 } as const;
+
 
 
 
