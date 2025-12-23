@@ -8,7 +8,7 @@ import alpinejs from '@astrojs/alpinejs';
 import solidJs from '@astrojs/solid-js';
 import AstroPWA from '@vite-pwa/astro';
 import icon from 'astro-icon';
-import vercel from '@astrojs/vercel'; // ← Updated: correct modern import
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
@@ -16,18 +16,15 @@ export default defineConfig({
   site: 'https://tiktokiotestv.vercel.app',
 
   adapter: vercel({
-    // Recommended: Enable Vercel Analytics and Speed Insights
     webAnalytics: {
       enabled: true,
     },
     speedInsights: {
       enabled: true,
     },
-    // Optional: Better image optimization via Vercel
     imageService: true,
   }),
 
-  // Your i18n configuration (perfect as-is)
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'it', 'vi', 'ar', 'fr', 'de', 'es', 'hi', 'id', 'ru', 'pt', 'ko', 'tl', 'nl', 'ms', 'tr'],
@@ -41,7 +38,6 @@ export default defineConfig({
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
     },
-    // Prevent SSR issues with the TikTok library (dynamic require only works server-side)
     ssr: {
       external: ['@tobyg74/tiktok-api-dl'],
     },
@@ -54,18 +50,27 @@ export default defineConfig({
     sitemap({
       filter(page) {
         const url = new URL(page, 'https://tiktokiotestv.vercel.app');
-        const nonEnglishLangs = ['ar', 'vi', 'it', 'de', 'es', 'fr', 'hi', 'id', 'ko', 'ms', 'nl', 'pt', 'ru', 'tl', 'tr'];
-        const shouldExclude =
-          nonEnglishLangs.some(lang =>
-            url.pathname.startsWith(`/${lang}/blog/`) &&
-            url.pathname !== `/${lang}/blog/`
-          ) ||
-          /\/blog\/\d+\//.test(url.pathname) ||
-          url.pathname.includes('/tag/') ||
-          url.pathname.includes('/category/');
-
-        return !shouldExclude;
+        
+        // Define the ONLY pages that should be included in sitemap
+        const allowedPages = [
+          '/',  // index.astro
+          '/musically-down/',
+          '/savetik-downloader-download-tiktok-videos-without-watermark/',
+          '/blog/how-to-save-tiktok-videos-without-watermark/',
+        ];
+        
+        // Normalize pathname (remove trailing slash for comparison)
+        const normalizedPath = url.pathname.replace(/\/$/, '');
+        const normalizedAllowed = allowedPages.map(p => p.replace(/\/$/, ''));
+        
+        // Only include if the path matches one of our allowed pages
+        return normalizedAllowed.includes(normalizedPath) || 
+               allowedPages.includes(url.pathname);
       },
+      // Optionally customize the sitemap
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date(),
     }),
     alpinejs(),
     solidJs(),
@@ -117,8 +122,4 @@ export default defineConfig({
       [rehypeAutolinkHeadings, autolinkConfig],
     ],
   },
-
-  // Optional: Keep your CSP if needed (Astro doesn't have built-in security.csp yet)
-  // Note: Astro core doesn't support `security` field natively — remove if causing issues
-  // If you need CSP, handle via middleware or Vercel headers instead
 });
