@@ -1,21 +1,55 @@
+# Allow only specific pages for indexing
 User-agent: *
 
-Disallow: /ar/blog
-Disallow: /de/blog
-Disallow: /es/blog
-Disallow: /fr/blog
-Disallow: /hi/blog
-Disallow: /id/blog
-Disallow: /it/blog
-Disallow: /ko/blog
-Disallow: /ms/blog
-Disallow: /nl/blog
-Disallow: /pt/blog
-Disallow: /ru/blog
-Disallow: /tl/blog
-Disallow: /tr/blog
+# Allow these specific pages
+Allow: /$
+Allow: /musically-down$
+Allow: /musically-down/$
+Allow: /savetik-downloader-download-tiktok-videos-without-watermark$
+Allow: /savetik-downloader-download-tiktok-videos-without-watermark/$
+Allow: /blog/how-to-save-tiktok-videos-without-watermark$
+Allow: /blog/how-to-save-tiktok-videos-without-watermark/$
 
-Allow: /
+# Block all other pages (this is the key line)
+Disallow: /
 
-Sitemap: https://tiktokio.cam/sitemap-index.xml
-Sitemap: https://tiktokio.cam/sitemap-0.xml
+# Block all localized versions
+Disallow: /ar/
+Disallow: /de/
+Disallow: /es/
+Disallow: /fr/
+Disallow: /hi/
+Disallow: /id/
+Disallow: /it/
+Disallow: /ko/
+Disallow: /ms/
+Disallow: /nl/
+Disallow: /pt/
+Disallow: /ru/
+Disallow: /tl/
+Disallow: /tr/
+Disallow: /vi/
+
+# Block all other pages explicitly
+Disallow: /download-tiktok-video
+Disallow: /tiktok-downloader
+Disallow: /tiktok-video-downloader
+Disallow: /tiktok-photo-downloader
+Disallow: /tiktok-thumbnail-downloader
+Disallow: /savefrom-download-from-tiktok
+Disallow: /savett-tiktok-downloader
+Disallow: /snaptik-tiktok-downloader
+Disallow: /ssstiktok-download
+Disallow: /tikmate-tiktok-downloader
+Disallow: /tiksave-download
+Disallow: /tiktoksss-tiktok-downloader
+Disallow: /tmate-tiktok-downloader
+Disallow: /ttdownloader
+
+# Block all blog posts except the allowed one
+Disallow: /blog/
+Allow: /blog/how-to-save-tiktok-videos-without-watermark$
+Allow: /blog/how-to-save-tiktok-videos-without-watermark/$
+
+# Sitemap location
+Sitemap: https://tiktokiotestv.vercel.app/sitemap-index.xml
