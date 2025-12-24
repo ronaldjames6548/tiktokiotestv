@@ -17,10 +17,15 @@ function localizePath(path: string) {
 	return getRelativeLocaleUrl(lang, path);
 }
 
-const title = "Error 404";
+
+// SEO/props: Matched to ui.ts structure (flat keys under language)
+const title = 'Error 404 - TikTokio - TikTok Video Downloader Free';
+const description = 'Oops! This page has gone on an unexpected adventure. Looks like you're trying to visit a page that doesn't exist (or has been moved).';
+const image = 'meta/md-tiktok-downloader.webp';  // Static; add to ui.ts if i18n needed (e.g., t('site.tvd_image'))
+const variant = '404';
 ---
 
-<Layout title="404">
+<Layout title={title} description={description} image={image} variant={variant} lang={lang}>
 <Hero />
 
 	<Container>
