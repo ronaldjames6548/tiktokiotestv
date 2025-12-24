@@ -59,6 +59,8 @@ export default defineConfig({
           'https://tiktokiotestv.vercel.app/blog/how-to-save-tiktok-videos-without-watermark/',
           'https://tiktokiotestv.vercel.app/contact/',
           'https://tiktokiotestv.vercel.app/privacy-policy/',
+          'https://tiktokiotestv.vercel.app/savetik-downloader-download-tiktok-videos-without-watermark/',
+          'https://tiktokiotestv.vercel.app/musically-down/',
         ];
         
         return allowedPages.includes(page);
