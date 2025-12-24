@@ -11,6 +11,14 @@ import icon from 'astro-icon';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
+// Import the centralized SEO configuration
+const ALLOWED_PAGES_FOR_INDEXING = [
+  '/',
+  '/musically-down/',
+  '/savetik-downloader-download-tiktok-videos-without-watermark/',
+  '/blog/how-to-save-tiktok-videos-without-watermark/',
+];
+
 export default defineConfig({
   output: 'server',
   site: 'https://tiktokiotestv.vercel.app',
@@ -51,23 +59,14 @@ export default defineConfig({
       filter(page) {
         const url = new URL(page, 'https://tiktokiotestv.vercel.app');
         
-        // Define the ONLY pages that should be included in sitemap
-        const allowedPages = [
-          '/',  // index.astro
-          '/musically-down/',
-          '/savetik-downloader-download-tiktok-videos-without-watermark/',
-          '/blog/how-to-save-tiktok-videos-without-watermark/',
-        ];
-        
         // Normalize pathname (remove trailing slash for comparison)
-        const normalizedPath = url.pathname.replace(/\/$/, '');
-        const normalizedAllowed = allowedPages.map(p => p.replace(/\/$/, ''));
+        const normalizedPath = url.pathname.endsWith('/') 
+          ? url.pathname 
+          : url.pathname + '/';
         
-        // Only include if the path matches one of our allowed pages
-        return normalizedAllowed.includes(normalizedPath) || 
-               allowedPages.includes(url.pathname);
+        // Only include pages in the allowed list
+        return ALLOWED_PAGES_FOR_INDEXING.includes(normalizedPath);
       },
-      // Optionally customize the sitemap
       changefreq: 'weekly',
       priority: 0.8,
       lastmod: new Date(),
