@@ -51,7 +51,7 @@ export const ui = {
 
 	// Musically Down Page metadata
 	'md.title': 'Musically Down - Download TikTok Video Without Watermark Online',
-    'md.description': 'Musically Download TikTok video downloader! download TikTok videos with or without watermark online. Save TikTok videos in HD and MP3 from any device in two taps!',
+    'md.description': 'Musically Download TikTok video downloader! download TikTok videos with or without watermark online. Save TikTok videos in HD and MP3 from any device.',
     'md.keywords': 'TikTokio, musicallydown, musically down, musicallydown com, mussically down.com, musicallydown.com tiktok',
 
 	// Savefrom Download From Tiktok Page metadata
@@ -60,7 +60,7 @@ export const ui = {
     'savef.keywords': 'TikTokio, tiktok video download, tiktok video downloader, download tiktok video, tiktok video download without watermark, tiktok download video',
 
 	// Savetik Downloader Page metadata
-	'savetik.title': 'Savetik Tiktok Video Downloader - Save Tiktok Videos Without WaterMark!',
+	'savetik.title': 'Savetik Tiktok Video Downloader - Save Tiktok Videos Without WaterMark',
     'savetik.description': 'SaveTik Downloader is Tiktok video downloader without watermark. You can Save TikTok videos from any device.',
     'savetik.keywords': 'TikTokio, download TikTok video without watermark, TikTok video downloader online, free TikTok downloader, download TikTok videos online, save TikTok videos without watermark',
 
@@ -3000,6 +3000,7 @@ ar: {
   
 
 } as const;
+
 
 
 
