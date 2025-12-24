@@ -8,31 +8,26 @@ import alpinejs from '@astrojs/alpinejs';
 import solidJs from '@astrojs/solid-js';
 import AstroPWA from '@vite-pwa/astro';
 import icon from 'astro-icon';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel'; // ← Updated: correct modern import
 import tailwindcss from '@tailwindcss/vite';
-
-// Import the centralized SEO configuration
-const ALLOWED_PAGES_FOR_INDEXING = [
-  '/',
-  '/musically-down/',
-  '/savetik-downloader-download-tiktok-videos-without-watermark/',
-  '/blog/how-to-save-tiktok-videos-without-watermark/',
-];
 
 export default defineConfig({
   output: 'server',
   site: 'https://tiktokiotestv.vercel.app',
 
   adapter: vercel({
+    // Recommended: Enable Vercel Analytics and Speed Insights
     webAnalytics: {
       enabled: true,
     },
     speedInsights: {
       enabled: true,
     },
+    // Optional: Better image optimization via Vercel
     imageService: true,
   }),
 
+  // Your i18n configuration (perfect as-is)
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'it', 'vi', 'ar', 'fr', 'de', 'es', 'hi', 'id', 'ru', 'pt', 'ko', 'tl', 'nl', 'ms', 'tr'],
@@ -46,6 +41,7 @@ export default defineConfig({
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
     },
+    // Prevent SSR issues with the TikTok library (dynamic require only works server-side)
     ssr: {
       external: ['@tobyg74/tiktok-api-dl'],
     },
@@ -58,18 +54,18 @@ export default defineConfig({
     sitemap({
       filter(page) {
         const url = new URL(page, 'https://tiktokiotestv.vercel.app');
-        
-        // Normalize pathname (remove trailing slash for comparison)
-        const normalizedPath = url.pathname.endsWith('/') 
-          ? url.pathname 
-          : url.pathname + '/';
-        
-        // Only include pages in the allowed list
-        return ALLOWED_PAGES_FOR_INDEXING.includes(normalizedPath);
+        const nonEnglishLangs = ['ar', 'vi', 'it', 'de', 'es', 'fr', 'hi', 'id', 'ko', 'ms', 'nl', 'pt', 'ru', 'tl', 'tr'];
+        const shouldExclude =
+          nonEnglishLangs.some(lang =>
+            url.pathname.startsWith(`/${lang}/blog/`) &&
+            url.pathname !== `/${lang}/blog/`
+          ) ||
+          /\/blog\/\d+\//.test(url.pathname) ||
+          url.pathname.includes('/tag/') ||
+          url.pathname.includes('/category/');
+
+        return !shouldExclude;
       },
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date(),
     }),
     alpinejs(),
     solidJs(),
@@ -121,4 +117,8 @@ export default defineConfig({
       [rehypeAutolinkHeadings, autolinkConfig],
     ],
   },
+
+  // Optional: Keep your CSP if needed (Astro doesn't have built-in security.csp yet)
+  // Note: Astro core doesn't support `security` field natively — remove if causing issues
+  // If you need CSP, handle via middleware or Vercel headers instead
 });
