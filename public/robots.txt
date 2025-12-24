@@ -3,6 +3,8 @@ User-agent: *
 
 # Allow these specific pages
 Allow: /$
+Allow: /404$
+Allow: /404/$
 Allow: /about$
 Allow: /about/$
 Allow: /contact$
@@ -22,3 +24,5 @@ Disallow: /
 
 # Sitemap location
 Sitemap: https://tiktokiotestv.vercel.app/sitemap-index.xml
+Sitemap: https://tiktokiotestv.vercel.app/sitemap-0.xml
+
