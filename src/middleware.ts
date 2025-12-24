@@ -1,6 +1,6 @@
 // src/middleware.ts
 import { defineMiddleware } from 'astro:middleware';
-import { shouldIndexPage } from './utils/seo-config';
+
 
 // Your supported locales (must match astro.config.mjs)
 const supportedLocales = [
@@ -149,18 +149,5 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  // === SEO FILTERING: Check if page should be indexed ===
-  const shouldIndex = shouldIndexPage(pathname);
-  
-  // Store this info in locals so we can access it in Layout
-  context.locals.shouldIndex = shouldIndex;
-  
-  const response = await next();
-  
-  // Add X-Robots-Tag header for pages that shouldn't be indexed
-  if (!shouldIndex) {
-    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
-  }
-  
-  return response;
+  return next();
 });
