@@ -19,7 +19,7 @@ export const menuitems = [];
 ---
 
 <div class="top-0 py-1 lg:py-2 w-full bg-transparent lg:relative z-50 dark:bg-gray-900">
-    <nav class="z-10 sticky top-0 left-0 right-0 max-w-4xl xl:max-w-5xl mx-auto px-5 py-2.5 lg:border-none lg:py-4">
+    <nav class="z-10 sticky top-0 left-0 right-0 max-w-7xl xl:max-w-7xl mx-auto px-5 py-2.5 lg:border-none lg:py-4">
         <div class="flex items-center justify-between">
            <a href={localizePath("/")} class="flex items-center text-2xl font-bold tracking-widest text-gray-900 rounded-lg dark:text-white focus:outline-none focus:shadow-outline" aria-label="Tiktokio">
       			<Icon name="logo" width={30} class="dark:invert" />Tiktokio
@@ -28,13 +28,13 @@ export const menuitems = [];
             <!-- Desktop Menu -->
             <div class="hidden lg:block">
                 <ul class="flex space-x-10 text-base font-bold text-black/60 dark:text-white">
-                    <li class="hover:underline hover:underline-offset-4 hover:w-fit transition-all duration-100 ease-linear">
+                    <li class="hover:w-fit transition-all duration-100 ease-linear">
                         <a href={localizePath("/musically-down")} aria-label={t("header.nav_3")}>{t("header.nav_3")}</a>
                     </li>
-                    <li class="hover:underline hover:underline-offset-4 hover:w-fit transition-all duration-100 ease-linear">
+                    <li class="hover:w-fit transition-all duration-100 ease-linear">
                         <a href={localizePath("/")} aria-label={t("header.nav_2")}>{t("header.nav_2")}</a>
                     </li>
-                    <li class="hover:underline hover:underline-offset-4 hover:w-fit transition-all duration-100 ease-linear">
+                    <li class="hover:w-fit transition-all duration-100 ease-linear">
                         <a href={localizePath("/savetik-downloader-download-tiktok-videos-without-watermark")} aria-label={t("header.nav_4")}>{t("header.nav_4")}</a>
                     </li>
                 </ul>
@@ -58,13 +58,13 @@ export const menuitems = [];
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4">
             <ul class="flex flex-col space-y-4 text-base font-bold text-black/60 dark:text-white">
-                <li class="hover:underline hover:underline-offset-4 transition-all duration-100 ease-linear">
+                <li class="transition-all duration-100 ease-linear">
                     <a href={localizePath("/musically-down")} aria-label={t("header.nav_3")}>{t("header.nav_3")}</a>
                 </li>
-                <li class="hover:underline hover:underline-offset-4 transition-all duration-100 ease-linear">
+                <li class="transition-all duration-100 ease-linear">
                     <a href={localizePath("/")} aria-label={t("header.nav_2")}>{t("header.nav_2")}</a>
                 </li>
-                <li class="hover:underline hover:underline-offset-4 transition-all duration-100 ease-linear">
+                <li class="transition-all duration-100 ease-linear">
                     <a href={localizePath("/savetik-downloader-download-tiktok-videos-without-watermark")} aria-label={t("header.nav_4")}>{t("header.nav_4")}</a>
                 </li>
                 <li class="pt-2 border-t border-gray-200 dark:border-gray-700">
