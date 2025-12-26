@@ -159,6 +159,8 @@ export const ui = {
     'header.nav_1': 'TikTok Downloader',
     'header.nav_2': 'Download TikTok Video',
     'header.nav_3': 'TikTok Video Downloader',
+	'header.nav_4': 'Save TikTok',
+
 
 
 	// Main features section
@@ -3000,6 +3002,7 @@ ar: {
   
 
 } as const;
+
 
 
 
