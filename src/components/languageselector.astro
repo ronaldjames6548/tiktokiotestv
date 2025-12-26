@@ -5,105 +5,232 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
 const {
-	icon = "",
-	languageMapping = { en: "English", it: "Italiano" },
-	showFlag = false,
-	class: className = "",
-	...rest
+  icon = "",
+  languageMapping = { en: "English", it: "Italiano" },
+  showFlag = false,
+  class: className = "",
+  ...rest
 } = Astro.props;
 
-const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+// Use Astro.request.url (more reliable)
+const safeUrl = Astro.request?.url 
+  ? new URL(Astro.request.url) 
+  : new URL('/', Astro.site ?? 'http://localhost:4321');
+
 const currentLang = getLangFromUrl(safeUrl);
 const currentPath = safeUrl.pathname || '/';
 
+// Flag emoji mapping
+const flagMapping = {
+  en: "🇬🇧",  // UK
+  vn: "🇻🇳",  // Vietnam
+  id: "🇮🇩",  // Indonesia
+  tl: "🇵🇭",  // Philippines (Tagalog/Filipino)
+  ms: "🇲🇾",  // Malaysia
+  it: "🇮🇹",  // Italy
+  es: "🇪🇸",  // Spain
+  fr: "🇫🇷",  // France
+  de: "🇩🇪",  // Germany
+  pt: "🇵🇹",  // Portugal
+  nl: "🇳🇱",  // Netherlands
+  ru: "🇷🇺",  // Russia
+  ko: "🇰🇷",  // South Korea
+  ar: "🇸🇦",  // Saudi Arabia (Arabic)
+  hi: "🇮🇳",  // India (Hindi)
+  tr: "🇹🇷",  // Turkey
+};
+
 function getPagePath(fullPath: string, lang: string): string {
-	if (!fullPath || fullPath === '/') return '';
-	
-	if (lang === 'en') {
-		return fullPath === '/' ? '' : fullPath;
-	} else {
-		const pathWithoutLang = fullPath.replace(`/${lang}`, '') || '/';
-		return pathWithoutLang === '/' ? '' : pathWithoutLang;
-	}
+  if (!fullPath || fullPath === '/') return '';
+  
+  if (lang === 'en') {
+    return fullPath === '/' ? '' : fullPath;
+  }
+  
+  // Remove language prefix if present
+  const pathWithoutLang = fullPath.replace(`/${lang}`, '') || '/';
+  return pathWithoutLang === '/' ? '' : pathWithoutLang;
 }
 
 const basePath = getPagePath(currentPath, currentLang);
 
 const languageOptions = Object.entries(languages).map(([code, name]) => {
-	const url = getRelativeLocaleUrl(code, basePath);
-	return {
-		code,
-		name: languageMapping[code] || name,
-		url,
-		isCurrent: code === currentLang
-	};
+  const url = getRelativeLocaleUrl(code, basePath);
+  return {
+    code,
+    name: languageMapping[code] || name,
+    flag: flagMapping[code] || "🌐",
+    url,
+    isCurrent: code === currentLang,
+  };
 });
+
+const currentOption = languageOptions.find(opt => opt.isCurrent) || languageOptions[0];
 ---
 
 <div
-	class="flex items-center pl-2 rounded-md text-sm font-semibold text-center transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 dark:active:bg-stone-950"
-	aria-label="Language selection">
-	<Icon name="ion:language" class="w-5 dark:text-white" />
-	<label for="language-selector" class="sr-only">Choose a language</label>
-	
-	<select
-		id="language-selector"
-		class={`appearance-none cursor-pointer pl-3 pr-2 py-1.5 rounded-md dark:bg-stone-950 dark:text-white focus-visible:outline-none ${className}`}
-		aria-label="Choose a language"
-		data-locale-selector
-		{...rest}>
-		{languageOptions.map(option => (
-			<option 
-				value={option.url} 
-				data-locale={option.code}
-				selected={option.isCurrent}
-				class="dark:bg-stone-950 dark:text-white">
-				{option.name}
-			</option>
-		))}
-	</select>
+  class="relative flex items-center pl-2 rounded-md text-sm font-semibold text-center transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 dark:active:bg-stone-950 dark:border-gray-600"
+  aria-label="Language selection"
+>
+  <Icon name="ion:language" class="w-5 dark:text-white" />
+  <label for="language-selector" class="sr-only">Choose a language</label>
+
+  <!-- Custom Dropdown Button -->
+  <button
+    type="button"
+    id="language-dropdown-button"
+    class={`flex items-center gap-2 cursor-pointer pl-3 pr-8 py-1.5 rounded-md dark:bg-stone-950 dark:text-white focus-visible:outline-none ${className}`}
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-controls="language-dropdown-menu"
+  >
+    {showFlag && <span class="text-lg">{currentOption.flag}</span>}
+    <span>{currentOption.name}</span>
+    <svg
+      class="w-4 h-4 ml-auto absolute right-2 text-gray-500 dark:text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    id="language-dropdown-menu"
+    class="hidden absolute top-full left-0 mt-1 w-full min-w-[160px] bg-white dark:bg-stone-900 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto"
+    role="listbox"
+  >
+    {languageOptions.map(option => (
+      <button
+        type="button"
+        role="option"
+        data-locale={option.code}
+        data-url={option.url}
+        aria-selected={option.isCurrent}
+        class={`flex items-center gap-2 w-full px-3 py-2 text-left hover:bg-gray-100 dark:hover:bg-stone-800 transition-colors ${
+          option.isCurrent ? 'bg-gray-50 dark:bg-stone-800 font-semibold' : ''
+        }`}
+      >
+        {showFlag && <span class="text-lg">{option.flag}</span>}
+        <span class="dark:text-white">{option.name}</span>
+        {option.isCurrent && (
+          <svg
+            class="w-4 h-4 ml-auto text-blue-600 dark:text-blue-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        )}
+      </button>
+    ))}
+  </div>
+
+  <!-- Hidden native select (accessibility fallback) -->
+  <select
+    id="language-selector"
+    class="sr-only"
+    aria-label="Choose a language"
+    data-locale-selector
+    {...rest}
+  >
+    {languageOptions.map(option => (
+      <option
+        value={option.url}
+        data-locale={option.code}
+        selected={option.isCurrent}
+      >
+        {option.name}
+      </option>
+    ))}
+  </select>
 </div>
 
 <script>
-	// Set locale preference and navigate
-	function setLocalePreference(locale: string, url: string) {
-		// Set cookie for 1 year
-		document.cookie = `user-locale=${locale}; path=/; max-age=31536000; SameSite=Lax`;
-		// Navigate to new locale
-		window.location.href = url;
-	}
+  function setLocalePreference(locale: string, url: string) {
+    document.cookie = `user-locale=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+    window.location.href = url;
+  }
 
-	// Attach event listener
-	document.addEventListener('DOMContentLoaded', () => {
-		const selector = document.querySelector('[data-locale-selector]') as HTMLSelectElement;
-		if (selector) {
-			selector.addEventListener('change', (e) => {
-				const target = e.target as HTMLSelectElement;
-				const selectedOption = target.options[target.selectedIndex];
-				const locale = selectedOption.getAttribute('data-locale') || 'en';
-				const url = selectedOption.value;
-				setLocalePreference(locale, url);
-			});
-		}
-	});
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownButton = document.getElementById('language-dropdown-button');
+    const dropdownMenu = document.getElementById('language-dropdown-menu');
+    const selector = document.querySelector('[data-locale-selector]');
+
+    if (!dropdownButton || !dropdownMenu) return;
+
+    // Toggle dropdown
+    dropdownButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = dropdownMenu.classList.contains('hidden');
+      dropdownMenu.classList.toggle('hidden');
+      dropdownButton.setAttribute('aria-expanded', (!isHidden).toString());
+    });
+
+    // Option selection
+    dropdownMenu.querySelectorAll('[role="option"]').forEach(option => {
+      option.addEventListener('click', () => {
+        const locale = option.getAttribute('data-locale') || 'en';
+        const url = option.getAttribute('data-url') || '/';
+        setLocalePreference(locale, url);
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+        dropdownButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !dropdownMenu.classList.contains('hidden')) {
+        dropdownMenu.classList.add('hidden');
+        dropdownButton.setAttribute('aria-expanded', 'false');
+        dropdownButton.focus();
+      }
+    });
+
+    // Native select fallback
+    if (selector) {
+      selector.addEventListener('change', (e) => {
+        const target = e.target;
+        const selectedOption = target.options[target.selectedIndex];
+        const locale = selectedOption.getAttribute('data-locale') || 'en';
+        const url = selectedOption.value;
+        setLocalePreference(locale, url);
+      });
+    }
+  });
 </script>
 
 <style>
-	select {
-		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-		background-position: right 0.5rem center;
-		background-repeat: no-repeat;
-		background-size: 1.5em 1.5em;
-		padding-right: 2.5rem;
-	}
-	
-	@media (prefers-color-scheme: dark) {
-		select {
-			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%9ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-		}
-	}
-	
-	.dark select {
-		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%9ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-	}
+  #language-dropdown-menu {
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+
+  #language-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #language-dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #language-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+
+  .dark #language-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
 </style>
