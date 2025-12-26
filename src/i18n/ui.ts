@@ -1,7 +1,7 @@
 export const languages = {
   en: 'English',
   it: 'Italiano',
-  vi: 'Tiếng Việt',
+  vn: 'Tiếng Việt',
   ar: 'العربية',
   fr: 'Français',
   de: 'Deutsch',
@@ -357,7 +357,7 @@ export const ui = {
     'blog.next': 'Next',
   },
 
- vi: {
+ vn: {
   // Metadata trang web
   'site.title': 'TikTokio: Trình tải video TikTok – Tải video TikTok không logo',
   'site.description': 'TikTokio – Trình tải video TikTok giúp bạn tải video TikTok định dạng MP4 không logo một cách dễ dàng. Nhanh chóng, đơn giản và hoạt động trên mọi thiết bị.',
@@ -3002,6 +3002,7 @@ ar: {
   
 
 } as const;
+
 
 
 
