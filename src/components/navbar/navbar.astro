@@ -40,10 +40,7 @@ export const menuitems = [];
                 </ul>
             </div>
             
-            <!-- Desktop Language Selector -->
-            <div class="hidden lg:flex lg:items-center gap-x-2">
-                <LanguageSelector showFlag={true} class="appearance-none py-1 px-2 rounded bg-slate-100 w-full"/>
-            </div>
+            
             
             <!-- Mobile Menu Button -->
             <div class="flex items-center justify-center lg:hidden">
@@ -67,9 +64,7 @@ export const menuitems = [];
                 <li class="transition-all duration-100 ease-linear">
                     <a href={localizePath("/savetik-downloader-download-tiktok-videos-without-watermark")} aria-label={t("header.nav_4")}>{t("header.nav_4")}</a>
                 </li>
-                <li class="pt-2 border-t border-gray-200 dark:border-gray-700">
-                    <LanguageSelector showFlag={true} class="appearance-none py-1 px-2 rounded bg-slate-100 w-full"/>
-                </li>
+                
             </ul>
         </div>
     </nav>
