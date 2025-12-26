@@ -41,9 +41,9 @@ const features = [
 
 
 
-<div class="relative rounded-2xl border border-white/5 bg-[#111113] p-8 md:p-12 mb-12 overflow-hidden group" style="opacity: 1; transform: none;">
-	<div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-		<span class="absolute right-8 top-8 text-8xl font-light text-white/[0.03]">TikTokio</span>
+<div class="relative rounded-2xl border-white/5 bg-[#111113] shadow-lg p-8 md:p-12 mb-12 overflow-hidden group" style="opacity: 1; transform: none;">
+	<div class="absolute inset-0 transition-opacity duration-500"></div>
+		<span class="absolute right-8 top-8 text-8xl font-light text-grey-900/[0.03]">TikTokio</span>
 	<div class="relative">
 		<div class="flex items-center gap-4 mb-6">
 			<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg">
@@ -51,10 +51,10 @@ const features = [
 					<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
 				</svg>
 			</div>
-			<h2 class="text-2xl font-medium text-white">{t("how.works_h2")}</h2>
+			<h2 class="text-2xl font-medium text-grey-900">{t("how.works_h2")}</h2>
 		</div>
 		<div class="grid md:grid-cols-2 gap-8">
-			<div class="space-y-4 text-white/50 font-light leading-relaxed">
+			<div class="space-y-4 text-grey-900 font-light leading-relaxed">
 				<p class="text-lg mb-2" set:html={t('how.works')} />
 				<p class="text-lg mb-2" set:html={t('pgfeatures.paraleft2')} />
 				<p class="text-lg mb-2" set:html={t('main.popular_text')} />
@@ -65,13 +65,13 @@ const features = [
 				<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
 					<svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="copy-3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" class="icon line"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path id="primary" d="M15,7h3a1,1,0,0,1,1,1V20a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5;"></path><path id="primary-2" data-name="primary" d="M14,3H4A1,1,0,0,0,3,4V16a1,1,0,0,0,1,1H14a1,1,0,0,0,1-1V4A1,1,0,0,0,14,3ZM7,4A1,1,0,0,0,8,5h2a1,1,0,0,0,1-1V3H7Z" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5;"></path></g></svg>
 				</div>
-					<span class="text-lg text-white/60" set:html={t('how.step1')} />
+					<span class="text-lg text-grey-900" set:html={t('how.step1')} />
 				</div>
 				<div class="flex items-center gap-3 rounded-xl bg-white/5 border border-white/5 p-4 hover:bg-white/[0.07] transition-colors" style="opacity: 1; transform: none;">
 				<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
 					<svg fill="#ffffff" height="18px" width="18px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 62.094 62.094" xml:space="preserve" stroke="#ffffff" stroke-width="1.5523500000000001"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M58.933,28.698l-5.19-5.996V9.854c0-3.044-2.477-5.521-5.521-5.521h-6.29V1c0-0.552-0.448-1-1-1H15.728 c-0.552,0-1,0.448-1,1v3.333h-6.29c-3.044,0-5.521,2.477-5.521,5.521v41.894c0,3.044,2.477,5.521,5.521,5.521h12.098 c0.917,2.798,3.549,4.826,6.649,4.826h24.993c3.859,0,6.999-3.14,6.999-6.999V29.353C59.177,29.112,59.091,28.88,58.933,28.698z M46.305,17.165l9.684,11.188h-4.685c-2.756,0-4.999-2.242-4.999-4.999V17.165z M16.728,2h23.204v5.572H16.728V2z M8.438,55.268 c-1.941,0-3.521-1.58-3.521-3.521V9.854c0-1.941,1.58-3.521,3.521-3.521h6.29v2.24c0,0.552,0.448,1,1,1h25.204c0.552,0,1-0.448,1-1 v-2.24h6.29c1.941,0,3.521,1.58,3.521,3.521v10.538l-5.682-6.564c-0.19-0.22-0.466-0.346-0.756-0.346h-18.12 c-3.859,0-6.999,3.139-6.999,6.998v34.616c0,0.058,0.007,0.115,0.009,0.172H8.438z M52.178,60.094H27.185 c-2.756,0-4.999-2.242-4.999-4.999V20.479c0-2.756,2.242-4.998,4.999-4.998h17.12v7.873c0,3.859,3.14,6.999,6.999,6.999h5.873 v24.743C57.177,57.852,54.935,60.094,52.178,60.094z"></path> </g></svg>
 				</div>
-					<span class="text-lg text-white/60" set:html={t('how.step2')} />
+					<span class="text-lg text-grey-900" set:html={t('how.step2')} />
 				</div>
 				<div class="flex items-center gap-3 rounded-xl bg-white/5 border border-white/5 p-4 hover:bg-white/[0.07] transition-colors" style="opacity: 1; transform: none;">
 				<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
@@ -80,7 +80,7 @@ const features = [
 						<path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path>
 					</svg>
 				</div>
-					<span class="text-lg text-white/60" set:html={t('how.step3')} />
+					<span class="text-lg text-grey-900" set:html={t('how.step3')} />
 				</div>
 				<div class="flex items-center gap-3 rounded-xl bg-white/5 border border-white/5 p-4 hover:bg-white/[0.07] transition-colors" style="opacity: 1; transform: none;">
 				<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
@@ -88,7 +88,7 @@ const features = [
 						<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path>
 					</svg>
 				</div>
-					<span class="text-lg text-white/60" set:html={t('how.step4')} />
+					<span class="text-lg text-grey-900" set:html={t('how.step4')} />
 				</div>
 </div></div></div></div>
 
