@@ -131,7 +131,7 @@ function ResultSection(props: ResultSectionProps) {
   };
   
   return (
-    <div class="mt-6">
+    <div class="py-8">
       <div class="mt-4 max-w-6xl mx-auto">
         <div 
           class="relative rounded-lg overflow-hidden border border-white/10 p-4"
@@ -387,4 +387,5 @@ function ResultSection(props: ResultSectionProps) {
 }
 
 export default ResultSection;
+
 
