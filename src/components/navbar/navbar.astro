@@ -82,7 +82,6 @@ export const menuitems = [
     </button>
   </div>
   <nav
-    :class="{'flex': open, 'hidden': !open}"
     x-show="open"
     x-transition:enter="transition ease-out duration-200"
     x-transition:enter-start="opacity-0 transform scale-90"
@@ -90,7 +89,7 @@ export const menuitems = [
     x-transition:leave="transition ease-in duration-200"
     x-transition:leave-start="opacity-100 transform scale-100"
     x-transition:leave-end="opacity-0 transform scale-90"
-    class="md:mt-0 lg:pl-8 md:items-center flex-grow pb-4 md:pb-0 flex-col gap-2 transition-all ease-out md:transition-none md:justify-center md:flex-row hidden"
+    class="md:mt-0 lg:pl-8 md:items-center flex-grow pb-4 md:pb-0 flex-col gap-2 transition-all ease-out md:transition-none md:justify-center md:flex-row flex"
     aria-label="Main navigation"
   >
     <div
@@ -143,23 +142,11 @@ export const menuitems = [
                   {item.children.map((subitem) => (
                     <Link
                       href={localizePath(subitem.path)}
-                      style="hover"
                       size="sm"
                       class="block"
                       x-data="{ isActive: false }"
-                      x-init={`() => {
-												const path = $el.getAttribute('data-path');
-												const checkSubPath = () => {
-													isActive = window.location.pathname === path ||
-																window.location.pathname === path + '/' ||
-																window.location.pathname === '/it' + path ||
-																window.location.pathname === '/it' + path + '/';
-												};
-												document.removeEventListener('astro:page-load', checkSubPath);
-												document.addEventListener('astro:page-load', checkSubPath);
-											}`}
+                      x-init={`isActive = window.location.pathname.includes('${subitem.path}')`}
                       x-bind:class="{ 'dark:bg-gray-600': isActive }"
-                      data-path={subitem.path}
                       aria-label={subitem.titleKey ? t(subitem.titleKey) : subitem.title}
                       role="menuitem"
                     >
@@ -172,22 +159,10 @@ export const menuitems = [
           ) : (
             <Link
               href={localizePath(item.path)}
-              style="hover"
               size="sm"
               x-data="{ isActive: false }"
-              x-init={`() => {
-								const path = $el.getAttribute('data-path');
-								const checkPath = () => {
-									isActive = window.location.pathname === path ||
-												window.location.pathname === path + '/' ||
-												window.location.pathname === '/it' + path ||
-												window.location.pathname === '/it' + path + '/';
-								};
-								document.removeEventListener('astro:page-load', checkPath);
-								document.addEventListener('astro:page-load', checkPath);
-							}`}
+              x-init={`isActive = window.location.pathname.includes('${item.path}')`}
               x-bind:class="{ 'dark:bg-gray-600': isActive }"
-              data-path={item.path}
               aria-label={item.titleKey ? t(item.titleKey) : item.title}
             >
               {item.titleKey ? t(item.titleKey) : item.title}
@@ -195,11 +170,6 @@ export const menuitems = [
           )
         )
       }
-      <div class="mt-4 md:mt-0 flex flex-col md:flex-row gap-4 hidden md:block">
-        <div class="flex justify-center gap-3 items-center">
-          
-        </div>
-      </div>
     </div>
   </nav>
 </div>
