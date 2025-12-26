@@ -511,7 +511,11 @@ function InputScreen({}: Props) {
         />
       </Show>
 
-      
+      <Show when={!data()}>
+        <div class="my-8 w-full flex justify-center">
+          
+        </div>
+      </Show>
 
       <Show when={data() && data()?.result}>
         <ResultSection
