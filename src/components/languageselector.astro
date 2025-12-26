@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components";
 const {
   icon = "",
   languageMapping = { en: "English", it: "Italiano" },
-  showFlag = false,
+  showFlag = true,
   class: className = "",
   ...rest
 } = Astro.props;
@@ -22,22 +22,22 @@ const currentPath = safeUrl.pathname || '/';
 
 // Flag emoji mapping
 const flagMapping = {
-  en: "🇬🇧",  // UK
-  vn: "🇻🇳",  // Vietnam
-  id: "🇮🇩",  // Indonesia
-  tl: "🇵🇭",  // Philippines (Tagalog/Filipino)
-  ms: "🇲🇾",  // Malaysia
-  it: "🇮🇹",  // Italy
-  es: "🇪🇸",  // Spain
-  fr: "🇫🇷",  // France
-  de: "🇩🇪",  // Germany
-  pt: "🇵🇹",  // Portugal
-  nl: "🇳🇱",  // Netherlands
-  ru: "🇷🇺",  // Russia
-  ko: "🇰🇷",  // South Korea
-  ar: "🇸🇦",  // Saudi Arabia (Arabic)
-  hi: "🇮🇳",  // India (Hindi)
-  tr: "🇹🇷",  // Turkey
+  en: "🇺🇸", // Changed to US flag (optional)
+  vn: "🇻🇳",
+  id: "🇮🇩",
+  tl: "🇵🇭",
+  ms: "🇲🇾",
+  it: "🇮🇹",
+  es: "🇪🇸",
+  fr: "🇫🇷",
+  de: "🇩🇪",
+  pt: "🇵🇹",
+  nl: "🇳🇱",
+  ru: "🇷🇺",
+  ko: "🇰🇷",
+  ar: "🇸🇦",
+  in: "🇮🇳",
+  tr: "🇹🇷",
 };
 
 function getPagePath(fullPath: string, lang: string): string {
