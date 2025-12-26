@@ -103,11 +103,9 @@ export const menuitems = [
               class="relative"
               x-data="{ open: false }"
             >
-              <Button
+              <button
                 x-on:click="open = !open"
-                style="link"
-                size="sm"
-                class="mt-[2px]"
+                class="text-gray-900 dark:text-white text-sm font-medium px-3 py-2"
                 aria-label={item.titleKey ? t(item.titleKey) : item.title}
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -126,7 +124,7 @@ export const menuitems = [
                     clip-rule="evenodd"
                   />
                 </svg>
-              </Button>
+              </button>
               <div
                 x-show="open"
                 x-transition:enter="transition ease-out duration-100"
@@ -140,33 +138,32 @@ export const menuitems = [
               >
                 <div class="px-2 py-2 rounded-md shadow dark:bg-gray-800">
                   {item.children.map((subitem) => (
-                    <Link
+                    <a
                       href={localizePath(subitem.path)}
-                      size="sm"
-                      class="block"
+                      class="block text-gray-900 dark:text-white text-sm px-3 py-2"
                       x-data="{ isActive: false }"
                       x-init={`isActive = window.location.pathname.includes('${subitem.path}')`}
-                      x-bind:class="{ 'dark:bg-gray-600': isActive }"
+                      x-bind:class="{ 'font-semibold': isActive }"
                       aria-label={subitem.titleKey ? t(subitem.titleKey) : subitem.title}
                       role="menuitem"
                     >
                       {subitem.titleKey ? t(subitem.titleKey) : subitem.title}
-                    </Link>
+                    </a>
                   ))}
                 </div>
               </div>
             </div>
           ) : (
-            <Link
+            <a
               href={localizePath(item.path)}
-              size="sm"
+              class="text-gray-900 dark:text-white text-sm font-medium px-3 py-2"
               x-data="{ isActive: false }"
               x-init={`isActive = window.location.pathname.includes('${item.path}')`}
-              x-bind:class="{ 'dark:bg-gray-600': isActive }"
+              x-bind:class="{ 'font-semibold': isActive }"
               aria-label={item.titleKey ? t(item.titleKey) : item.title}
             >
               {item.titleKey ? t(item.titleKey) : item.title}
-            </Link>
+            </a>
           )
         )
       }
