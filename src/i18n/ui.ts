@@ -6,7 +6,7 @@ export const languages = {
   fr: 'Français',
   de: 'Deutsch',
   es: 'Español',
-  hi: 'हिन्दी',
+  in: 'हिन्दी',
   id: 'Bahasa Indonesia',
   ru: 'Русский',
   pt: 'Português',
@@ -1414,7 +1414,7 @@ ar: {
     'blog.next': 'Siguiente',
   },
   
-  hi: {
+  in: {
     // Site metadata
     'site.title': 'TikTokio: टिकटॉक डाउनलोडर - बिना वॉटरमार्क के टिकटॉक वीडियो डाउनलोड करें',
     'site.description': 'TikTokio - ऑनलाइन आसानी से बिना वॉटरमार्क के MP4 में टिकटॉक वीडियो डाउनलोड करने के लिए टिकटॉक डाउनलोडर। टिकटॉक वीडियो डाउनलोडर तेज, आसान और किसी भी डिवाइस पर काम करता है',
@@ -3002,6 +3002,7 @@ ar: {
   
 
 } as const;
+
 
 
 
