@@ -1,3 +1,4 @@
+
 ---
 import Container from "@components/container.astro";
 import Layout from "@layouts/Layout.astro";
@@ -7,7 +8,6 @@ import Features from "@components/features.astro";
 import Newsletter from "@components/newsletter.astro";
 import Logos from "@components/logos.astro";
 import Faq from "@components/faq.astro";
-
 
 // Add new built-in i18n imports
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
@@ -19,11 +19,12 @@ const t = useTranslations(lang);
 ---
 
 <Layout>
-<Hero />
-	<Container>
-		<Features />
-		
-		<Faq />
-		
-	</Container>
+  <Hero />
+  <div class="hidden md:block">
+    <Container>
+      <Features />
+      <Faq />
+    </Container>
+  </div>
 </Layout>
+
