@@ -1,23 +1,16 @@
 ---
 import Button from "@components/ui/button.astro";
 import Link from "@components/ui/link.astro";
-import LanguageSelector from "@components/languageselector.astro"; // 🔧 ADDED MISSING IMPORT
+import LanguageSelector from "@components/languageselector.astro";
 
-// Remove old astro-i18next imports
-// import { localizePath } from "astro-i18next";
-// import { t } from "i18next";
-
-// Add new built-in i18n imports
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
-// Get current language and create translation function
 const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
 const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
 
-// Helper function to create localized paths
 function localizePath(path: string) {
 	if (!path || (path && path.startsWith('http')) || path === '#') return path;
 	return getRelativeLocaleUrl(lang, path);
@@ -51,16 +44,17 @@ export const menuitems = [
     <a
       href={localizePath("/")}
       class="flex items-center text-2xl font-bold tracking-widest text-gray-900 rounded-lg dark:text-white focus:outline-none focus:shadow-outline"
+      aria-label="Tiktokio Home"
     >
       <Icon name="logo" width={30} class="dark:invert" />
       Tiktokio
     </a>
     <div class="flex-grow md:hidden"></div>
 
-    
     <button
       class="md:hidden text-gray-500 w-10 h-10 relative focus:outline-none"
       @click="open = !open"
+      aria-label="Toggle navigation menu"
     >
       <span class="sr-only">Open main menu</span>
       <div
@@ -97,6 +91,7 @@ export const menuitems = [
     x-transition:leave-start="opacity-100 transform scale-100"
     x-transition:leave-end="opacity-0 transform scale-90"
     class="md:mt-0 lg:pl-8 md:items-center flex-grow pb-4 md:pb-0 flex-col gap-2 transition-all ease-out md:transition-none md:justify-center md:flex-row hidden"
+    aria-label="Main navigation"
   >
     <div
       class="flex flex-col flex-grow text-center gap-2 md:justify-center md:items-center md:flex md:flex-row md:mx-auto"
@@ -114,6 +109,9 @@ export const menuitems = [
                 style="link"
                 size="sm"
                 class="mt-[2px]"
+                aria-label={item.titleKey ? t(item.titleKey) : item.title}
+                aria-haspopup="true"
+                aria-expanded="false"
               >
                 {item.titleKey ? t(item.titleKey) : item.title}
                 <svg
@@ -121,6 +119,7 @@ export const menuitems = [
                   viewBox="0 0 20 20"
                   x-bind:class="{'rotate-180': open, 'rotate-0': !open}"
                   class="inline w-4 h-4 mb-[2px] transition-transform duration-200 transform"
+                  aria-hidden="true"
                 >
                   <path
                     fill-rule="evenodd"
@@ -138,6 +137,7 @@ export const menuitems = [
                 x-transition:leave-start="transform opacity-100 scale-100"
                 x-transition:leave-end="transform opacity-0 scale-95"
                 class="absolute mt-2 bg-white right-0 w-full origin-top-right rounded-md md:w-48 outline-2 border border-gray-300"
+                role="menu"
               >
                 <div class="px-2 py-2 rounded-md shadow dark:bg-gray-800">
                   {item.children.map((subitem) => (
@@ -159,7 +159,9 @@ export const menuitems = [
 												document.addEventListener('astro:page-load', checkSubPath);
 											}`}
                       x-bind:class="{ 'dark:bg-gray-600': isActive }"
+                      data-path={subitem.path}
                       aria-label={subitem.titleKey ? t(subitem.titleKey) : subitem.title}
+                      role="menuitem"
                     >
                       {subitem.titleKey ? t(subitem.titleKey) : subitem.title}
                     </Link>
