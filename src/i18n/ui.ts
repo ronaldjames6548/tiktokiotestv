@@ -1,12 +1,12 @@
 export const languages = {
   en: 'English',
   it: 'Italiano',
-  vn: 'Tiếng Việt',
+  vi: 'Tiếng Việt',
   ar: 'العربية',
   fr: 'Français',
   de: 'Deutsch',
   es: 'Español',
-  in: 'हिन्दी',
+  hi: 'हिन्दी',
   id: 'Bahasa Indonesia',
   ru: 'Русский',
   pt: 'Português',
@@ -357,7 +357,7 @@ export const ui = {
     'blog.next': 'Next',
   },
 
- vn: {
+ vi: {
   // Metadata trang web
   'site.title': 'TikTokio: Trình tải video TikTok – Tải video TikTok không logo',
   'site.description': 'TikTokio – Trình tải video TikTok giúp bạn tải video TikTok định dạng MP4 không logo một cách dễ dàng. Nhanh chóng, đơn giản và hoạt động trên mọi thiết bị.',
@@ -1414,7 +1414,7 @@ ar: {
     'blog.next': 'Siguiente',
   },
   
-  in: {
+  hi: {
     // Site metadata
     'site.title': 'TikTokio: टिकटॉक डाउनलोडर - बिना वॉटरमार्क के टिकटॉक वीडियो डाउनलोड करें',
     'site.description': 'TikTokio - ऑनलाइन आसानी से बिना वॉटरमार्क के MP4 में टिकटॉक वीडियो डाउनलोड करने के लिए टिकटॉक डाउनलोडर। टिकटॉक वीडियो डाउनलोडर तेज, आसान और किसी भी डिवाइस पर काम करता है',
@@ -3002,6 +3002,7 @@ ar: {
   
 
 } as const;
+
 
 
 
