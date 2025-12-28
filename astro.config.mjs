@@ -14,20 +14,15 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   output: 'server',
   site: 'https://tiktokiotestv.vercel.app',
-
   adapter: vercel({
-    // Recommended: Enable Vercel Analytics and Speed Insights
     webAnalytics: {
       enabled: true,
     },
     speedInsights: {
       enabled: true,
     },
-    // Optional: Better image optimization via Vercel
     imageService: true,
   }),
-
-  // Your i18n configuration (perfect as-is)
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'it', 'vi', 'ar', 'fr', 'de', 'es', 'hi', 'id', 'ru', 'pt', 'ko', 'tl', 'nl', 'ms', 'tr'],
@@ -35,13 +30,11 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-
   vite: {
     plugins: [tailwindcss()],
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
     },
-    // Prevent SSR issues with the TikTok library (dynamic require only works server-side)
     ssr: {
       external: ['@tobyg74/tiktok-api-dl'],
     },
@@ -49,7 +42,6 @@ export default defineConfig({
       exclude: ['@tobyg74/tiktok-api-dl'],
     },
   },
-
   integrations: [
     sitemap({
       filter(page) {
@@ -64,6 +56,45 @@ export default defineConfig({
         ];
         
         return allowedPages.includes(page);
+      },
+      // Set default values for all pages
+      changefreq: 'weekly',
+      lastmod: new Date(),
+      priority: 0.7,
+      // Use serialize to customize individual pages
+      serialize(item) {
+        // Homepage - highest priority, changes daily
+        if (item.url === 'https://tiktokiotestv.vercel.app/') {
+          item.changefreq = 'daily';
+          item.priority = 1.0;
+          item.lastmod = new Date();
+        }
+        // Blog posts - medium-high priority, changes monthly
+        else if (item.url.includes('/blog/')) {
+          item.changefreq = 'monthly';
+          item.priority = 0.8;
+          item.lastmod = new Date();
+        }
+        // Tool pages - high priority, changes weekly
+        else if (item.url.includes('/savetik-downloader-download-tiktok-videos-without-watermark') || item.url.includes('/musically-down')) {
+          item.changefreq = 'weekly';
+          item.priority = 0.9;
+          item.lastmod = new Date();
+        }
+        // About and Contact - low priority, changes yearly
+        else if (item.url.includes('/about') || item.url.includes('/contact')) {
+          item.changefreq = 'yearly';
+          item.priority = 0.5;
+          item.lastmod = new Date();
+        }
+        // Privacy Policy - low priority, changes yearly
+        else if (item.url.includes('/privacy-policy')) {
+          item.changefreq = 'yearly';
+          item.priority = 0.3;
+          item.lastmod = new Date();
+        }
+        
+        return item;
       },
     }),
     alpinejs(),
@@ -109,15 +140,10 @@ export default defineConfig({
     }),
     icon(),
   ],
-
   markdown: {
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, autolinkConfig],
     ],
   },
-
-  // Optional: Keep your CSP if needed (Astro doesn't have built-in security.csp yet)
-  // Note: Astro core doesn't support `security` field natively – remove if causing issues
-  // If you need CSP, handle via middleware or Vercel headers instead
 });
