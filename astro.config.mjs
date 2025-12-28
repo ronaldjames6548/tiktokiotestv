@@ -12,7 +12,7 @@ import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  output: 'server',
+  output: 'hybrid',
   site: 'https://tiktokiotestv.vercel.app',
   adapter: vercel({
     webAnalytics: {
