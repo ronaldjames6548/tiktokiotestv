@@ -22,10 +22,90 @@ function localizePath(path: string) {
 	return getRelativeLocaleUrl(lang, path);
 }
 
-const features = [
-	
-];
+export default function DownloadTikFeatures() {
+  const features = [
+    {
+      icon: "∞",
+      iconBg: "bg-blue-500",
+      title: "Boundless Downloads",
+      description: "Fetch as many TikTok videos as your heart desires without limitations."
+    },
+    {
+      icon: "⚡",
+      iconBg: "bg-orange-500",
+      title: "Rapid and Straightforward",
+      description: "Experience blazing-fast downloads, even on slower internet connections."
+    },
+    {
+      icon: "🚫",
+      iconBg: "bg-green-500",
+      title: "Completely Watermark-Free",
+      description: "Every video downloaded comes pure — no watermarks, just clarity."
+    },
+    {
+      icon: "🔒",
+      iconBg: "bg-pink-500",
+      title: "Secure and Private",
+      description: "No logins required — your data remains secure with DownloadTik."
+    },
+    {
+      icon: "💻",
+      iconBg: "bg-purple-600",
+      title: "Feature-Rich Tools",
+      description: "Track views and store videos — features unavailable within the TikTok app."
+    },
+    {
+      icon: "😊",
+      iconBg: "bg-yellow-500",
+      title: "No Installation Required",
+      description: "No accounts, no software, no problem — just paste and download."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 px-6 py-16">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Why Choose DownloadTik for TikTok Story Downloads?
+          </h1>
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+            Quickly capture any TikTok story you admire — effortlessly by using DownloadTik.
+            <br />
+            No watermarks, no caps, just seamless downloads.
+          </p>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {features.map((feature, index) => (
+            <div key={index} className="flex gap-4">
+              {/* Icon */}
+              <div className={`${feature.iconBg} rounded-2xl w-14 h-14 flex items-center justify-center flex-shrink-0 text-2xl`}>
+                {feature.icon}
+              </div>
+              
+              {/* Content */}
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 ---
+
+
+
 
 
 <div class="relative p-4">
