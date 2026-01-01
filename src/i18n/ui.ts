@@ -310,18 +310,7 @@ export const ui = {
 	'st.ans5': 'Videos without the TikTok logo and user ID are cleaner and better for editing, repurposing or sharing professionally, as the watermark can reduce visual quality and aesthetics.',
 	'st.q6': 'What happens if I cant download a video or get an error?',
 	'st.ans6': 'This usually means the video is private, has been removed, restricted in certain countries or the link is invalid. Ensure the link is public and try again. SaveTik supports only public videos.',
-	
-
-
-
- 
-    
-   
-
-
-	
-
-	  
+	 
 	
     // Miscellaneous section
     'mics.404_title': 'Error 404 Page Not Found | Tiktokio TikTok Downloader',
@@ -651,7 +640,304 @@ export const ui = {
   'blog.prev': 'Trước',
   'blog.next': 'Tiếp'
   },
-  
+
+it: {
+
+// Main Site metadata
+  'site.title': 'TikTokio - Downloader Video TikTok Gratuito Online Senza Filigrana',
+  'site.description': 'TikTokio – Il downloader video TikTok gratuito online senza filigrana n.1 per download illimitati. Scarica video TikTok con link in HD.',
+  'site.keywords': 'TikTokio, downloader video TikTok online, scaricare video TikTok, download TikTok illimitati, downloader TikTok gratuito, salvare video TikTok, downloader TikTok online',
+
+  // TikTok Video Downloader Page metadata
+  'tvd.title': 'Tiktokio – Downloader Video TikTok Senza Filigrana Gratuito HD',
+  'tvd.description': 'Scarica video TikTok senza filigrana con il downloader video TikTok online in full HD tramite Tiktokio. Il downloader TikTok online più veloce in pochi secondi',
+  'tvd.keywords': 'TikTokio, downloader video TikTok, scaricare video TikTok, downloader TikTok gratuito, salvare video TikTok, downloader TikTok online',
+
+  // TikTok Downloader Page metadata
+  'td.title': 'Tiktokio TikTok Downloader – Download Gratuito Senza Filigrana HD',
+  'td.description': 'Tiktokio TikTok Downloader rimuove le filigrane all\'istante. Scarica video e suoni TikTok in HD gratuitamente su mobile o PC. Veloce, sicuro, senza app.',
+  'td.keywords': 'TikTokio, downloader TikTok senza filigrana, salvare video TikTok online, come scaricare video TikTok, miglior tool downloader TikTok, sito downloader TikTok, app downloader video TikTok, salvavideo TikTok gratuito, scaricare TikTok MP4',
+
+  // Download TikTok Video Page metadata
+  'dtv.title': 'Tiktokio Scarica Video TikTok Senza Filigrana – Gratuito HD Veloce',
+  'dtv.description': 'Con Tiktokio scarica video TikTok in full HD senza filigrana in pochi secondi. Il downloader Tiktokio gratuito più veloce con download illimitati.',
+  'dtv.keywords': 'TikTokio, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // Download Foto Tiktok Page metadata
+  'dft.title': 'Downloader Foto TikTok – Scarica Immagini Slideshow Senza Filigrana',
+  'dft.description': 'Scarica Foto TikTok. Scarica slideshow e caroselli foto TikTok senza filigrana in full HD in pochi secondi. Gratuito, senza login, funziona su iPhone e Android!',
+  'dft.keywords': 'downloader foto tiktok senza filigrana, scaricare immagini slideshow tiktok, salvare carosello foto tiktok senza filigrana, downloader foto tiktok 2025, scaricare tutte le foto da post tiktok',
+
+  // Musically Down Page metadata
+  'md.title': 'Musically Down - Scarica Video TikTok Senza Filigrana Online',
+  'md.description': 'Musically Download downloader video TikTok! Scarica video TikTok con o senza filigrana online. Salva video TikTok in HD e MP3 da qualsiasi dispositivo.',
+  'md.keywords': 'TikTokio, musicallydown, musically down, musicallydown com, mussically down.com, musicallydown.com tiktok',
+
+  // Savefrom Download From Tiktok Page metadata
+  'savef.title': 'SaveFrom - Download Video TikTok - Downloader TikTok Savefromnet',
+  'savef.description': 'Scopri il downloader video TikTok più veloce di savefromnet. Scarica qualsiasi video TikTok in HD senza filigrana in pochi secondi. Inizia a scaricare ora!',
+  'savef.keywords': 'TikTokio, download video tiktok, downloader video tiktok, scaricare tiktok video, download video tiktok senza filigrana, scaricare video tiktok',
+
+  // Savetik Downloader Page metadata
+  'savetik.title': 'Savetik Downloader Video Tiktok - Salva Video Tiktok Senza Filigrana',
+  'savetik.description': 'SaveTik Downloader è un downloader video tiktok senza filigrana. Puoi salvare video TikTok da qualsiasi dispositivo.',
+  'savetik.keywords': 'TikTokio, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // Savett Page metadata
+  'savett.title': 'SaveTT - Downloader TikTok - Scarica Video TikTok Senza Filigrana',
+  'savett.description': 'SaveTT è il miglior downloader TikTok online. Usando SaveTT, scarica video TikTok senza filigrana in formato MP4 ad alta definizione facilmente.',
+  'savett.keywords': 'TikTokio, salva tiktok, tiktok salva, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // SnapTik Page metadata
+  'snaptik.title': 'SnapTik - Downloader Video TT Scarica Video TikTok Senza Filigrana',
+  'snaptik.description': 'SnapTik - Scarica video TikTok all\'istante con SnapTik - Salvavideo TikTok. SnapTik è un downloader video TikTok gratuito che permette di scaricare video TikTok.',
+  'snaptik.keywords': 'TikTokio, snaptik, scaricare video tiktok, scaricare tiktok, downloader tiktok, scaricare video tiktok senza filigrana',
+
+  // SssTik Page metadata
+  'ssstik.title': 'SSSTik - Downloader TikTok Scarica video tiktok online.',
+  'ssstik.description': 'ssstiktok ti permette di scaricare video tiktok all\'istante. Il downloader tiktok più veloce per salvare video TT con alta qualità TikTok in MP4. Salva video da TiKTok su tutti i tipi di dispositivi.',
+  'ssstik.keywords': 'TikTokio, ssstik tok, ssstik io, ss tiktok, ssstik.io mp3, ssstik. io',
+
+  // SssTikTok Page metadata
+  'ssstiktok.title': 'SSSTikTok - Downloader TikTok Senza Filigrana Scarica Video TikTok Online',
+  'ssstiktok.description': 'SSSTikTok downloader video tiktok online è un servizio gratuito per scaricare video TikTok senza filigrana in formato alta qualità. Download video TikTok in Mp4.',
+  'ssstiktok.keywords': 'TikTokio, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // Tikmate Page metadata
+  'tikmate.title': 'Tikmate - Scarica video tiktok, Downloader Tiktok MP4 gratuito',
+  'tikmate.description': 'Tikmate è un downloader video TikTok veloce e facile, senza filigrana e in HD. Tikmate downloader è il migliore per salvare video con o senza filigrana senza login o informazioni utente',
+  'tikmate.keywords': 'TikTokio, scaricare video tiktok senza filigrana, tikmate downloader online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // Tiksave Page metadata
+  'tiksave.title': 'Tiktokio - Scarica Video TikTok Online Senza Filigrana facilmente',
+  'tiksave.description': 'Scarica facilmente video TikTok senza filigrana con Tiktokio downloader Tiktok gratuito. Salva video Tiktok in formato MP4. Nessuna registrazione, download gratuiti su tutti i dispositivi.',
+  'tiksave.keywords': 'TikTokio, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // TikToksss Page metadata
+  'tiktoksss.title': 'Tiktokio - Scarica Video TikTok Online Senza Filigrana facilmente',
+  'tiktoksss.description': 'Scarica facilmente video TikTok senza filigrana con Tiktokio downloader Tiktok gratuito. Salva video Tiktok in formato MP4. Nessuna registrazione, download gratuiti su tutti i dispositivi.',
+  'tiktoksss.keywords': 'TikTokio, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // Tmate Page metadata
+  'tmate.title': 'Tiktokio - Scarica Video TikTok Online Senza Filigrana facilmente',
+  'tmate.description': 'Scarica facilmente video TikTok senza filigrana con Tiktokio downloader Tiktok gratuito. Salva video Tiktok in formato MP4. Nessuna registrazione, download gratuiti su tutti i dispositivi.',
+  'tmate.keywords': 'TikTokio, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // Ttdownloader Page metadata
+  'ttdownloader.title': 'Tiktokio - Scarica Video TikTok Online Senza Filigrana facilmente',
+  'ttdownloader.description': 'Scarica facilmente video TikTok senza filigrana con Tiktokio downloader Tiktok gratuito. Salva video Tiktok in formato MP4. Nessuna registrazione, download gratuiti su tutti i dispositivi.',
+  'ttdownloader.keywords': 'TikTokio, scaricare video TikTok senza filigrana, downloader video TikTok online, downloader TikTok gratuito, scaricare video TikTok online, salvare video TikTok senza filigrana',
+
+  // Hero section
+  'main.hero.title': 'TikTokio - Downloader Video TikTok Online',
+  'main.hero.subtitle': 'Scarica i tuoi video, immagini e audio TikTok preferiti con lo strumento downloader Tiktok online gratuito',
+  'tvd.hero.title': 'TikTokio - Il downloader video tiktok più veloce',
+  'tvd.hero.subtitle': 'Scarica Video TikTok senza filigrana - Gratuito e Facile',
+  'td.hero.title': 'TikTokio - Downloader TikTok',
+  'td.hero.subtitle': 'Downloader TikTok Online per scaricare video TikTok velocemente e senza problemi',
+  'dtv.hero.title': 'TikTokio - Scarica Video TikTok Senza Filigrana',
+  'dtv.hero.subtitle': 'Scarica video TikTok all\'istante con il downloader TikTok veloce e facile',
+  'dft.hero.title': 'TikTokio - Scarica Thumbnail TikTok Online',
+  'dft.hero.subtitle': 'Scarica Thumbnail e Foto Copertina TikTok - Downloader Thumbnail TikTok',
+  'md.hero.title': 'Musically Down – Scarica TikTok Senza Filigrana',
+  'md.hero.subtitle': 'Scarica i tuoi video TikTok preferiti con lo strumento downloader Tiktok musically down',
+  'savef.hero.title': 'SaveFrom - Downloader Video TikTok',
+  'savef.hero.subtitle': 'Scarica video TikTok in qualità Full HD con il downloader tiktok SaveFrom facile da usare',
+  'savetik.hero.title': 'Save Tiktok - Scarica video tiktok senza logo',
+  'savetik.hero.subtitle': 'Scarica video tiktok, Senza Filigrana!.. Download illimitati',
+  'ssstiktok.hero.title': 'SSSTikTok - Downloader Video TikTok Online Gratuito',
+  'ssstiktok.hero.subtitle': 'Downloader TikTok Senza filigrana! Scarica o Salva Video TikTok Mp4 e HD Online',
+  'tikmate.hero.title': 'Tikmate - Scarica Video TikTok Senza Filigrana',
+  'tikmate.hero.subtitle': 'Downloader TikTok - Scarica e Salva Video TikTok Senza Filigrana',
+  'tiksave.hero.title': 'TikSave Downloader Video TikTok Online',
+  'tiksave.hero.subtitle': 'Salva facilmente video TikTok online senza filigrana usando il downloader video TikSave',
+  'tiktoksss.hero.title': 'TikTokSSS - Downloader TikTok Online Gratuito',
+  'tiktoksss.hero.subtitle': 'SSSTikTok scarica video TikTok senza filigrana in qualità HD',
+  'tmate.hero.title': 'Tmate - Downloader TikTok senza Filigrana',
+  'tmate.hero.subtitle': 'Downloader Video Online per TikTok - Senza Filigrana - TMate',
+  'ttdownloader.hero.title': 'TTDownloader - Scarica Video TikTok Senza Filigrana',
+  'ttdownloader.hero.subtitle': 'Scarica video TikTok senza filigrana — qualità HD, formato MP4',
+
+  // Header/Navigation
+  'header.blog_link': 'Come salvare un video TikTok?',
+  'header.nav_1': 'Downloader TikTok',
+  'header.nav_2': 'Scarica Video TikTok',
+  'header.nav_3': 'Downloader Video TikTok',
+  'header.nav_4': 'Salva TikTok',
+
+  // Main features section
+  'main.title': 'TikTokio',
+  'main.h2': ' - Downloader Video TikTok Gratuito Senza Filigrana',
+  'main.hkf1': 'Caratteristiche Principali di',
+  'main.hkf2': 'per Salvare Video TikTok senza Filigrana Online',
+  'tiktokio.para1': 'TikTokio è lo strumento downloader video Tiktok online più affidabile n.1 per scaricare video TikTok senza filigrana all\'istante. <a href="https://stiktokio.com" class="font-semibold text-blue-800 hover:text-orange-600 underline">TikTokio</a>, affidabile downloader tiktok gratuito senza filigrana con download TikTok illimitati, si distingue per download fulminei e qualità HD. Che tu sia su mobile, PC o tablet, Tiktokio funziona perfettamente su ogni dispositivo senza installare app.',
+  'pgfeatures.paraleft2': 'Usando Tiktokio, dimentica strumenti complicati e problemi di rimozione filigrana. Incolla semplicemente l\'URL del video TikTok nel nostro downloader video TikTok e lascia che Tiktokio faccia il resto. Prova download fulminei attraverso la nostra piattaforma user-friendly e affidabile progettata per rendere il salvataggio dei video TikTok semplice.',
+  'main.popular_text': 'TikTokio ti aiuta a scaricare video da TikTok senza filigrana in modo rapido e semplice. Copia semplicemente il link del video TikTok, incollalo nella casella di ricerca e scegli il formato di download. Salva i tuoi video TikTok preferiti in alta qualità MP4 o audio (MP3) senza filigrana.',
+  'main.feature_text': 'TikTokio è un downloader Video TikTok online dedicato per <a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-orange-600 underline">Salvare video Tiktok</a> senza filigrana in qualità alta definizione (HD). TikTokio si distingue come uno dei più affidabili ed efficienti per scaricare video TikTok disponibili oggi.',
+  'main.popular_heading1': 'Salva Video Tiktok senza Filigrana',
+  'main.heading1_text': 'Tiktokio - Downloader Video Tiktok Online ti offre video puliti rimuovendo tutte le filigrane',
+  'main.popular_heading2': 'Download Veloci e Facili',
+  'main.heading2_text': 'TikTokio aiuta a scaricare video TikTok, Slideshow e stories in pochi secondi seguendo solo tre passaggi (copia, incolla e scarica).',
+  'main.popular_heading3': 'Download di Alta Qualità',
+  'main.heading3_text': 'Scarica Video Tiktok di Alta Qualità. Goditi la migliore qualità video.',
+  'main.popular_heading4': 'Download Illimitati',
+  'main.heading4_text': 'Il Downloader Video Tiktok offre download illimitati di video e foto senza restrizioni, registrazione o costi nascosti',
+  'main.popular_heading5': 'Processo di Download Facile',
+  'main.heading5_text': 'Il processo per scaricare video Tiktok senza filigrana è molto semplice. Incolla il tuo link Tiktok e Tiktokio - Downloader Video Tiktok gestisce tutto il resto.',
+  'main.popular_heading6': 'Sicuro',
+  'main.heading6_text': 'Il Downloader Video Tiktok rispetta la privacy degli utenti con download sicuri e anonimi che non memorizzano dati personali o link',
+  'main.down_button': 'Prova il Downloader Video Tiktok Ora',
+  'main.input_placeholder': 'Inserisci la tua email',
+  'main.button_text': 'Iscriviti',
+  'main.privacy': 'Ci preoccupiamo della protezione dei tuoi dati. Leggi la nostra',
+  'main.privacy_link': 'Informativa sulla Privacy.',
+
+  // Main How it Works Main
+  'how.works_h2': 'Come Scaricare Video TikTok:',
+  'how.works': 'Scaricare video TikTok senza filigrana con <strong>Stiktokio</strong> è più semplice di quanto pensi. Ecco la guida passo-passo:',
+  'how.step1': 'Copia l\'URL del video TikTok che vuoi scaricare.',
+  'how.step2': 'Incolla l\'URL nel campo di input sopra',
+  'how.step3': 'Clicca il pulsante <strong>"Scarica"</strong>',
+  'how.step4': 'Scegli il formato che vuoi scaricare (video, audio o thumbnail)',
+
+  // Main FAQ section
+  'faq.title_sec1': 'FAQ Su',
+  'faq.title_sec2': 'Downloader Video Tiktok',
+  'faq.faq_text': 'Ottieni risposte alle domande più comuni sul nostro strumento Downloader Video Tiktokio.',
+  'faq.question1': 'TikTokio è davvero gratuito?',
+  'faq.answer1': 'Sì! TikTokio è gratuito al 100%. Puoi scaricare video TikTok illimitati senza filigrana, senza registrazione, senza login e senza costi nascosti.',
+  'faq.question2': 'Devo installare un\'app o estensione?',
+  'faq.answer2': 'Nessuna installazione richiesta! TikTokio funziona direttamente nel browser su qualsiasi dispositivo – telefono, tablet o computer. Incolla il link TikTok e scarica all\'istante.',
+  'faq.question3': 'I video scaricati avranno la filigrana/logo TikTok?',
+  'faq.answer3': 'Mai. Tutti i video e le foto scaricati con TikTokio sono completamente senza filigrana, offrendoti file MP4 o immagini pulite di alta qualità pronte per ripubblicare o modificare.',
+  'faq.question4': 'È sicuro e legale scaricare video TikTok con TikTokio?',
+  'faq.answer4': 'Assolutamente sicuro – non memorizziamo i tuoi dati o i video che scarichi. Per la legalità: scaricare per uso personale o backup è generalmente consentito, ma rispetta sempre il copyright del creatore originale e i termini di servizio di TikTok.',
+  'faq.question5': 'Perché TikTokio scarica più velocemente di altri strumenti?',
+  'faq.answer5': 'Usiamo server avanzati in tutto il mondo e connessioni dirette ad alta velocità al CDN di TikTok, così ottieni i tuoi video in HD o persino 4K in pochi secondi – senza buffering, senza attesa.',
+  'faq.question6': 'Quali dispositivi e browser supporta TikTokio?',
+  'faq.answer6': 'TikTokio funziona su ogni dispositivo e browser – iPhone (Safari/Chrome), Android, Windows, Mac, Linux, iPad e persino smart TV. Che tu usi Chrome, Firefox, Safari, Edge, Opera o Brave, apri semplicemente <a href="https://stiktokio.com" class="font-semibold text-blue-800 hover:text-blue-950 underline">TikTokio</a>, incolla il link e scarica all\'istante – nessun problema di compatibilità!',
+
+  // Musically Down Feature section
+  'md.h2': 'Musically Down',
+  'md.h2_1': ' - Miglior Downloader Video TikTok Online',
+  'md.text1': 'MusicallyDown è uno strumento gratuito online per scaricare video TikTok senza filigrana. Che tu stia cercando "musically down" "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">musicallydown com</a>" o semplicemente "musically", questo potente Downloader Tiktok è diventato la soluzione preferita per chi vuole salvare i propri contenuti TikTok preferiti in alta qualità.',
+  'md.featureh': 'Caratteristiche di TikTokio - MusicallyDown Downloader video TikTok:',
+  'md.feature1': 'Scarica video Tik Tok senza alcun limite! con Musicaldown Downloader Video Tiktok Senza Filigrana Gratuito.',
+  'md.feature2': 'Tiktokio - è il Downloader Video TikTok Più Veloce per Scaricare video TikTok Facilmente con MusicallyDown.',
+  'md.feature3': 'Rimuovi una filigrana TikTok online Mentre Scarichi video TikTok senza filigrana',
+  'md.feature4': 'Scarica video TikTok in formato MP4 e MP3 con <a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">Musicallydown com</a>. Converti TikTok in MP4 in pochi passaggi.',
+  'md.feature5': 'Salva video TikTok in formato MP4 con la massima qualità disponibile. Scaricare video TikTok in qualità HD è gratuito.',
+  'md.feature6': 'MusicallyDown permette agli utenti di scaricare video TikTok su qualsiasi browser o dispositivo, inclusi PC, Android e iOS.',
+
+  // How it Works Musically Down
+  'md.howh2': 'Come Scaricare Video TikTok Senza Filigrana con',
+  'md.how2text': 'MusicallyDown è uno strumento Downloader Tiktok dove puoi scaricare video TikTok senza filigrana gratuitamente. Scarica un video TikTok in formato MP4 in qualità HD. Scaricare video TikTok senza filigrana con <strong>Stiktokio</strong> è più semplice di quanto pensi. Ecco la guida passo-passo:',
+  'md.find': 'Trova Video TikTok',
+  'md.paste': 'Incolla URL Video TikTok',
+  'md.download': 'Scarica Video TikTok',
+  'mdhow.step1': 'Trova il video TikTok da salvare aprendo l\'app TikTok o il sito web. Per copiare l\'URL del video, clicca l\'icona <strong class="text-pink-600 hover:text-pink-800">"Condividi"</strong> in basso a destra e poi <strong class="text-pink-600 hover:text-pink-800">"Copia Link."</strong>',
+  'mdhow.step2': 'Visita "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown Downloader video tiktok</a>" che non lascia filigrana. Incolla il link del video TikTok copiato nella casella e clicca <strong class="text-pink-600 hover:text-pink-800">"Scarica."</strong>',
+  'mdhow.step3': 'Scegli la qualità desiderata. Dopo, puoi scegliere di scaricare il Video TikTok con o senza filigrana per salvare il file sul dispositivo. Clicca il pulsante <strong class="text-pink-600 hover:text-pink-800">"Scarica"</strong>',
+
+  // FAQs Musically Down
+  'md.faqh': 'MusicallyDown',
+  'md.q1': 'Come posso salvare video TikTok senza filigrana?',
+  'md.ans1': 'Per scaricare video TikTok senza filigrana, prima trova il video sull\'app o sito TikTok. Poi, tocca <strong class="text-pink-600 hover:text-pink-800">"Opzione Condividi"</strong> e seleziona <strong class="text-pink-600 hover:text-pink-800">"Copia Link"</strong> per copiare l\'URL. Infine, apri "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown</a>" e incolla il link copiato nella casella di input, quindi clicca <strong class="text-pink-600 hover:text-pink-800">"Scarica"</strong>.',
+  'md.q2': 'Scaricare video TikTok senza filigrana è completamente gratuito?',
+  'md.ans2': 'Sì, scaricare video TikTok senza filigrana con MusicallyDown è completamente gratuito. Puoi salvare video in formato MP4 o MP3 senza costi. Il servizio funziona senza problemi su tutti i browser moderni, inclusi Chrome, Firefox, Safari e Edge.',
+  'md.q3': 'Come posso scaricare video TikTok come MP4 sul mio iPhone (iOS)?',
+  'md.ans3': 'Per iOS 13 e superiori, puoi scaricare video TikTok direttamente con Safari. Se usi iOS 12 o inferiore, dovrai installare l\'app Documents by Readdle per salvare video TikTok come MP4 senza filigrana',
+  'md.q4': 'Posso usare Musically TikTok downloader sul mio telefono Android?',
+  'md.ans4': 'Sì, MusicallyDown funziona su qualsiasi dispositivo, inclusi telefoni Android, PC o tablet e supporta tutti i sistemi operativi come Android, iOS, Windows e macOS. Non è necessaria l\'installazione di app poiché è uno strumento web-based.',
+  'md.q5': 'MusicallyDown memorizza i video scaricati?',
+  'md.ans5': 'No, MusicallyDown non memorizza i video scaricati. Tutti i video sono ospitati sui server TikTok. Non memorizziamo nemmeno informazioni utente eccetto la cronologia download in base al tuo IP, rendendo il servizio totalmente anonimo e sicuro.',
+  'md.q6': 'Posso scaricare video TikTok in HD senza filigrana?',
+  'md.ans6': 'Sì, "<a href="/musically-down" class="font-semibold text-pink-600 hover:text-pink-800 underline">MusicallyDown</a>" supporta download in alta definizione. Se il video TikTok originale è disponibile in Full HD o superiore, puoi scaricare il video Tiktok in quella qualità senza filigrana.',
+
+  // SaveTik Feature section
+  'st.h2': 'SaveTik',
+  'st.h2_1': ' - Salva video tiktok senza filigrana gratuitamente',
+  'st.text1': 'TikTokio - SaveTik è il miglior downloader video TikTok online poiché ti permette di scaricare video TikTok mp4 e mp3. Puoi salvare video Tiktok MP4 o MP3 gratuitamente semplicemente incollando il link nella casella di input su SaveTik.',
+  'st.text2': 'SaveTik ti permette di scaricare video Tiktok senza filigrana. Supporta il download di video da Tiktok su PC e telefoni (iPhone e Android) senza installare altri software.',
+  'st.text3': 'Con il nostro SaveTiktok Downloader, puoi scaricare video da Tiktok senza logo e ID utente sopra e sotto il video, proprio come un download normale. Puoi scaricare video Tiktok in formati .mp3 e .mp4 per tutti i tipi di dispositivi, inclusi PC, Mac, Android e iPhone.',
+  'st.featureh': 'Caratteristiche di TikTokio - Downloader video Save Tiktok:',
+  'st.fth1': 'Download Illimitato',
+  'st.feature1': 'Scarica video Tik Tok senza alcun limite! con Musicaldown Downloader Video Tiktok Senza Filigrana Gratuito.',
+  'st.fth2': 'Gratuito da Usare',
+  'st.feature2': 'SaveTik - è il Downloader Video TikTok Più Veloce per Scaricare video TikTok Facilmente con <a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">Save Tiktok</a>.',
+  'st.fth3': 'Senza Filigrana',
+  'st.feature3': 'Rimuovi una filigrana TikTok online Mentre Scarichi video TikTok senza filigrana',
+  'st.fth4': 'Elaborazione Veloce',
+  'st.feature4': 'Scarica video TikTok in formato MP4 e MP3 con <a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik</a>. Converti TikTok in MP4 in pochi passaggi.',
+  'st.fth5': 'Alta Qualità',
+  'st.feature5': 'Salva video TikTok in formato MP4 con la massima qualità disponibile. Scaricare video TikTok in qualità HD è gratuito.',
+  'st.fth6': 'Tutti i Dispositivi',
+  'st.feature6': 'SaveTik permette agli utenti di scaricare video TikTok su qualsiasi browser o dispositivo, inclusi PC, Android e iOS.',
+  'st.fth7': 'Elaborazione Veloce',
+  'st.feature7': 'Usando tecnologia avanzata per parsing istantaneo e download ad alta velocità SaveTik Elaborazione Veloce per Video da Scaricare all\'istante.',
+
+  // How it Works SaveTik
+  'st.howh2': 'Come Salvare Video Tiktok Senza Filigrana con',
+  'st.how2text': 'SaveTik è Downloader Video Tiktok Online per scaricare video TikTok senza filigrana gratuitamente. Salva video TikTok in formato MP4 in qualità HD. Scaricare video TikTok senza filigrana con <strong>Stiktokio</strong> è molto facile. Ecco passo-passo come funziona per scaricare video tiktok:',
+  'st.find': 'Trova & Copia Link Video TikTok',
+  'st.paste': 'Incolla il link Video TikTok copiato',
+  'st.download': 'Salva Contenuto Video TikTok',
+  'st.save': 'Salva & Goditi il Contenuto',
+  'sthow.step1': 'Apri l\'app TikTok, TikTok lite o il sito tiktok.com nel browser. Trova il video TikTok. Per copiare l\'URL del video, clicca l\'icona <strong class="text-green-600 hover:text-green-800">"Condividi"</strong> in basso a destra e clicca <strong class="text-green-600 hover:text-green-800">"Copia Link."</strong>',
+  'sthow.step2': 'Visita "<a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik Downloader video tiktok</a>". Incolla il link copiato nello strumento di rimozione filigrana Save Tiktok e clicca <strong class="text-green-600 hover:text-green-800">"Scarica."</strong>',
+  'sthow.step3': 'Seleziona il Server per scaricare o Salvare video TikTok. Puoi scegliere di scaricare Video TikTok con o senza filigrana per salvare il file. Clicca il pulsante <strong class="text-green-600 hover:text-green-800">"Scarica"</strong>.',
+  'sthow.step4': 'Salva video o immagine TikTok senza filigrana sul tuo dispositivo e Goditelo',
+
+  // FAQs SaveTik
+  'st.faqh': 'MusicallyDown',
+  'st.q1': 'Cos\'è SaveTik Tiktok Downloader e cosa fa?',
+  'st.ans1': 'SaveTik è uno strumento online gratuito che ti permette di "<a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800">Salvare TikTok</a>" video senza la filigrana TikTok, logo o ID utente. Supporta il download in formato MP4 (video) o MP3 (audio), funziona su tutti i dispositivi (PC, Mac, Android, iPhone) e non richiede installazione app o registrazione.',
+  'st.q2': 'Come scarico un video TikTok senza filigrana usando SaveTik?',
+  'st.ans2': 'Copia il link del video dall\'app o sito TikTok, incollalo nella casella di input su <strong class="text-green-600 hover:text-green-800">SaveTik</strong>, clicca Scarica, poi scegli MP4 o MP3. Il file si scaricherà in pochi secondi.',
+  'st.q3': 'SaveTik è gratuito e ci sono limiti sui download?',
+  'st.ans3': 'Sì, SaveTik è completamente gratuito senza pagamenti richiesti e senza limiti sul numero di download o funzionalità.',
+  'st.q4': 'Posso usare SaveTik sul mio iPhone o telefono Android?',
+  'st.ans4': 'Sì, funziona su tutti i dispositivi mobili. Su Android, usa semplicemente il browser per incollare il link e scaricare. Su iPhone (iOS 13+), usa Safari o l\'app Documents by Readdle per accedere al sito e scaricare direttamente.',
+  'st.q5': 'Perché vorrei scaricare video TikTok senza filigrana?',
+  'st.ans5': 'I video senza logo TikTok e ID utente sono più puliti e migliori per editing, riutilizzo o condivisione professionale, poiché la filigrana può ridurre la qualità visiva e l\'estetica.',
+  'st.q6': 'Cosa succede se non riesco a scaricare un video o ricevo un errore?',
+  'st.ans6': 'Di solito significa che il video è privato, è stato rimosso, limitato in alcuni paesi o il link non è valido. Assicurati che il link sia pubblico e riprova. SaveTik supporta solo video pubblici.',
+
+  // Miscellaneous section
+  'mics.404_title': 'Errore 404 Pagina Non Trovata | Tiktokio Downloader TikTok',
+  'mics.404_h2_text': 'Errore',
+  'mics.404_h2_text2': '404 Pagina Non Trovata',
+  'mics.404_line1': 'Spiacenti, non riusciamo a trovare questa pagina.',
+  'mics.404_line2': 'Ma non preoccuparti, puoi trovare tante altre cose sulla nostra homepage.',
+  'mics.404_back': 'Torna alla homepage',
+  'mics.contact_title': 'Contatta TikTokio – Team di Supporto Downloader Video TikTok',
+  'mics.contact_h1': 'Ottieni Risposte alle Tue Domande su Tiktokio',
+  'mics.contact_h2': 'CONTATTACI',
+  'mics.contact_text': 'Che tu abbia una domanda sul downloader video tiktok senza filigrana, necessiti supporto o voglia semplicemente condividere un feedback, siamo qui per ascoltarti. Contattaci e ti risponderemo il prima possibile.',
+  'mics.contact_form_h': 'Mettiti in Contatto',
+  'mics.contact_form_f1': 'Il tuo Nome',
+  'mics.contact_form_f2': 'Il tuo indirizzo email',
+  'mics.contact_form_f3': 'Scrivi il tuo messaggio...',
+  'mics.contact_submit': 'Invia Messaggio',
+  'mics.blog': 'Post del Blog TikTokio – Consigli, Trucchi e Ultimi Aggiornamenti sul Downloader TikTok',
+  'mics.blog_h1': 'La Guida Definitiva al Download Video TikTok – Blog TikTokio',
+  'mics.blog_desc': 'Padroneggia i download TikTok con il blog di TikTokio! Ottieni guide passo-passo per salvare video senza filigrana, scopri trucchi trending e scarica in HD MP4—100% gratuito. Nessun login necessario!',
+  'mics.back_blog': 'Torna al blog',
+  'mics.category_title1': 'Trova tutti i post su',
+  'mics.category_title2': 'in Tiktokio Downloader Tiktok',
+  'mics.category_desc': 'Sfoglia la nostra collezione completa di articoli e tutorial relativi a',
+  'mics.category_desc2': '. Impara come scaricare video TikTok, rimuovere filigrane e altro.',
+  'mics.tag_title1': 'Trova tutti i post su',
+  'mics.tag_title2': 'in Tiktokio Downloader Video TikTok',
+  'mics.tag_desc': 'Sfoglia la nostra collezione completa di articoli e tutorial relativi a',
+  'mics.tag_desc2': '. Impara come scaricare video TikTok, rimuovere filigrane e altro.',
+
+  // Blog section
+  'blog.prev': 'Precedente',
+  'blog.next': 'Successivo'
+},
+
+	
 ar: {
     // Site metadata
     'site.title': 'TikTokio: تحميل تيك توك - تحميل فيديوهات تيك توك بدون علامة مائية',
@@ -2944,6 +3230,7 @@ ar: {
   
 
 } as const;
+
 
 
 
