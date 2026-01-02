@@ -4,7 +4,6 @@ import Layout from "../layouts/Layout.astro";  // Single import
 import Hero from "../components/savefrom-hero.astro";
 import Features from "../components/savefrom-features.astro";
 import Newsletter from "../components/savefrom-newsletter.astro";
-import Logos from "../components/logos.astro";
 import Faq from "../components/savefrom-faq.astro";
 
 // i18n: Per-page setup
@@ -29,6 +28,8 @@ const variant = 'savefrom';
   
   <Container>
     <Features />
-  
+      <Newsletter />
+    <Faq />
+
   </Container>
 </Layout>
