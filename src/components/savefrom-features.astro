@@ -8,6 +8,11 @@ import Link from "@components/ui/link.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
+
+import React from 'react';
+import { Download, Zap, Globe, Infinity, Smile, CheckCircle } from 'lucide-react';
+
+
 // @ts-ignore
 import { Icon } from "astro-icon/components";
 
@@ -185,3 +190,336 @@ const features = [
 
 <!--Sention 1 End -->
 
+
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+    
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            SaveFrom.net TikTok Video Downloader: Features & Complete Guide
+          </h1>
+          <p className="text-xl mb-8 text-blue-100">
+            Download TikTok Videos Without Watermark - Free & Fast
+          </p>
+          <p className="text-lg leading-relaxed max-w-3xl">
+            SaveFrom.net offers a powerful TikTok video downloader that allows users to save high-quality TikTok content directly to their devices. Whether you want to download 13 sEc videos without watermark, or save TikTok MP3 files, SaveFrom.net provides a seamless solution.
+          </p>
+        </div>
+      </section>
+
+      {/* Key Features Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-gray-900">
+            Key Features of SaveFrom.net TikTok Downloader
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Feature 1 */}
+            <div className="border-l-4 border-blue-600 pl-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                1. No Watermark Downloads
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 mt-1">•</span>
+                  <span>Download TikTok videos without the TikTok watermark</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 mt-1">•</span>
+                  <span>Perfect for content creators and video editors</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="border-l-4 border-purple-600 pl-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                2. Multiple Format Options
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-600 mt-1">•</span>
+                  <span>MP4 Video Format - Universal compatibility</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-600 mt-1">•</span>
+                  <span>MP3 Audio Extraction - Save TikTok sounds and music</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-600 mt-1">•</span>
+                  <span>HD Quality - Download in the highest available resolution</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="border-l-4 border-green-600 pl-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                3. Fast Download Speed
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1">•</span>
+                  <span>High-speed servers for quick downloads</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1">•</span>
+                  <span>No waiting time or queues</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1">•</span>
+                  <span>Instant video processing</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="border-l-4 border-orange-600 pl-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                4. No Registration Required
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-600 mt-1">•</span>
+                  <span>100% free to use</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-600 mt-1">•</span>
+                  <span>No account creation needed</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-600 mt-1">•</span>
+                  <span>No software installation required</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Feature 5 */}
+            <div className="border-l-4 border-red-600 pl-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                5. Cross-Platform Compatibility
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-600 mt-1">•</span>
+                  <span>Works on Windows, Mac, Android, iOS</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-600 mt-1">•</span>
+                  <span>Browser-based tool - No Chrome or Firefox Setup</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-600 mt-1">•</span>
+                  <span>Mobile-friendly interface</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Feature 6 */}
+            <div className="border-l-4 border-indigo-600 pl-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                6. Unlimited Downloads
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-600 mt-1">•</span>
+                  <span>No daily download limits</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-600 mt-1">•</span>
+                  <span>Download as many TikTok videos as you want</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-600 mt-1">•</span>
+                  <span>Batch downloading support</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Feature 7 */}
+            <div className="border-l-4 border-pink-600 pl-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                7. User-Friendly Interface
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-pink-600 mt-1">•</span>
+                  <span>Simple copy-paste functionality</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-pink-600 mt-1">•</span>
+                  <span>One-click download button</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-pink-600 mt-1">•</span>
+                  <span>Clean and intuitive design</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How to Download Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">
+            How to Download TikTok Videos Using SaveFrom.net
+          </h2>
+          <h3 className="text-xl font-semibold mb-6 text-gray-800">Step-by-Step Guide</h3>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { step: 1, text: 'Open TikTok - Find the video you want to download' },
+              { step: 2, text: 'Copy the Link - Tap "Share" → "Copy Link"' },
+              { step: 3, text: 'Visit SaveFrom.net - Open the website in your browser' },
+              { step: 4, text: 'Paste the URL - Input the TikTok link in the download box' },
+              { step: 5, text: 'Click Download - Select your preferred quality/format' },
+              { step: 6, text: 'Save the Video - File downloads directly to your device' }
+            ].map((item) => (
+              <div key={item.step} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
+                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
+                  {item.step}
+                </div>
+                <p className="text-gray-700 pt-1">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Table */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">
+            Benefits of Using SaveFrom.net for TikTok Downloads
+          </h2>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-blue-600 text-white">
+                  <th className="border border-gray-300 px-6 py-3 text-left">Feature</th>
+                  <th className="border border-gray-300 px-6 py-3 text-left">Benefit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: 'Free to use', benefit: 'No hidden costs or hidden trials' },
+                  { feature: 'Privacy Protected', benefit: 'No data collection or tracking' },
+                  { feature: 'Watermark Removal', benefit: 'Professional-looking videos' },
+                  { feature: 'HD Quality', benefit: 'Crystal clear video resolution' },
+                  { feature: 'Fast Processing', benefit: 'Save time with instant downloads' },
+                  { feature: 'Mobile Support', benefit: 'Download on any device' }
+                ].map((row, idx) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                    <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">{row.feature}</td>
+                    <td className="border border-gray-300 px-6 py-3 text-gray-700">{row.benefit}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Supported Qualities */}
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">
+            Supported Download Qualities
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { quality: '1080p Full HD', desc: 'Best quality available' },
+              { quality: '720p HD', desc: 'Balanced quality and file size' },
+              { quality: '480p SD', desc: 'Smaller file ideal for storage saving' },
+              { quality: '360p', desc: 'Fastest download, lowest storage' }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold text-blue-600 mb-2">{item.quality}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">
+            Frequently Asked Questions (FAQ)
+          </h2>
+          
+          <div className="space-y-6">
+            {[
+              {
+                q: 'Is SaveFrom.net TikTok Downloader Free?',
+                a: 'Yes, SaveFrom.net is completely free to use with no hidden charges.'
+              },
+              {
+                q: 'Can I Download TikTok Videos Without Watermark?',
+                a: 'Yes, SaveFrom.net allows you to download TikTok videos without watermark.'
+              },
+              {
+                q: 'Is It Safe to Use SaveFrom.net?',
+                a: 'SaveFrom.net is a trusted platform with millions of users worldwide. It\'s safe and secure.'
+              },
+              {
+                q: 'Can I Download TikTok Videos on iPhone?',
+                a: 'Yes, SaveFrom.net works on iOS devices including iPhone and iPad.'
+              },
+              {
+                q: 'What Formats Are Supported?',
+                a: 'SaveFrom.net supports MP4, MP3, and various video quality options.'
+              }
+            ].map((faq, idx) => (
+              <div key={idx} className="bg-gray-50 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{faq.q}</h3>
+                <p className="text-gray-700">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8">
+            Why Choose SaveFrom.net for TikTok Downloads?
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { icon: CheckCircle, title: 'Trusted Platform', desc: 'Millions of users worldwide' },
+              { icon: Download, title: 'No Software Needed', desc: 'Works directly in browser' },
+              { icon: Zap, title: 'Fast & Reliable', desc: 'High-speed download servers' },
+              { icon: Globe, title: 'Free Forever', desc: 'No premium plans required' },
+              { icon: Smile, title: 'Privacy Focused', desc: 'No personal data required' }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
+                  <p className="text-blue-100">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+     
+     
+    </div>
