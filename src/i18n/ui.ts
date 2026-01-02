@@ -297,6 +297,59 @@ export const ui = {
 	'sthow.step3': 'Select Server to download or Save TikTok video. You can pick to download TikTok Video with or without a watermark to save the file. Click the <strong class="text-green-600 hover:text-green-800">"Download"</strong> button.',
 	'sthow.step4': 'Save TikTok watermark-free video or image to your device and Enjoy',
 	
+	// FAQs SaveTik
+	'st.faqh': 'SaveTik',
+	'st.q1': 'What is SaveTik Tiktok Downloader and what does it do?',
+	'st.ans1': 'SaveTik is a free online tool that allows you to "<a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800">Save TikTok</a>" videos without the TikTok watermark, logo or user ID. It supports downloading in MP4 (video) or MP3 (audio) formats, works on all devices (PC, Mac, Android, iPhone) and requires no app installation or registration.',
+	'st.q2': 'How do I download a TikTok video without watermark using SaveTik?',
+	'st.ans2': 'Copy the video link from the TikTok app or website, paste it into the input box on <strong class="text-green-600 hover:text-green-800">SaveTik</strong>, click Download, then choose MP4 or MP3. The file will download in a few seconds.',
+	'st.q3': 'Is SaveTik free and are there any limits on downloads?',
+	'st.ans3': 'Yes, SaveTik is completely free with no payment required and no limits on the number of downloads or features.',
+	'st.q4': 'Can I use SaveTik on my iPhone or Android phone?',
+	'st.ans4': 'Yes, it works on all mobile devices. On Android, just use your browser to paste the link and download. On iPhone (iOS 13+), use Safari or the Documents by Readdle app to access the site and download directly.',
+	'st.q5': 'Why would I want to download TikTok videos without watermark?',
+	'st.ans5': 'Videos without the TikTok logo and user ID are cleaner and better for editing, repurposing or sharing professionally, as the watermark can reduce visual quality and aesthetics.',
+	'st.q6': 'What happens if I cant download a video or get an error?',
+	'st.ans6': 'This usually means the video is private, has been removed, restricted in certain countries or the link is invalid. Ensure the link is public and try again. SaveTik supports only public videos.',
+	 
+
+
+
+ // Savefrom  Feature section
+	'st.h2': 'SaveFrom', 
+	'st.h2_1': ' - TikTok Video Downloads - Quick & Easy TikTok video downloader',
+	'st.text1': 'TikTokio - SaveFrom is most efficient TikTok video downloader tools for downloading TikTok videos. Savefrom ease of use make it a top choice to save tiktok videos quickly.',
+	'st.text2': 'SaveFrom lets you to select preferred Tiktok video format, as per your device compatibility. Downloading Tiktok videos for offline viewing is a best solution when internet access is limited or for looking to save on data usage.',
+	'st.text3': 'SaveFrom offers several benefits to download Tiktok video by making it perior choice for anyone who wants to save TikTok videos 100% Free. There is need to pay anything to use SaveFrom. With High-Quality Tiktok Downloads this web tool allows you to download TikTok videos in various qualities.',
+	'st.featureh': 'Features of TikTokio - Save Tiktok video Downloader:', 
+	'st.fth1': 'Unlimited Download', 
+	'st.feature1': 'Download Tik Tok video without any Limit! with Musicaldown Tiktok Video downloader Without Watermark For Free. ',
+	'st.fth2': 'Free to Use', 
+  	'st.feature2': 'SaveTik - is Fastest TikTok Video Downloader to Download TikTok videos Easily with <a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">Save Tiktok</a>.',
+	'st.fth3': 'No Watermark', 
+    'st.feature3': 'Remove a TikTok watermark online While Downloading TikTok video without watermark',
+	'st.fth4': 'Fast Processing', 
+	'st.feature4': 'Download TikTok videos in MP4 and MP3 format with <a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik</a>. Convert TikTok to MP4 in just a few steps.',
+	'st.fth5': 'High Quality', 
+	'st.feature5': 'Save TikTok videos in MP4 format with the highest quality available. Downloading TikTok videos in HD quality is free. ',
+	'st.fth6': 'All Devices', 
+	'st.feature6': 'SaTik allows users to download TikTok videos on any browser or device, including PC, Android and iOS.',
+	'st.fth7': 'Fast Processing', 
+	'st.feature7': 'Using advanced technology for instant parsing and high-speed downloads SaveTik Fast Processing for Videos to Download instantly.',
+	  
+	// How it Works SaveTik
+	'st.howh2': 'How to Save Tiktok Videos Without Watermark with',
+	'st.how2text': 'SaveTik is Online Tiktok Video Downloader to download TikTok videos without a watermark for free. Save TikTok video in MP4 format in HD quality. Download TikTok videos without the watermark with <strong>Stiktokio</strong> is quiet easy. Check step-by-step how it works for downloading Tiktok video:',
+	'st.find': 'Find & Copy TikTok Video Link',
+	'st.paste': 'Paste the Copied TikTok Video link',
+	'st.download': 'Save TikTok Video Content',
+	'st.save': 'Save & Enjoy Content', 
+
+	'sthow.step1': 'Open the TikTok app, TikTok lite or the tiktok.com site in browser. Find the TikTok video. To copy the Video URL, click the <strong class="text-green-600 hover:text-green-800">"Share"</strong> icon in the lower right corner and click <strong class="text-green-600 hover:text-green-800">"Copy Link."</strong>',
+	'sthow.step2': 'Visit "<a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik TikTok video downloader</a>". Paste the copied link into Save Tiktok watermark removal tool and click <strong class="text-green-600 hover:text-green-800">"Download."</strong>',
+	'sthow.step3': 'Select Server to download or Save TikTok video. You can pick to download TikTok Video with or without a watermark to save the file. Click the <strong class="text-green-600 hover:text-green-800">"Download"</strong> button.',
+	'sthow.step4': 'Save TikTok watermark-free video or image to your device and Enjoy',
+	
 	// FAQs SaceTik
 	'st.faqh': 'MusicallyDown',
 	'st.q1': 'What is SaveTik Tiktok Downloader and what does it do?',
@@ -312,7 +365,9 @@ export const ui = {
 	'st.q6': 'What happens if I cant download a video or get an error?',
 	'st.ans6': 'This usually means the video is private, has been removed, restricted in certain countries or the link is invalid. Ensure the link is public and try again. SaveTik supports only public videos.',
 	 
-	
+// SaveFrom End section
+
+	  
     // Miscellaneous section
     'mics.404_title': 'Error 404 Page Not Found | Tiktokio TikTok Downloader',
     'mics.404_h2_text': 'Error',
@@ -3351,6 +3406,7 @@ ar: {
   
 
 } as const;
+
 
 
 
