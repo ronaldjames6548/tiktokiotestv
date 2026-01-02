@@ -58,6 +58,7 @@ export const ui = {
 	'savef.title': 'SaveFrom - TikTok Video Downloads - Savefromnet Tiktok Downloader',
     'savef.description': 'Discover the fastest TikTok video downloader by savefromnet. download any TikTok video in HD without watermark in seconds. Start downloading now!',
     'savef.keywords': 'TikTokio, tiktok video download, tiktok video downloader, download tiktok video, tiktok video download without watermark, tiktok download video',
+	'savef.favicon': 'https://en1.savefrom.net/img/icon_100.png',  
 
 	// Savetik Downloader Page metadata
 	'savetik.title': 'Savetik Tiktok Video Downloader - Save Tiktok Videos Without WaterMark',
@@ -3350,6 +3351,7 @@ ar: {
   
 
 } as const;
+
 
 
 
