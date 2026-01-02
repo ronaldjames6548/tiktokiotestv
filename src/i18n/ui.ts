@@ -347,7 +347,7 @@ export const ui = {
 	'sfhow.step4': 'Save TikTok watermark-free video or image to your device and Enjoy',
 	
 	// FAQs SaceTik
-	'sf.faqh': 'MusicallyDown',
+	'sf.faq': 'Downloading TikTok Videos with',
 	'sf.q1': 'Can I download TikTok videos with the original audio intact using SaveFrom?',
 	'sf.ans1': 'Yes! SaveFrom downloads TikTok videos with their original audio included, preserving the full viewing and listening experience without any modifications.',
 	'sf.q2': 'Does SaveFrom support downloading TikTok videos in MP4 format only, or are other formats available?',
@@ -3402,6 +3402,7 @@ ar: {
   
 
 } as const;
+
 
 
 
