@@ -8,7 +8,6 @@ import Link from "@components/ui/link.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
-
 // @ts-ignore
 import { Icon } from "astro-icon/components";
 
@@ -22,7 +21,7 @@ function localizePath(path: string) {
 	if (!path || (path && path.startsWith('http')) || path === '#') return path;
 	return getRelativeLocaleUrl(lang, path);
 }
-
+const createMarkup = (text: string) => ({ __html: text });
 const features = [
 	
 ];
@@ -30,492 +29,73 @@ const features = [
 
 <div class="relative p-4">
       <div class="max-w-screen-xl mx-auto">
-            <div class="rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
-<section id="about" class="relative overflow-hidden">
-<div class="absolute inset-0 w-full h-full"></div>
-    <div class="container max-w-7xl mx-auto px-4 relative z-10">
-      <div class="text-center mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Tiktokio <span class="text-orange-400 dark:text-orange-400">{t("features.tiktokdownloader")}</span> {t("features.online")}</h2>
-      
-      <div class="w-24 h-1 mx-auto bg-orange-400"></div>
-			<p class="mt-4 mx-auto text-lg text-gray-900 dark:text-white" set:html={t("features.para1").replace("{url}", localizePath("/"))} />
-			<p class="mt-4 mx-auto text-lg text-gray-900 dark:text-white" set:html={t("features.para1").replace("/tiktok-downloader", localizePath("/tiktok-downloader"))} />
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-stretch">
-            <div class="flex items-center justify-center">
-                  <div class="w-full h-full rounded-2xl overflow-hidden">
-                        <img src="/images/tiktok-downloader.webp" alt="Tiktok Video Downloader" class="object-contain w-full h-full" onerror="this.src='/images/tiktok-logo.webp'">
-                  </div>
-            </div>
-            <div class="flex flex-col justify-center">
-                  <div class="grid gap-7">
-                  <div class="feature-box bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105" ><div class="flex items-start gap-4" ><div class="flex-shrink-0" ><div class="w-12 h-12 rounded-lg flex items-center justify-center text-pink-400" ><svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 16V8m0 8l3-3m-3 3l-3-3m3-5a1 1 0 110-2 1 1 0 010 2zm0 0v2m9 2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>
-	    </div>
-	    </div>
-      <div>
-	    <h3 class="font-medium text-white mb-1 text-xl">{t("features.fastdownloadh")}</h3>
-		<p class="text-white">{t("features.fastdownload")}</p>
-      </div>
-      </div>
-      </div>
-                  
-      <div class="feature-box bg-gradient-to-r from-slate-700 to-slate-900 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105">
-      <div class="flex items-start gap-4">
-            <div class="flex-shrink-0">
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center text-purple-400">
-                  <svg  xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            </div>
-            </div>
-      <div>
-            <h3 class="font-medium text-white mb-1 text-xl">{t("features.highqualityh")}</h3>
-                  <p class="text-white">{t("features.highquality")}</p>
-      </div>
-      </div>
-      </div>
-            <div class="feature-box bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105">
-      <div class="flex items-start gap-4">
-            <div class="flex-shrink-0">
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center text-blue-400">
-            <svg  xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-      </div>
-      </div>
-      <div>
-            <h3 class="font-medium text-white mb-1 text-xl">{t("features.allcontenttypesh")}</h3>
-                  <p class="text-white">{t("features.allcontenttypes")}</p>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-</section>
-</div>
-      </div>
-      </div>
-
-<div class="relative p-4">
-      <div class="max-w-screen-xl mx-auto">
-            <div class="rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
-<section id="how-to-play" class="py-20 relative overflow-hidden">
-      <div class="absolute inset-0 w-full h-full">
-            <div class="absolute inset-0"></div>
-      </div>
-
-
-      <div itemprop="itemListElement" itemscope itemtype="https://schema.org/HowToStep" class="container max-w-6xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">{t("features.howto")} <span class="text-orange-400 dark:text-orange-400">{t("features.downloadtiktokvideos")}</span> {t("features.easily")}</h2>
+            <div class="feature-box backdrop-blur-sm">
+				<div itemprop="itemListElement" itemscope itemtype="https://schema.org/HowToStep" class="feature-box backdrop-blur-sm">
+					<div class="text-center py-8">
+						<h2 class="text-2xl md:text-3xl font-semibold text-gray-900"><span class="text-pink-600">{t('md.h2')}</span> {t('md.h2_1')}</h2>
                         <meta itemprop="url" content="/" />
                         <meta itemprop="timeRequired" content="PT1M"/>
-            <div class="w-24 h-1 mx-auto bg-orange-400 rounded-full"></div>
-                  <p class="text-gray-900 text-lg mt-6 dark:text-white">{t("features.para2")}</p>
-                  <p class="text-gray-900 text-lg mt-6 dark:text-white">{t("features.steps")}</p>
+						<div class="w-24 h-1 mx-auto bg-pink-600 rounded-full"></div>
+						<p class="text-left mt-4 mx-auto text-lg text-gray-900 dark:text-white" set:html={t('md.text1')} />
+					</div>
+
+
+
+<section id="service" class="2xl:py-[60px] py-[50px] bg-white relative">
+        <div class="banner text-center px-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
+            <span class="text-[14px] text-[#777]">Musical Down</span>
+            <h2 class="text-center text-2xl md:text-3xl font-semibold text-gray-900">
+                {t("md.howh2")}<span class="text-pink-600"> 
+                    {t("md.h2")}</span></h2>
+        </div>
+		<div class="text-center py-2"><p class="text-left mt-4 mx-auto text-lg text-gray-900" set:html={t('md.how2text')} /></div>
+        <div class="flex flex-wrap justify-between items-center py-8 mx-auto mx-auto 2xl:max-w-[1320px] xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] max-[320px]:px-[12px] px-6">
+            <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-[30px]">
+                <div class="transition-all rounded flex justify-start items-start aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
+                    <div class="pr-6 border-r border-[#DB2777] max-[480px]:hidden">
+                        <h6 class="2xl:text-[50px] lg:text-[40px] text-[35px] font-bold text-pink-600 2xl:w-[60px] xl:w-[60px] lg:w-[50px] w-[40px] opacity-50">01</h6>
+                    </div>
+                    <div class="pl-6 border-l">
+                        <div class="flex">
+                            <img src="images/copymd.svg" alt="Copy TikTok Video URL">
+                        </div>
+                        <h4 class="text-[20px] pt-6 font-bold">{t("md.find")}</h4>
+                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]" set:html={t('mdhow.step1')}  />
+
+					
+                    </div>
+                </div>
+                <div class="transition-all rounded flex justify-start items-start aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
+                    <div class="pr-6 border-r border-[#DB2777] max-[480px]:hidden">
+                        <h6 class="2xl:text-[50px] lg:text-[40px] text-[35px] font-bold text-pink-600 2xl:w-[60px] xl:w-[60px] lg:w-[50px] w-[40px] opacity-50">02</h6>
+                    </div>
+                    <div class="pl-6 border-l">
+                        <div class="flex">
+                            <img src="images/pastemd.svg" alt="Paste TikTok Video URL">
+                        </div>
+                        <h4 class="text-[20px] pt-6 font-bold">{t("md.paste")}</h4>
+                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]" set:html={t('mdhow.step2')}  />
+
+                    </div>
+                </div>
+                <div class="transition-all rounded flex justify-start items-start aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
+                    <div class="pr-6 border-r border-[#DB2777] max-[480px]:hidden">
+                        <h6 class="2xl:text-[50px] lg:text-[40px] text-[35px] font-bold text-pink-600 2xl:w-[60px] xl:w-[60px] lg:w-[50px] w-[40px] opacity-50">03</h6>
+                    </div>
+                    <div class="pl-6 border-l">
+                        <div class="flex">
+                            <img src="images/downloadmd.svg" alt="Download Tiktok Video">
+                        </div>
+                        <h4 class="text-[20px] pt-6 font-bold">{t("md.download")}</h4>
+                        <p class="pt-2 text-[#777] text-[15px] leading-[28px]" set:html={t('mdhow.step3')}  />
+
+                    </div>
+                </div>
             </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            <!--1-->
-            <div itemtype="https://schema.org/HowToStep" class="how-to-card bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
-                  <div class="relative h-48 w-full overflow-hidden bg-gradient-to-br from-purple-600/30 to-pink-600/30">
-                        <img src="/images/tiktok-search.webp" alt="Step 1: Copy the URL" class="w-full h-full object-contain p-4">
-                  <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                        <span itemprop="position" content="1" class="text-xl font-bold text-white">1</span>
-                  </div>
-                  </div>
-
-                  <div class="p-6">
-                  <div class="flex items-center gap-3 mb-3">
-                        <span class="iconify i-mdi:content-copy w-6 h-6 text-pink-400" aria-hidden="true" style=""></span>
-                        <h3 itemprop="name" class="text-xl font-semibold text-white">{t("features.step1h")}</h3>
-                  </div>
-                        <p itemprop="text" class="text-white">{t("features.step1")}</p>
-                  </div>
-            </div>
-
-            <!--2-->
-            <div itemtype="https://schema.org/HowToStep" class="how-to-card bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
-                  <div class="relative h-48 w-full overflow-hidden bg-gradient-to-br from-purple-600/30 to-pink-600/30">
-                        <img src="/images/how-to-step2.webp" alt="Step 2: Paste the link" class="w-full h-full object-contain p-4">
-                  <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                        <span itemprop="position" content="2" class="text-xl font-bold text-white">2</span>
-                  </div>
-                  </div>
-
-                  <div class="p-6">
-                  <div class="flex items-center gap-3 mb-3">
-                        <span class="iconify i-mdi:link w-6 h-6 text-pink-400" aria-hidden="true" style=""></span>
-                        <h3 itemprop="name" class="text-xl font-semibold text-white">{t("features.step2h")}</h3>
-                  </div>
-                        <p itemprop="text" class="text-white">{t("features.step2")}</p>
-                  </div>
-            </div>
-
-            <!--3-->
-            <div itemtype="https://schema.org/HowToStep" class="how-to-card bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
-                  <div class="relative h-48 w-full overflow-hidden bg-gradient-to-br from-purple-600/30 to-pink-600/30">
-                        <img src="/images/how-to-step3.webp" alt="Step 3: Download video" class="w-full h-full object-contain p-4">
-                  <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                        <span itemprop="position" content="3" class="text-xl font-bold text-white">3</span>
-                  </div>
-                  </div>
-                  <div class="p-6">
-                  <div class="flex items-center gap-3 mb-3">
-                        <span class="iconify i-mdi:download w-6 h-6 text-pink-400" aria-hidden="true" style=""></span>
-                        <h3 itemprop="name" class="text-xl font-semibold text-white">{t("features.step3h")}</h3>
-                  </div>
-                        <p itemprop="text" class="text-white">{t("features.step3")}</p>
-                  </div>
-             </div>
-                  <!--End-->
-      </div>
-
-
-<div class="flex justify-center mt-12" >
-                  <a href="/" class="bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 text-lg text-white dark:text-white">{t("features.startdownload")}</a>
-	</div>
-
-            
-</div>
-</section>
-
-                 
-   </div>
+        </div>
+    </section>
 </div>
 </div>
-
-
+</div>
+</div>
 <!--Sention 1 End -->
-
-
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-    
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            SaveFrom.net TikTok Video Downloader: Features & Complete Guide
-          </h1>
-          <p className="text-xl mb-8 text-blue-100">
-            Download TikTok Videos Without Watermark - Free & Fast
-          </p>
-          <p className="text-lg leading-relaxed max-w-3xl">
-            SaveFrom.net offers a powerful TikTok video downloader that allows users to save high-quality TikTok content directly to their devices. Whether you want to download 13 sEc videos without watermark, or save TikTok MP3 files, SaveFrom.net provides a seamless solution.
-          </p>
-        </div>
-      </section>
-
-      {/* Key Features Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-gray-900">
-            Key Features of SaveFrom.net TikTok Downloader
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Feature 1 */}
-            <div className="border-l-4 border-blue-600 pl-6">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                1. No Watermark Downloads
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-600 mt-1">•</span>
-                  <span>Download TikTok videos without the TikTok watermark</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-600 mt-1">•</span>
-                  <span>Perfect for content creators and video editors</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="border-l-4 border-purple-600 pl-6">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                2. Multiple Format Options
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 mt-1">•</span>
-                  <span>MP4 Video Format - Universal compatibility</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 mt-1">•</span>
-                  <span>MP3 Audio Extraction - Save TikTok sounds and music</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 mt-1">•</span>
-                  <span>HD Quality - Download in the highest available resolution</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="border-l-4 border-green-600 pl-6">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                3. Fast Download Speed
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 mt-1">•</span>
-                  <span>High-speed servers for quick downloads</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 mt-1">•</span>
-                  <span>No waiting time or queues</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 mt-1">•</span>
-                  <span>Instant video processing</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="border-l-4 border-orange-600 pl-6">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                4. No Registration Required
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 mt-1">•</span>
-                  <span>100% free to use</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 mt-1">•</span>
-                  <span>No account creation needed</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 mt-1">•</span>
-                  <span>No software installation required</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="border-l-4 border-red-600 pl-6">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                5. Cross-Platform Compatibility
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-600 mt-1">•</span>
-                  <span>Works on Windows, Mac, Android, iOS</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-600 mt-1">•</span>
-                  <span>Browser-based tool - No Chrome or Firefox Setup</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-600 mt-1">•</span>
-                  <span>Mobile-friendly interface</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="border-l-4 border-indigo-600 pl-6">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                6. Unlimited Downloads
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-indigo-600 mt-1">•</span>
-                  <span>No daily download limits</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-indigo-600 mt-1">•</span>
-                  <span>Download as many TikTok videos as you want</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-indigo-600 mt-1">•</span>
-                  <span>Batch downloading support</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Feature 7 */}
-            <div className="border-l-4 border-pink-600 pl-6">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                7. User-Friendly Interface
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-pink-600 mt-1">•</span>
-                  <span>Simple copy-paste functionality</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-pink-600 mt-1">•</span>
-                  <span>One-click download button</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-pink-600 mt-1">•</span>
-                  <span>Clean and intuitive design</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How to Download Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            How to Download TikTok Videos Using SaveFrom.net
-          </h2>
-          <h3 className="text-xl font-semibold mb-6 text-gray-800">Step-by-Step Guide</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { step: 1, text: 'Open TikTok - Find the video you want to download' },
-              { step: 2, text: 'Copy the Link - Tap "Share" → "Copy Link"' },
-              { step: 3, text: 'Visit SaveFrom.net - Open the website in your browser' },
-              { step: 4, text: 'Paste the URL - Input the TikTok link in the download box' },
-              { step: 5, text: 'Click Download - Select your preferred quality/format' },
-              { step: 6, text: 'Save the Video - File downloads directly to your device' }
-            ].map((item) => (
-              <div key={item.step} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                  {item.step}
-                </div>
-                <p className="text-gray-700 pt-1">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Table */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            Benefits of Using SaveFrom.net for TikTok Downloads
-          </h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-blue-600 text-white">
-                  <th className="border border-gray-300 px-6 py-3 text-left">Feature</th>
-                  <th className="border border-gray-300 px-6 py-3 text-left">Benefit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: 'Free to use', benefit: 'No hidden costs or hidden trials' },
-                  { feature: 'Privacy Protected', benefit: 'No data collection or tracking' },
-                  { feature: 'Watermark Removal', benefit: 'Professional-looking videos' },
-                  { feature: 'HD Quality', benefit: 'Crystal clear video resolution' },
-                  { feature: 'Fast Processing', benefit: 'Save time with instant downloads' },
-                  { feature: 'Mobile Support', benefit: 'Download on any device' }
-                ].map((row, idx) => (
-                  <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                    <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">{row.feature}</td>
-                    <td className="border border-gray-300 px-6 py-3 text-gray-700">{row.benefit}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* Supported Qualities */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            Supported Download Qualities
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { quality: '1080p Full HD', desc: 'Best quality available' },
-              { quality: '720p HD', desc: 'Balanced quality and file size' },
-              { quality: '480p SD', desc: 'Smaller file ideal for storage saving' },
-              { quality: '360p', desc: 'Fastest download, lowest storage' }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">{item.quality}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            Frequently Asked Questions (FAQ)
-          </h2>
-          
-          <div className="space-y-6">
-            {[
-              {
-                q: 'Is SaveFrom.net TikTok Downloader Free?',
-                a: 'Yes, SaveFrom.net is completely free to use with no hidden charges.'
-              },
-              {
-                q: 'Can I Download TikTok Videos Without Watermark?',
-                a: 'Yes, SaveFrom.net allows you to download TikTok videos without watermark.'
-              },
-              {
-                q: 'Is It Safe to Use SaveFrom.net?',
-                a: 'SaveFrom.net is a trusted platform with millions of users worldwide. It\'s safe and secure.'
-              },
-              {
-                q: 'Can I Download TikTok Videos on iPhone?',
-                a: 'Yes, SaveFrom.net works on iOS devices including iPhone and iPad.'
-              },
-              {
-                q: 'What Formats Are Supported?',
-                a: 'SaveFrom.net supports MP4, MP3, and various video quality options.'
-              }
-            ].map((faq, idx) => (
-              <div key={idx} className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{faq.q}</h3>
-                <p className="text-gray-700">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">
-            Why Choose SaveFrom.net for TikTok Downloads?
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { icon: CheckCircle, title: 'Trusted Platform', desc: 'Millions of users worldwide' },
-              { icon: Download, title: 'No Software Needed', desc: 'Works directly in browser' },
-              { icon: Zap, title: 'Fast & Reliable', desc: 'High-speed download servers' },
-              { icon: Globe, title: 'Free Forever', desc: 'No premium plans required' },
-              { icon: Smile, title: 'Privacy Focused', desc: 'No personal data required' }
-            ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                  <p className="text-blue-100">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-     
-     
-    </div>
