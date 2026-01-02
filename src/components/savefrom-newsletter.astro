@@ -37,8 +37,8 @@ const features = [
 								<p class="text-left mt-4 mx-auto text-lg text-center text-gray-800 dark:text-white" set:html={t('sf.text3')} />
 
 
-		<section id="features" class="2xl:py-[60px] py-[50px] relative p-8">
-			<div class="max-w-7xl mx-auto text-gray-800 dark:text-white border rounded-2xl p-12">
+		<section id="features" class="2xl:py-[60px] py-[50px] relative">
+			<div class="max-w-7xl mx-auto text-gray-800 dark:text-white">
 				<!-- Title -->
 				<h2 class="text-3xl md:text-4xl font-semibold text-center mb-12">{t('sf.featureh')}</h2>
         		<!-- Features Grid -->
@@ -57,7 +57,8 @@ const features = [
                     <svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <p class="text-base md:text-lg leading-relaxed">{t('sf.feature2')}</p>
+                    <p class="text-base md:text-lg leading-relaxed" set:html={t('sf.feature2')} />
+
 					</div>
                     <!-- Feature 3 -->
 					<div class="flex items-start gap-3">
@@ -80,7 +81,7 @@ const features = [
                 
 					<!-- Feature 5 -->
 					<div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     <p class="text-base md:text-lg leading-relaxed">{t('sf.feature5')}</p>
