@@ -25,13 +25,9 @@ const variant = 'savefrom';
 ---
 
 <Layout title={title} description={description} keywords={keywords} image={image} favicon={favicon} variant={variant}>
-  <!-- Hero in slot (full homepage hero) -->
-  <Fragment slot="hero">
-    <Hero />
-  </Fragment>
+  <Hero />
   
   <Container>
-    <!-- Features in default slot for index -->
     <Features />
     <Logos />
     <Newsletter />
