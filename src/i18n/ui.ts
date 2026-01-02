@@ -346,7 +346,7 @@ export const ui = {
 	'sfhow.step3': 'Select Server to download or Save TikTok video. You can pick to download TikTok Video with or without a watermark to save the file. Click the <strong class="text-green-600 hover:text-green-800">"Download"</strong> button.',
 	'sfhow.step4': 'Save TikTok watermark-free video or image to your device and Enjoy',
 	
-	// FAQs SaceTik
+	// FAQs SaveFrom
 	'sf.faq': 'Downloading TikTok Videos with',
 	'sf.q1': 'Can I download TikTok videos with the original audio intact using SaveFrom?',
 	'sf.ans1': 'Yes! SaveFrom downloads TikTok videos with their original audio included, preserving the full viewing and listening experience without any modifications.',
@@ -3402,6 +3402,7 @@ ar: {
   
 
 } as const;
+
 
 
 
