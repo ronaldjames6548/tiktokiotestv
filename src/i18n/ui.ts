@@ -331,15 +331,18 @@ export const ui = {
 	'sf.feature7': 'SaveFrom has User-Friendly Interface. Simple copy-paste functionality, One-click download button with Clean, ad-minimal design',
 	  
 	// How it Works SaveTik
+  	'sf.howh1': 'Download Watermark Free TikTok Videos with SaveFrom',
+  	'sf.howh1text': 'Enjoy a smooth TikTok video downloads on any of device using the fastest SaveFrom - Tiktok video downloader. Download directly from TikTok as SaveFrom does not store any videos, audio, images, songs or story on its servers for user security.',
+
 	'sf.howh2': 'How to Download TikTok Videos Using SaveFrom - Tiktok Downloader Onine',
 	'sf.how2text': 'SaveFrom is a powerful TikTok video downloader online that allows users to save TikTok content directly to their devices. Whether you want to download TikTok videos without watermark or save TikTok MP4 files, SaveFrom is a seamless solution.',
 	'sf.find': 'Find & Copy TikTok Video Link',
-	'sf.paste': 'Paste the Video URL, Copied from TikTok.com',
-	'sf.download': 'Select your preferred video quality/format & Click Download',
+	'sf.paste': 'Paste the TikTok Video URL',
+	'sf.download': 'Select & Click Download',
 	'sf.save': 'Save the Video - File downloads directly to your device', 
 
 	'sfhow.step1': 'Open the TikTok app, TikTok lite or the tiktok.com site in browser. Find the TikTok video. To copy the Video URL, click the <strong class="text-green-600 hover:text-green-800">"Share"</strong> icon in the lower right corner and click <strong class="text-green-600 hover:text-green-800">"Copy Link."</strong>',
-	'sfhow.step2': 'Visit "<a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800 underline">SaveTik TikTok video downloader</a>". Paste the copied link into Save Tiktok watermark removal tool and click <strong class="text-green-600 hover:text-green-800">"Download."</strong>',
+	'sfhow.step2': 'Visit "<a href="/savefrom-download-from-tiktok" class="font-semibold text-green-600 hover:text-lime-600 underline">SaveFrom TikTok video downloader</a>". Paste the copied link into SaveFrom and click <strong class="text-green-600 hover:text-green-800">"Download."</strong>',
 	'sfhow.step3': 'Select Server to download or Save TikTok video. You can pick to download TikTok Video with or without a watermark to save the file. Click the <strong class="text-green-600 hover:text-green-800">"Download"</strong> button.',
 	'sfhow.step4': 'Save TikTok watermark-free video or image to your device and Enjoy',
 	
@@ -3399,6 +3402,7 @@ ar: {
   
 
 } as const;
+
 
 
 
