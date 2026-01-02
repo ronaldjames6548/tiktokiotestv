@@ -320,7 +320,7 @@ export const ui = {
 	'sf.h2_1': ' - TikTok Video Downloads - Quick & Easy TikTok video downloader',
 	'sf.text1': 'TikTokio - SaveFrom is most efficient TikTok video downloader tools for downloading TikTok videos. Savefrom ease of use make it a top choice to save tiktok videos quickly.',
 	'sf.text2': 'SaveFrom lets you to select preferred Tiktok video format, as per your device compatibility. Downloading Tiktok videos for offline viewing is a best solution when internet access is limited or for looking to save on data usage.',
-	'sf.text3': 'SaveFrom offers several benefits to download Tiktok video by making it perior choice for anyone who wants to save TikTok videos 100% Free. There is need to pay anything to use SaveFrom. With High-Quality Tiktok Downloads this web tool allows you to download TikTok videos in various qualities.',
+	'sf.text3': 'SaveFrom offers several benefits to download Tiktok video by making it perior choice for anyone who wants to save TikTok videos 100% Free. Using <a href="/">TikTokio</a> and SaveFrom There is need to pay anything to use SaveFrom. With High-Quality Tiktok Downloads this web tool allows you to download TikTok videos in various qualities.',
 	'sf.featureh': 'Key Features of SaveFrom - TikTok Video Downloader', 
 	'sf.feature1': 'Download TikTok videos without the TikTok watermark. Get clean, high-quality Tiktok video files, perfect for content creators and video editors',
   	'sf.feature2': 'To get multiple TikTok video download format options like MP4 Video Format with Universal compatibility, MP3 Audio Extraction and Save TikTok sounds and music with <a href="/savefrom-download-from-tiktok" class="font-semibold text-lime-500 hover:text-lime-800 underline">SaveFrom</a>.',
@@ -336,7 +336,7 @@ export const ui = {
 
 	'sf.howh2': 'How to Download TikTok Videos Using SaveFrom - Tiktok Downloader Onine',
 	'sf.how2text': 'SaveFrom is a powerful TikTok video downloader online that allows users to save TikTok content directly to their devices. Whether you want to download TikTok videos without watermark or save TikTok MP4 files, SaveFrom is a seamless solution.',
-	'sf.find': 'Find & Copy TikTok Video Link',
+	'sf.find': 'Find & Copy Video Link',
 	'sf.paste': 'Paste the TikTok Video URL',
 	'sf.download': 'Select & Click Download',
 	'sf.save': 'Save the Video - File downloads directly to your device', 
@@ -348,18 +348,18 @@ export const ui = {
 	
 	// FAQs SaceTik
 	'sf.faqh': 'MusicallyDown',
-	'sf.q1': 'What is SaveTik Tiktok Downloader and what does it do?',
-	'sf.ans1': 'SaveTik is a free online tool that allows you to "<a href="/savetik-downloader-download-tiktok-videos-without-watermark" class="font-semibold text-green-600 hover:text-green-800">Save TikTok</a>" videos without the TikTok watermark, logo or user ID. It supports downloading in MP4 (video) or MP3 (audio) formats, works on all devices (PC, Mac, Android, iPhone) and requires no app installation or registration.',
-	'sf.q2': 'How do I download a TikTok video without watermark using SaveTik?',
-	'sf.ans2': 'Copy the video link from the TikTok app or website, paste it into the input box on <strong class="text-green-600 hover:text-green-800">SaveTik</strong>, click Download, then choose MP4 or MP3. The file will download in a few seconds.',
-	'sf.q3': 'Is SaveTik free and are there any limits on downloads?',
-	'sf.ans3': 'Yes, SaveTik is completely free with no payment required and no limits on the number of downloads or features.',
-	'sf.q4': 'Can I use SaveTik on my iPhone or Android phone?',
-	'sf.ans4': 'Yes, it works on all mobile devices. On Android, just use your browser to paste the link and download. On iPhone (iOS 13+), use Safari or the Documents by Readdle app to access the site and download directly.',
-	'sf.q5': 'Why would I want to download TikTok videos without watermark?',
-	'sf.ans5': 'Videos without the TikTok logo and user ID are cleaner and better for editing, repurposing or sharing professionally, as the watermark can reduce visual quality and aesthetics.',
-	'sf.q6': 'What happens if I cant download a video or get an error?',
-	'sf.ans6': 'This usually means the video is private, has been removed, restricted in certain countries or the link is invalid. Ensure the link is public and try again. SaveTik supports only public videos.',
+	'sf.q1': 'Can I download TikTok videos with the original audio intact using SaveFrom?',
+	'sf.ans1': 'Yes! SaveFrom downloads TikTok videos with their original audio included, preserving the full viewing and listening experience without any modifications.',
+	'sf.q2': 'Does SaveFrom support downloading TikTok videos in MP4 format only, or are other formats available?',
+	'sf.ans2': 'SaveFrom supports multiple formats including MP4, WEBM and 3GP, depending on the browser and device you are using. TikTok to MP4 is the most commonly offered and widely compatible format.',
+	'sf.q3': 'Is it possible to download TikTok videos directly from the mobile browser without installing an app?',
+	'sf.ans3': 'Absolutely. Users can download TikTok videos directly both Android and iPhone  through their mobile browsers (like Chrome or Safari) by pasting the video URL into SaveFrom.net—no app installation required.',
+	'sf.q4': 'Will using SaveFrom to download TikTok videos violate TikTok’s terms of service?',
+	'sf.ans4': 'SaveFrom provides a web based TikTok downloader tool for personal offline use, users should review TikTok’s terms of service and respect copyright. SaveFrom does not host or redistribute content—it only facilitates direct downloads from TikTok’s servers.',
+	'sf.q5': 'Do I need to create an account or log in to download TikTok videos with SaveFrom?',
+	'sf.ans5': 'No. SaveFrom does not require any registration, login, or personal information. The service is completely anonymous and accessible to anyone with a TikTok video link.',
+	'sf.q6': 'How fast are downloads using SaveFrom and are there any daily limits?',
+	'sf.ans6': 'Downloads are typically instant and depend only on your internet speed and the video size. SaveFrom has no daily download limits—you can download as many TikTok videos as you like, for free.',
 	 
 // SaveFrom End section
 
@@ -3402,6 +3402,7 @@ ar: {
   
 
 } as const;
+
 
 
 
