@@ -30,39 +30,41 @@ const features = [
 <div class="relative p-4">
       <div class="max-w-screen-xl mx-auto">
       <div class="feature-box backdrop-blur-sm">
-						<h2 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white"><span class="text-lime-500">{t('sf.h2')}</span> {t('sf.h2_1')}</h2>
+						<h2 class="text-2xl md:text-3xl font-semibold text-center text-gray-800 dark:text-white"><span class="text-lime-500">{t('sf.h2')}</span> {t('sf.h2_1')}</h2>
 							<div class="w-24 h-1 mx-auto bg-pink-600 rounded-full"></div>
-								<p class="text-left mt-4 mx-auto text-lg text-gray-800 dark:text-white" set:html={t('sf.text1')} />
-								<p class="text-left mt-4 mx-auto text-lg text-gray-800 dark:text-white" set:html={t('sf.text2')} />
+								<p class="text-left mt-4 mx-auto text-lg text-center text-gray-800 dark:text-white" set:html={t('sf.text1')} />
+								<p class="text-left mt-4 mx-auto text-lg text-center text-gray-800 dark:text-white" set:html={t('sf.text2')} />
+								<p class="text-left mt-4 mx-auto text-lg text-center text-gray-800 dark:text-white" set:html={t('sf.text3')} />
+
 
 		<section id="features" class="2xl:py-[60px] py-[50px] relative p-8">
 			<div class="max-w-7xl mx-auto text-gray-800 dark:text-white border rounded-2xl p-12">
 				<!-- Title -->
-				<h2 class="text-3xl md:text-4xl font-semibold text-center mb-12">{t('md.featureh')}</h2>
+				<h2 class="text-3xl md:text-4xl font-semibold text-center mb-12">{t('sf.featureh')}</h2>
         		<!-- Features Grid -->
 			<div class="grid md:grid-cols-2 gap-8 md:gap-12">
 				<!-- Left Column -->
 				<div class="space-y-6">
 					<!-- Feature 1 -->
 					<div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <p class="text-base md:text-lg leading-relaxed">{t('md.feature1')}</p>
+                    <p class="text-base md:text-lg leading-relaxed">{t('sf.feature1')}</p>
 					</div>
                     <!-- Feature 2 -->
 					<div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <p class="text-base md:text-lg leading-relaxed">{t('md.feature2')}</p>
+                    <p class="text-base md:text-lg leading-relaxed">{t('sf.feature2')}</p>
 					</div>
                     <!-- Feature 3 -->
 					<div class="flex items-start gap-3">
-					<svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
 					</svg>
-                    <p class="text-base md:text-lg leading-relaxed">{t('md.feature3')}</p>
+                    <p class="text-base md:text-lg leading-relaxed">{t('sf.feature3')}</p>
 					</div>
 				</div>
             
@@ -70,10 +72,10 @@ const features = [
 				<div class="space-y-6">
 					<!-- Feature 4 -->
 					<div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <p class="text-base md:text-lg leading-relaxed" set:html={t('md.feature4')} />
+                    <p class="text-base md:text-lg leading-relaxed" set:html={t('sf.feature4')} />
 					</div>
                 
 					<!-- Feature 5 -->
@@ -81,15 +83,22 @@ const features = [
                     <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <p class="text-base md:text-lg leading-relaxed">{t('md.feature5')}</p>
+                    <p class="text-base md:text-lg leading-relaxed">{t('sf.feature5')}</p>
 					</div>
                 
 					<!-- Feature 6 -->
 					<div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    <p class="text-base md:text-lg leading-relaxed">{t('md.feature6')}</p>
+                    <p class="text-base md:text-lg leading-relaxed">{t('sf.feature6')}</p>
+					</div>
+					<!-- Feature 7 -->
+					<div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-lime-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <p class="text-base md:text-lg leading-relaxed">{t('sf.feature7')}</p>
 					</div>
 				</div>
 			</div>
